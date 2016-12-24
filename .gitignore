@@ -1,0 +1,9 @@
+# Files
+*.csproj
+*.meta
+
+# Folders
+Temp/
+obj/
+ProjectSettings/
+Library/
