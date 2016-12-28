@@ -13,6 +13,7 @@ public class InfoText : MonoBehaviour {
 	}
 	
 	void Update () {
-        text_object.text = string.Format("Jump: {0}\nGrounded: {1}", player.is_jumping, player.is_grounded);
+        text_object.text = string.Format("Jump: {0}\nGrounded: {1}", 
+            player.is_jumping, player.is_grounded);
 	}
 }

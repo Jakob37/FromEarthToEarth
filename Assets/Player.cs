@@ -7,7 +7,6 @@ public class Player : MonoBehaviour {
     public float move_force = 10;
     public float max_speed = 5;
     public float jump_force = 100;
-    public Transform ground_check;
 
     [HideInInspector] public bool facing_right = true;
     [HideInInspector] public bool is_jumping = false;
@@ -26,15 +25,10 @@ public class Player : MonoBehaviour {
 
 	void Update () {
 
-        is_grounded = Physics2D.Linecast(transform.position, ground_check.position, 1 << LayerMask.NameToLayer("Ground"));
-
         if (Input.GetButtonDown("Jump") && is_grounded) {
             is_jumping = true;
             print("Is jumping");
         }
-
-        // UpdateGravity();
-
 	}
 
     void FixedUpdate() {
@@ -58,6 +52,7 @@ public class Player : MonoBehaviour {
         if (is_jumping) {
             rigi.AddForce(new Vector2(0f, jump_force));
             is_jumping = false;
+            is_grounded = false;
         }
     }
 
@@ -67,4 +62,17 @@ public class Player : MonoBehaviour {
         the_scale *= -1;
         transform.localScale = the_scale;
     }
+
+    void OnCollisionEnter2D(Collision2D coll) {
+
+        print("Collision enter 2D");
+
+        if (transform.position.y > coll.transform.position.y) {
+            is_grounded = true;
+        }
+
+
+    }
+
+    // void OnTriggerEnter2D()
 }
