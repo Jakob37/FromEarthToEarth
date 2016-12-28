@@ -3,10 +3,12 @@ using System.Collections;
 
 public class Player : MonoBehaviour {
 
-    public float gravity = -9;
     public float move_force = 10;
     public float max_speed = 5;
     public float jump_force = 100;
+
+    public int air_jumps = 1;
+    [HideInInspector] public int remaining_jumps;
 
     [HideInInspector] public bool facing_right = true;
     [HideInInspector] public bool is_jumping = false;
@@ -20,14 +22,20 @@ public class Player : MonoBehaviour {
     }
 
     void Start () {
-
+        remaining_jumps = air_jumps;
 	}
 
 	void Update () {
 
-        if (Input.GetButtonDown("Jump") && is_grounded) {
-            is_jumping = true;
-            print("Is jumping");
+        if (Input.GetButtonDown("Jump")) {
+
+            if (is_grounded) {
+                is_jumping = true;
+            }
+            else if (remaining_jumps > 0) {
+                is_jumping = true;
+                remaining_jumps -= 1;
+            }
         }
 	}
 
@@ -69,6 +77,7 @@ public class Player : MonoBehaviour {
 
         if (transform.position.y > coll.transform.position.y) {
             is_grounded = true;
+            remaining_jumps = air_jumps;
         }
 
 
