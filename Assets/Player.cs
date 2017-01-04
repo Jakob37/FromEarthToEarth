@@ -67,7 +67,7 @@ public class Player : MonoBehaviour {
     private void Flip() {
         facing_right = !facing_right;
         Vector3 the_scale = transform.localScale;
-        the_scale *= -1;
+        the_scale.x *= -1;
         transform.localScale = the_scale;
     }
 
