@@ -75,13 +75,19 @@ public class Player : MonoBehaviour {
 
         print("Collision enter 2D");
 
-        if (transform.position.y > coll.transform.position.y) {
+        ContactPoint2D[] contact_points = coll.contacts;
+        ContactPoint2D contact_point = contact_points[0];
+        Vector2 first_coll_coord = contact_point.point;
+
+        //print("Collision pos: " + point);
+        //print("Character pos: " + transform.position);
+
+        if (transform.position.y > first_coll_coord.y) {
             is_grounded = true;
             remaining_jumps = air_jumps;
         }
-
-
     }
+
 
     // void OnTriggerEnter2D()
 }
