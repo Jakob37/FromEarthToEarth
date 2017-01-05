@@ -3,6 +3,8 @@ Microsoft Visual Studio Solution File, Format Version 11.00
 
 Project("{CD2D794A-CCAF-1C82-11D0-E38B452F80D7}") = "FromEarthToEarth", "Assembly-CSharp.csproj", "{97BAE07C-C13D-F5E2-AE8E-BC872BBCB08F}"
 EndProject
+Project("{CD2D794A-CCAF-1C82-11D0-E38B452F80D7}") = "FromEarthToEarth", "Assembly-CSharp-Editor.csproj", "{13F0013B-9BE8-7F56-18B9-9B5444E52775}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -13,6 +15,10 @@ Global
 		{97BAE07C-C13D-F5E2-AE8E-BC872BBCB08F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{97BAE07C-C13D-F5E2-AE8E-BC872BBCB08F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{97BAE07C-C13D-F5E2-AE8E-BC872BBCB08F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{13F0013B-9BE8-7F56-18B9-9B5444E52775}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{13F0013B-9BE8-7F56-18B9-9B5444E52775}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{13F0013B-9BE8-7F56-18B9-9B5444E52775}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{13F0013B-9BE8-7F56-18B9-9B5444E52775}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
