@@ -35,6 +35,7 @@ public class Player : MonoBehaviour {
             else if (remaining_jumps > 0) {
                 is_jumping = true;
                 remaining_jumps -= 1;
+                rigi.velocity = new Vector2(rigi.velocity.x, 0);
             }
         }
 	}
