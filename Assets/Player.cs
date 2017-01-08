@@ -18,6 +18,12 @@ public class Player : MonoBehaviour {
 
     private LevelLogic level_logic;
 
+    private bool new_grounded = false;
+    public Transform newGroundCheck;
+    private float newGroundRadius = 0.2f;
+    public LayerMask newWhatIsGround;
+
+
     void Awake() {
         anim = GetComponent<Animator>();
         rigi = GetComponent<Rigidbody2D>();
@@ -52,10 +58,19 @@ public class Player : MonoBehaviour {
         if (h * rigi.velocity.x < max_speed) {
             rigi.AddForce(Vector2.right * h * move_force);
         }
-
         if (Mathf.Abs(rigi.velocity.x) > max_speed) {
             rigi.velocity = new Vector2(Mathf.Sign(rigi.velocity.x) * max_speed, rigi.velocity.y);
         }
+
+
+
+        //if (Mathf.Abs(h) < 0.4f) {
+        //    rigi.velocity = new Vector2(0, rigi.velocity.y);
+        //}
+
+
+        NewCheckGrounded();
+
 
         if (h > 0 && !facing_right) {
             Flip();
@@ -71,6 +86,12 @@ public class Player : MonoBehaviour {
         }
     }
 
+    private void NewCheckGrounded() {
+
+        this.new_grounded = Physics2D.OverlapCircle(newGroundCheck.position, newGroundRadius, newWhatIsGround);
+
+    }
+
     private void Flip() {
         facing_right = !facing_right;
         Vector3 the_scale = transform.localScale;
@@ -82,11 +103,9 @@ public class Player : MonoBehaviour {
 
         // print("Collision enter 2D: " + coll.gameObject);
 
-        ContactPoint2D[] contact_points = coll.contacts;
-        ContactPoint2D contact_point = contact_points[0];
-        Vector2 first_coll_coord = contact_point.point;
-
-        print(coll.gameObject.GetComponent<WinArea>());
+        //ContactPoint2D[] contact_points = coll.contacts;
+        //ContactPoint2D contact_point = contact_points[0];
+        //Vector2 first_coll_coord = contact_point.point;
 
         if (coll.gameObject.GetComponent<WinArea>() != null) {
             print("Win condition!");
@@ -96,8 +115,12 @@ public class Player : MonoBehaviour {
         //print("Collision pos: " + point);
         //print("Character pos: " + transform.position);
 
-        if (transform.position.y > first_coll_coord.y) {
-            is_grounded = true;
+        //if (transform.position.y > first_coll_coord.y) {
+        //    is_grounded = true;
+        //    remaining_jumps = air_jumps;
+        // }
+
+        if (new_grounded) {
             remaining_jumps = air_jumps;
         }
     }
