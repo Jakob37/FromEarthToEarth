@@ -16,9 +16,13 @@ public class Player : MonoBehaviour {
     private Animator anim;
     private Rigidbody2D rigi;
 
+    private LevelLogic level_logic;
+
     void Awake() {
         anim = GetComponent<Animator>();
         rigi = GetComponent<Rigidbody2D>();
+
+        level_logic = FindObjectOfType<LevelLogic>();
     }
 
     void Start () {
@@ -38,6 +42,8 @@ public class Player : MonoBehaviour {
                 rigi.velocity = new Vector2(rigi.velocity.x, 0);
             }
         }
+
+        EdgeCheck();
 	}
 
     void FixedUpdate() {
@@ -74,11 +80,18 @@ public class Player : MonoBehaviour {
 
     void OnCollisionEnter2D(Collision2D coll) {
 
-        print("Collision enter 2D");
+        // print("Collision enter 2D: " + coll.gameObject);
 
         ContactPoint2D[] contact_points = coll.contacts;
         ContactPoint2D contact_point = contact_points[0];
         Vector2 first_coll_coord = contact_point.point;
+
+        print(coll.gameObject.GetComponent<WinArea>());
+
+        if (coll.gameObject.GetComponent<WinArea>() != null) {
+            print("Win condition!");
+            level_logic.WinCondition();
+        }
 
         //print("Collision pos: " + point);
         //print("Character pos: " + transform.position);
@@ -89,6 +102,18 @@ public class Player : MonoBehaviour {
         }
     }
 
+    private void EdgeCheck() {
+
+        float edge_margin = 0.02f;
+
+        var viewport_pos = Camera.main.WorldToViewportPoint(transform.position);
+        viewport_pos.x = Mathf.Clamp(viewport_pos.x, edge_margin, 2);
+        transform.position = Camera.main.ViewportToWorldPoint(viewport_pos);
+
+        //if (viewport_pos.x > 1) {
+        //    level_logic.WinCondition();
+        //}
+    }
 
     // void OnTriggerEnter2D()
 }
