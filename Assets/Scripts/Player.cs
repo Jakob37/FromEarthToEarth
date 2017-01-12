@@ -24,6 +24,12 @@ public class Player : MonoBehaviour {
 
     private PlatformController platform_controller;
 
+    public float throw_force_x = 100;
+    public float throw_force_y = 150;
+
+
+    private Block carried_block;
+
 
     void Awake() {
         anim = GetComponent<Animator>();
@@ -40,6 +46,21 @@ public class Player : MonoBehaviour {
     void FixedUpdate() {
 
         UpdatePlatformController();
+
+        if (Input.GetKeyDown(KeyCode.LeftControl) && carried_block != null) {
+            var throw_dir = 1;
+            if (!facing_right) {
+                throw_dir = -1;
+            }
+
+            carried_block.PutDown(new Vector2(throw_dir * throw_force_x, throw_force_y));
+            carried_block = null;
+        }
+
+        if (carried_block != null) {
+            var lift_distance = 0.6f;
+            carried_block.transform.position = new Vector3(transform.position.x, transform.position.y + lift_distance, 0);
+        }
     }
 
     private void UpdatePlatformController() {
@@ -51,9 +72,15 @@ public class Player : MonoBehaviour {
 
         platform_controller.UpdateHorizontalMovement();
         is_grounded = platform_controller.CheckGrounded();
+
     }
 
     void OnCollisionEnter2D(Collision2D coll) {
+
+        if (coll.gameObject.GetComponent<Block>() != null && Input.GetKey(KeyCode.LeftControl)) {
+            carried_block = coll.gameObject.GetComponent<Block>();
+            carried_block.TakenUp();
+        }
 
         if (coll.gameObject.GetComponent<WinArea>() != null) {
             print("Win condition!");
