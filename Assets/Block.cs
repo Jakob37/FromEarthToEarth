@@ -3,32 +3,21 @@ using System.Collections;
 
 public class Block : MonoBehaviour {
 
+    public bool is_fading = true;
+
     private Rigidbody2D rigi;
 
     private SpriteRenderer sprite_renderer;
-    private Shader shaderGUItext;
-    private Shader shaderSpritesDefault;
+
+    private float remaining_percentage;
 
 	void Start () {
         rigi = gameObject.GetComponent<Rigidbody2D>();
         rigi.isKinematic = false;
         sprite_renderer = gameObject.GetComponent<SpriteRenderer>();
 
-        shaderSpritesDefault = Shader.Find("Textures/squre.png");
-        shaderGUItext = Shader.Find("GUI/Text Shader");
-
-        NormalSprite();
+        remaining_percentage = 100;
 	}
-
-    private void WhiteSprite() {
-        sprite_renderer.material.shader = shaderGUItext;
-        sprite_renderer.color = Color.white;
-    }
-
-    private void NormalSprite() {
-        sprite_renderer.material.shader = shaderSpritesDefault;
-        sprite_renderer.color = Color.white;
-    }
 
     public void TakenUp() {
         rigi.isKinematic = true;
@@ -40,6 +29,13 @@ public class Block : MonoBehaviour {
     }
 	
 	void Update () {
-	
+
+        if (remaining_percentage > 0 && is_fading) {
+            remaining_percentage -= Time.deltaTime * 10;
+        }
+
+
+        var transparency = remaining_percentage / 100;
+        sprite_renderer.color = new Color(1, 1, 1, transparency);
 	}
 }
