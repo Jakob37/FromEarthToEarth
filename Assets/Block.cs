@@ -34,6 +34,9 @@ public class Block : MonoBehaviour {
             remaining_percentage -= Time.deltaTime * 10;
         }
 
+        if (remaining_percentage <= 0) {
+            Destroy(gameObject);
+        }
 
         var transparency = remaining_percentage / 100;
         sprite_renderer.color = new Color(1, 1, 1, transparency);

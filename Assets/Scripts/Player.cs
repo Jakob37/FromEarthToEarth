@@ -30,6 +30,8 @@ public class Player : MonoBehaviour {
 
     private Block carried_block;
 
+    private BlockCreationGround touching_ground;
+
 
     void Awake() {
         anim = GetComponent<Animator>();
@@ -61,6 +63,14 @@ public class Player : MonoBehaviour {
             var lift_distance = 0.6f;
             carried_block.transform.position = new Vector3(transform.position.x, transform.position.y + lift_distance, 0);
         }
+
+        if (touching_ground != null && Input.GetKey(KeyCode.LeftControl)) {
+            BlockCreationGround ground_script = touching_ground.gameObject.GetComponent<BlockCreationGround>();
+            if (ground_script.HasAvailableBlocks()) {
+                carried_block = ground_script.GetBlock();
+                carried_block.TakenUp();
+            }
+        }
     }
 
     private void UpdatePlatformController() {
@@ -89,6 +99,26 @@ public class Player : MonoBehaviour {
 
         if (is_grounded) {
             remaining_jumps = air_jumps;
+        }
+    }
+
+    void OnTriggerEnter2D(Collider2D other) {
+
+        print("Triggered!");
+
+        if (other.gameObject.GetComponent<BlockCreationGround>() != null) {
+            touching_ground = other.gameObject.GetComponent<BlockCreationGround>();
+            print("Touching ground!");
+        }
+    }
+
+    void OnTriggerExit2D(Collider2D other) {
+
+        print("Untriggered!");
+
+        if (other == touching_ground.gameObject.GetComponent<Collider>()) {
+            touching_ground = null;
+            print("Not touching anymore!");
         }
     }
 }
