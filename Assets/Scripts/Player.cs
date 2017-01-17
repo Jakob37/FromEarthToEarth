@@ -27,9 +27,7 @@ public class Player : MonoBehaviour {
     public float throw_force_x = 100;
     public float throw_force_y = 150;
 
-
     private Block carried_block;
-
     private BlockCreationGround touching_ground;
 
 
@@ -64,13 +62,17 @@ public class Player : MonoBehaviour {
             carried_block.transform.position = new Vector3(transform.position.x, transform.position.y + lift_distance, 0);
         }
 
-        if (touching_ground != null && Input.GetKey(KeyCode.LeftControl)) {
+        if (touching_ground != null && Input.GetKey(KeyCode.LeftControl) && carried_block == null) {
             BlockCreationGround ground_script = touching_ground.gameObject.GetComponent<BlockCreationGround>();
-            if (ground_script.HasAvailableBlocks()) {
-                carried_block = ground_script.GetBlock();
-                carried_block.TakenUp();
-            }
+            carried_block = ground_script.GetBlock();
+            carried_block.TakenUp();
+            carried_block.Solidify();
         }
+        
+        if (Input.GetKey(KeyCode.LeftControl) && carried_block != null && !carried_block.IsSolidified()) {
+            carried_block.Solidify();
+        }
+
     }
 
     private void UpdatePlatformController() {
@@ -116,7 +118,7 @@ public class Player : MonoBehaviour {
 
         print("Untriggered!");
 
-        if (other == touching_ground.gameObject.GetComponent<Collider>()) {
+        if (touching_ground != null && other == touching_ground.gameObject.GetComponent<Collider2D>()) {
             touching_ground = null;
             print("Not touching anymore!");
         }
