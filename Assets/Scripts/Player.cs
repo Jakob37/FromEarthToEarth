@@ -30,6 +30,8 @@ public class Player : MonoBehaviour {
     private Block carried_block;
     private BlockCreationGround touching_ground;
 
+    private int raindrop_hit_count;
+
 
     void Awake() {
         anim = GetComponent<Animator>();
@@ -37,6 +39,8 @@ public class Player : MonoBehaviour {
 
         level_logic = FindObjectOfType<LevelLogic>();
         platform_controller = GetComponent<PlatformController>();
+
+        raindrop_hit_count = 0;
     }
 
     void Start () {
@@ -121,6 +125,17 @@ public class Player : MonoBehaviour {
         if (touching_ground != null && other == touching_ground.gameObject.GetComponent<Collider2D>()) {
             touching_ground = null;
             print("Not touching anymore!");
+        }
+    }
+
+    void OnParticleCollision(GameObject other) {
+
+        if (other.name == "RainFallParticleSystem") {
+            raindrop_hit_count += 1;
+
+            if (raindrop_hit_count % 5 == 0) {
+                print("Hit by: " + raindrop_hit_count + " raindrops");
+            }
         }
     }
 }

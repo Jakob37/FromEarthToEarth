@@ -14,7 +14,7 @@ public class Block : MonoBehaviour {
     private bool solidified;
     private bool is_solidifying;
 
-    private float SOLIDIFYING_SPEED = 30;
+    private float SOLIDIFYING_SPEED = 50;
     private float WITHER_SPEED = 5;
 
 	void Awake() {
@@ -74,4 +74,14 @@ public class Block : MonoBehaviour {
         var transparency = remaining_percentage / 100;
         sprite_renderer.color = new Color(1, 1, 1, transparency);
 	}
+
+    void OnParticleCollision(GameObject other) {
+
+
+        if (other.name == "RainFallParticleSystem") {
+            if (solidified) {
+                remaining_percentage -= 1;
+            }
+        }
+    }
 }
