@@ -7,9 +7,14 @@ public class PlatformController : MonoBehaviour {
     private Player player;
     private Rigidbody2D rigi;
 
+    private float JUMP_DELAY_MILLISECONDS = 100;
+    private float current_jump_delay;
+
     void Start() {
         player = FindObjectOfType<Player>();
         rigi = player.gameObject.GetComponent<Rigidbody2D>();
+
+        current_jump_delay = 0;
     }
 
     public void EdgeCheck() {
@@ -19,6 +24,12 @@ public class PlatformController : MonoBehaviour {
         var viewport_pos = Camera.main.WorldToViewportPoint(transform.position);
         viewport_pos.x = Mathf.Clamp(viewport_pos.x, edge_margin, 2);
         transform.position = Camera.main.ViewportToWorldPoint(viewport_pos);
+    }
+
+    void FixedUpdate() {
+        if (current_jump_delay > 0) {
+            current_jump_delay -= Time.deltaTime * 1000;
+        }
     }
 
     public void UpdateJump() {
@@ -32,10 +43,12 @@ public class PlatformController : MonoBehaviour {
             rigi.velocity = new Vector2(rigi.velocity.x, 0);
         }
 
-        if (player.is_jumping) {
+        if (player.is_jumping && current_jump_delay <= 0) {
             rigi.AddForce(new Vector2(0f, player.jump_force));
             player.is_jumping = false;
             player.is_grounded = false;
+
+            current_jump_delay = JUMP_DELAY_MILLISECONDS;
         }
     }
 

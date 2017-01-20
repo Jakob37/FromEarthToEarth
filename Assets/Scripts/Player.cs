@@ -110,21 +110,15 @@ public class Player : MonoBehaviour {
 
     void OnTriggerEnter2D(Collider2D other) {
 
-        print("Triggered!");
-
         if (other.gameObject.GetComponent<BlockCreationGround>() != null) {
             touching_ground = other.gameObject.GetComponent<BlockCreationGround>();
-            print("Touching ground!");
         }
     }
 
     void OnTriggerExit2D(Collider2D other) {
 
-        print("Untriggered!");
-
         if (touching_ground != null && other == touching_ground.gameObject.GetComponent<Collider2D>()) {
             touching_ground = null;
-            print("Not touching anymore!");
         }
     }
 
@@ -133,9 +127,9 @@ public class Player : MonoBehaviour {
         if (other.name == "RainFallParticleSystem") {
             raindrop_hit_count += 1;
 
-            if (raindrop_hit_count % 5 == 0) {
-                print("Hit by: " + raindrop_hit_count + " raindrops");
-            }
+            // if (raindrop_hit_count % 5 == 0) {
+            //     print("Hit by: " + raindrop_hit_count + " raindrops");
+            // }
         }
     }
 }
