@@ -9,6 +9,8 @@ public class Block : MonoBehaviour {
 
     private SpriteRenderer sprite_renderer;
 
+    public Sprite[] frames;
+
     private float remaining_percentage;
 
     private bool solidified;
@@ -71,8 +73,11 @@ public class Block : MonoBehaviour {
             Destroy(gameObject);
         }
 
-        var transparency = remaining_percentage / 100;
-        sprite_renderer.color = new Color(1, 1, 1, transparency);
+        var target_frame = (int)((100 - remaining_percentage) / 100 * 7);
+        sprite_renderer.sprite = frames[target_frame];
+
+        // var transparency = remaining_percentage / 100;
+        // sprite_renderer.color = new Color(1, 1, 1, transparency);
 	}
 
     void OnParticleCollision(GameObject other) {
