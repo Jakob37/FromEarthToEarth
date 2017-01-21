@@ -10,6 +10,10 @@ public class PlatformController : MonoBehaviour {
     private float JUMP_DELAY_MILLISECONDS = 100;
     private float current_jump_delay;
 
+    public bool IsMoving() {
+        return rigi.velocity.x != 0;
+    }
+
     void Start() {
         player = FindObjectOfType<Player>();
         rigi = player.gameObject.GetComponent<Rigidbody2D>();
