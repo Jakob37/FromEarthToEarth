@@ -1,11 +1,12 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System;
 
 public class PlatformController : MonoBehaviour {
 
-
     private Player player;
     private Rigidbody2D rigi;
+    private Animator player_anim;
 
     private float JUMP_DELAY_MILLISECONDS = 100;
     private float current_jump_delay;
@@ -17,6 +18,7 @@ public class PlatformController : MonoBehaviour {
     void Start() {
         player = FindObjectOfType<Player>();
         rigi = player.gameObject.GetComponent<Rigidbody2D>();
+        player_anim = player.gameObject.GetComponent<Animator>();
 
         current_jump_delay = 0;
     }
@@ -36,16 +38,20 @@ public class PlatformController : MonoBehaviour {
         }
     }
 
-    public void UpdateJump() {
+    public void UpdateJump(bool jump_key_down) {
 
-        if (player.is_grounded) {
-            player.is_jumping = true;
+        if (jump_key_down) {
+            if (player.is_grounded) {
+                player.is_jumping = true;
+            }
+            else if (player.remaining_jumps > 0) {
+                player.is_jumping = true;
+                player.remaining_jumps -= 1;
+                rigi.velocity = new Vector2(rigi.velocity.x, 0);
+            }
         }
-        else if (player.remaining_jumps > 0) {
-            player.is_jumping = true;
-            player.remaining_jumps -= 1;
-            rigi.velocity = new Vector2(rigi.velocity.x, 0);
-        }
+
+        SetAnimParams();
 
         if (player.is_jumping && current_jump_delay <= 0) {
             rigi.AddForce(new Vector2(0f, player.jump_force));
@@ -54,6 +60,11 @@ public class PlatformController : MonoBehaviour {
 
             current_jump_delay = JUMP_DELAY_MILLISECONDS;
         }
+    }
+
+    private void SetAnimParams() {
+        player_anim.SetBool("is_jumping", player.is_jumping);
+        player_anim.SetFloat("move_speed", Mathf.Abs(rigi.velocity.x));
     }
 
     public void UpdateHorizontalMovement() {

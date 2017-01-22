@@ -75,9 +75,6 @@ public class Block : MonoBehaviour {
 
         var target_frame = (int)((100 - remaining_percentage) / 100 * 7);
         sprite_renderer.sprite = frames[target_frame];
-
-        // var transparency = remaining_percentage / 100;
-        // sprite_renderer.color = new Color(1, 1, 1, transparency);
 	}
 
     void OnParticleCollision(GameObject other) {

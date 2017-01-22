@@ -13,7 +13,6 @@ public class Player : MonoBehaviour {
     [HideInInspector] public bool facing_right = true;
     [HideInInspector] public bool is_jumping = false;
     [HideInInspector] public bool is_grounded = false;
-    // private Rigidbody2D rigi;
 
     private LevelLogic level_logic;
 
@@ -31,14 +30,7 @@ public class Player : MonoBehaviour {
 
     private int raindrop_hit_count;
 
-    private Animator anim;
-//    private string anim_walk = "is_walking";
-//    private string anim_jump = "is_jumping";
-
     void Awake() {
-        anim = GetComponent<Animator>();
-        // rigi = GetComponent<Rigidbody2D>();
-
         level_logic = FindObjectOfType<LevelLogic>();
         platform_controller = GetComponent<PlatformController>();
 
@@ -78,16 +70,14 @@ public class Player : MonoBehaviour {
         if (Input.GetKey(KeyCode.LeftControl) && carried_block != null && !carried_block.IsSolidified()) {
             carried_block.Solidify();
         }
-
-        UpdateAnimator();
     }
 
     private void UpdatePlatformController() {
         platform_controller.EdgeCheck();
 
-        if (Input.GetButtonDown("Jump")) {
-            platform_controller.UpdateJump();
-        }
+
+        bool jump_key_down = Input.GetButtonDown("Jump");
+        platform_controller.UpdateJump(jump_key_down);
 
         platform_controller.UpdateHorizontalMovement();
         is_grounded = platform_controller.CheckGrounded();
@@ -108,22 +98,6 @@ public class Player : MonoBehaviour {
 
         if (is_grounded) {
             remaining_jumps = air_jumps;
-        }
-    }
-
-    private void UpdateAnimator() {
-
-        if (!is_grounded) {
-            anim.SetBool("is_jumping", true);
-            anim.SetBool("is_walking", false);
-        }
-        else if (platform_controller.IsMoving()) {
-            anim.SetBool("is_jumping", false);
-            anim.SetBool("is_walking", true);
-        }
-        else {
-            anim.SetBool("is_jumping", false);
-            anim.SetBool("is_walking", false);
         }
     }
 
