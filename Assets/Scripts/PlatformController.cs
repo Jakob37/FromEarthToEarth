@@ -8,8 +8,10 @@ public class PlatformController : MonoBehaviour {
     private Rigidbody2D rigi;
     private Animator player_anim;
 
-    private float JUMP_DELAY_MILLISECONDS = 100;
+    private float JUMP_DELAY_MILLISECONDS = 10;
     private float current_jump_delay;
+
+    private bool has_been_off_ground_since_jump;
 
     public bool IsMoving() {
         return rigi.velocity.x != 0;
@@ -51,10 +53,15 @@ public class PlatformController : MonoBehaviour {
             }
         }
 
+        if (Mathf.Abs(rigi.velocity.y) > player.max_speed_y) {
+            rigi.velocity = new Vector2(rigi.velocity.x, Mathf.Sign(rigi.velocity.x) * player.max_speed_y);
+        }
+
         SetAnimParams();
 
-        if (player.is_jumping && current_jump_delay <= 0) {
-            rigi.AddForce(new Vector2(0f, player.jump_force));
+        if (player.is_jumping) {
+
+            rigi.velocity = new Vector2(rigi.velocity.x, player.jump_force);
             player.is_jumping = false;
             player.is_grounded = false;
 

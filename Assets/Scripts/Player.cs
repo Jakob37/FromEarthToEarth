@@ -5,7 +5,8 @@ public class Player : MonoBehaviour {
 
     public float move_force = 10;
     public float max_speed = 5;
-    public float jump_force = 100;
+    public float max_speed_y = 7;
+    public float jump_force = 5;
 
     public int air_jumps = 1;
     [HideInInspector] public int remaining_jumps;
@@ -74,7 +75,6 @@ public class Player : MonoBehaviour {
 
     private void UpdatePlatformController() {
         platform_controller.EdgeCheck();
-
 
         bool jump_key_down = Input.GetButtonDown("Jump");
         platform_controller.UpdateJump(jump_key_down);
