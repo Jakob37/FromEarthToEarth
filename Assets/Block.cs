@@ -17,7 +17,6 @@ public class Block : MonoBehaviour {
     private bool is_solidifying;
 
     private float SOLIDIFYING_SPEED = 50;
-    private float WITHER_SPEED = 5;
 
 	void Awake() {
 
@@ -53,25 +52,14 @@ public class Block : MonoBehaviour {
 	
 	void Update () {
 
-        if (!solidified) {
-            if (is_solidifying) {
-                is_solidifying = false;
-                if (remaining_percentage >= 100) {
-                    solidified = true;
-                }
-            }
-            else {
-                remaining_percentage -= Time.deltaTime * SOLIDIFYING_SPEED;
+        if (!solidified && is_solidifying) {
+            is_solidifying = false;
+            if (remaining_percentage >= 100) {
+                solidified = true;
             }
         }
 
-        if (is_fading) {
-            remaining_percentage -= Time.deltaTime * WITHER_SPEED;
-        }
-
-        if (remaining_percentage <= 0) {
-            Destroy(gameObject);
-        }
+        remaining_percentage = Mathf.Clamp(remaining_percentage, 0, 100);
 
         var target_frame = (int)((100 - remaining_percentage) / 100 * 7);
         sprite_renderer.sprite = frames[target_frame];
