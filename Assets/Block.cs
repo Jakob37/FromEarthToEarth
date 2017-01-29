@@ -52,6 +52,10 @@ public class Block : MonoBehaviour {
 	
 	void Update () {
 
+        if (!solidified && !is_solidifying) {
+            remaining_percentage = 0;
+        }
+
         if (!solidified && is_solidifying) {
             is_solidifying = false;
             if (remaining_percentage >= 100) {
@@ -63,6 +67,10 @@ public class Block : MonoBehaviour {
 
         var target_frame = (int)((100 - remaining_percentage) / 100 * 7);
         sprite_renderer.sprite = frames[target_frame];
+
+        if (remaining_percentage <= 0) {
+            Destroy(gameObject);
+        }
 	}
 
     void OnParticleCollision(GameObject other) {
