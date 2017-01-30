@@ -49,6 +49,64 @@
    </objectgroup>
   </tile>
  </tileset>
+ <tileset firstgid="10" name="MudTiles" tilewidth="32" tileheight="32" tilecount="9" columns="3">
+  <image source="../../Textures/Sketches/tileset_mud4.png" width="96" height="96"/>
+  <tile id="0">
+   <objectgroup draworder="index">
+    <object id="1" x="-0.25" y="-0.375" width="32.125" height="32.75">
+     <properties>
+      <property name="mud" value="true"/>
+     </properties>
+    </object>
+   </objectgroup>
+  </tile>
+  <tile id="1">
+   <objectgroup draworder="index">
+    <properties>
+     <property name="mud" value="true"/>
+    </properties>
+    <object id="1" x="-0.25" y="-0.375" width="32.5" height="32.75"/>
+   </objectgroup>
+  </tile>
+  <tile id="2">
+   <objectgroup draworder="index">
+    <object id="1" x="-0.25" y="-0.125" width="32.125" height="32.125"/>
+   </objectgroup>
+  </tile>
+  <tile id="3">
+   <objectgroup draworder="index">
+    <object id="1" x="-0.625" y="-0.125" width="32.875" height="32.5"/>
+   </objectgroup>
+  </tile>
+  <tile id="4">
+   <objectgroup draworder="index">
+    <object id="1" x="-0.25" y="-0.375" width="32.5" height="32.375"/>
+   </objectgroup>
+  </tile>
+  <tile id="5">
+   <objectgroup draworder="index">
+    <object id="1" x="-0.25" y="-0.125" width="32.5" height="32.125"/>
+   </objectgroup>
+  </tile>
+  <tile id="6">
+   <objectgroup draworder="index">
+    <object id="1" x="-0.5" y="-0.375" width="32.75" height="32.125"/>
+   </objectgroup>
+  </tile>
+  <tile id="7">
+   <objectgroup draworder="index">
+    <object id="1" x="0.125" y="-0.375" width="32.125" height="32.5"/>
+   </objectgroup>
+  </tile>
+  <tile id="8">
+   <objectgroup draworder="index">
+    <properties>
+     <property name="mud" value="true"/>
+    </properties>
+    <object id="1" x="-0.625" y="-0.5" width="32.875" height="32.875"/>
+   </objectgroup>
+  </tile>
+ </tileset>
  <layer name="Tile Layer 1" width="40" height="20">
   <data encoding="csv">
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
@@ -69,7 +127,7 @@
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,4,5,6,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,4,5,6,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,4,5,5,2,2,2,2,2,2,2,2,2,2,
-1,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,3,0,0,0,0,0,0,0,4,5,5,5,5,5,5,5,5,5,5,5,5,
+1,2,2,2,2,2,2,11,11,11,11,2,2,2,2,2,2,2,2,3,0,0,0,0,0,0,0,4,5,5,5,5,5,5,5,5,5,5,5,5,
 5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,6,0,0,0,0,0,0,0,4,5,5,5,5,5,5,5,5,5,5,5,5
 </data>
  </layer>
