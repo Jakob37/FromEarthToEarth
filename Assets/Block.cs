@@ -41,6 +41,10 @@ public class Block : MonoBehaviour {
         is_solidifying = true;
     }
 
+    public void StopSolidifying() {
+        is_solidifying = false;
+    }
+
     public void TakenUp() {
         rigi.isKinematic = true;
     }
@@ -57,9 +61,9 @@ public class Block : MonoBehaviour {
         }
 
         if (!solidified && is_solidifying) {
-            is_solidifying = false;
             if (remaining_percentage >= 100) {
                 solidified = true;
+                is_solidifying = false;
             }
         }
 

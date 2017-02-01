@@ -45,6 +45,9 @@ public class BlockController : MonoBehaviour {
         if (control_down && IsCarryingBlock() && !IsCarriedBlockSolidified()) {
             SolidifyBlock();
         }
+        else if (!control_down) {
+            carried_block.StopSolidifying();
+        }
     }
 
     private void ThrowBlock() {
