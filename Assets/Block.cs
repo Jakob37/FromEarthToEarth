@@ -16,7 +16,7 @@ public class Block : MonoBehaviour {
     private bool solidified;
     private bool is_solidifying;
 
-    private float SOLIDIFYING_SPEED = 50;
+    private float SOLIDIFYING_SPEED = 100;
 
 	void Awake() {
 

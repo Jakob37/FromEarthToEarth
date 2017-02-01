@@ -18,6 +18,10 @@ public class Player : MonoBehaviour {
     private LevelLogic level_logic;
 
     public Transform ground_check;
+    public Transform hands;
+
+    public int test;
+
     public float ground_radius = 0.2f;
     public LayerMask what_is_ground;
 

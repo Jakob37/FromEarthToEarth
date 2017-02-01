@@ -9,6 +9,9 @@ public class BlockController : MonoBehaviour {
     private Player player;
     private Block carried_block;
     private BlockCreationGround touching_ground;
+    private Block possible_pickup;
+
+    private float pickup_dist = 0.1f;
 
     public bool IsCarryingBlock() {
         return carried_block != null;
@@ -29,9 +32,16 @@ public class BlockController : MonoBehaviour {
 	
 	public void UpdateController (bool control_pressed, bool control_down) {
 
+        UpdatePotentialPickup();
+
         if (control_pressed) {
+
             if (carried_block != null) {
                 ThrowBlock();
+            }
+            else if (possible_pickup != null) {
+                carried_block = possible_pickup;
+                carried_block.TakenUp();
             }
             else if (touching_ground != null) {
                 PickUpBlock();
@@ -45,8 +55,18 @@ public class BlockController : MonoBehaviour {
         if (control_down && IsCarryingBlock() && !IsCarriedBlockSolidified()) {
             SolidifyBlock();
         }
-        else if (!control_down) {
+        else if (!control_down && IsCarryingBlock()) {
             carried_block.StopSolidifying();
+        }
+    }
+
+    private void UpdatePotentialPickup() {
+        var current_target = Physics2D.OverlapCircle(player.hands.position, pickup_dist, player.what_is_ground);
+        if (current_target != null && current_target.GetComponent<Block>() != null) {
+            possible_pickup = current_target.GetComponent<Block>();
+        }
+        else {
+            possible_pickup = null;
         }
     }
 
@@ -66,6 +86,7 @@ public class BlockController : MonoBehaviour {
     }
 
     private void PickUpBlock() {
+
         BlockCreationGround ground_script = touching_ground.gameObject.GetComponent<BlockCreationGround>();
         carried_block = ground_script.GetBlock();
         carried_block.TakenUp();
@@ -76,10 +97,10 @@ public class BlockController : MonoBehaviour {
     }
 
     void OnCollisionEnter2D(Collision2D coll) {
-        if (coll.gameObject.GetComponent<Block>() != null && Input.GetKey(KeyCode.LeftControl)) {
-            carried_block = coll.gameObject.GetComponent<Block>();
-            carried_block.TakenUp();
-        }
+        // if (coll.gameObject.GetComponent<Block>() != null && Input.GetKey(KeyCode.LeftControl)) {
+        //     carried_block = coll.gameObject.GetComponent<Block>();
+        //     carried_block.TakenUp();
+        // }
     }
 
     void OnTriggerEnter2D(Collider2D other) {
