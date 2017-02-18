@@ -5,9 +5,6 @@ public class CameraControl : MonoBehaviour {
 
     private Player player;
 
-    private float LEFT_EDGE = -1.644665f;
-    private float RIGHT_EDGE = 3f;
-
     private float screen_width = 8f;
 
     public Transform left_edge;
