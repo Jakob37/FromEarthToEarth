@@ -9,5 +9,5 @@ obj/
 ProjectSettings/
 Library/
 .vs/
-Tiled2Unity/
+# Tiled2Unity/
 builds/
