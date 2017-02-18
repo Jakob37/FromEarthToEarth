@@ -1,6 +1,7 @@
 # Files
 *.csproj
 *.meta
+*.lnk
 
 # Folders
 Temp/
