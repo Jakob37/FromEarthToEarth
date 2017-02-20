@@ -93,7 +93,6 @@ public class PlatformController : MonoBehaviour {
     }
 
     public bool CheckGrounded() {
-
         return Physics2D.OverlapCircle(player.ground_check.position, player.ground_radius, player.what_is_ground);
     }
 

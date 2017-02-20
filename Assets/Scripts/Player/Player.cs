@@ -57,7 +57,6 @@ public class Player : MonoBehaviour {
 
         platform_controller.UpdateHorizontalMovement();
         is_grounded = platform_controller.CheckGrounded();
-
     }
 
     void OnCollisionEnter2D(Collision2D coll) {

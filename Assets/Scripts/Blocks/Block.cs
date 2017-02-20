@@ -17,6 +17,7 @@ public class Block : MonoBehaviour {
     private bool is_solidifying;
 
     private float SOLIDIFYING_SPEED = 100;
+    private BlockController carrier;
 
 	void Awake() {
 
@@ -45,7 +46,8 @@ public class Block : MonoBehaviour {
         is_solidifying = false;
     }
 
-    public void TakenUp() {
+    public void TakenUp(BlockController block_controller) {
+        carrier = block_controller;
         rigi.isKinematic = true;
     }
 
@@ -55,6 +57,8 @@ public class Block : MonoBehaviour {
     }
 	
 	void Update () {
+
+        print("Remain percentage: " + remaining_percentage + " solidified: " + solidified + " is_solidifying: " + is_solidifying);
 
         if (!solidified && !is_solidifying) {
             remaining_percentage = 0;
@@ -75,10 +79,13 @@ public class Block : MonoBehaviour {
         if (remaining_percentage <= 0) {
             Destroy(gameObject);
         }
+
+        if (!solidified && (carrier == null || carrier.CarriedBlock != this)) {
+            Destroy(gameObject);
+        }
 	}
 
     void OnParticleCollision(GameObject other) {
-
 
         if (other.name == "RainFallParticleSystem") {
             if (solidified) {

@@ -8,10 +8,14 @@ public class BlockController : MonoBehaviour {
 
     private Player player;
     private Block carried_block;
+    public Block CarriedBlock { get { return carried_block; } }
+
     private BlockCreationGround touching_ground;
     private Block possible_pickup;
 
     private float pickup_dist = 0.1f;
+    private float lift_distance = 0.7f;
+
 
     public bool IsCarryingBlock() {
         return carried_block != null;
@@ -26,22 +30,20 @@ public class BlockController : MonoBehaviour {
         return carried_block.IsSolidified();
     }
 
-	void Start () {
+	void Start() {
         player = GameObject.FindObjectOfType<Player>();
 	}
 	
-	public void UpdateController (bool control_pressed, bool control_down) {
+	public void UpdateController(bool control_pressed, bool control_down) {
 
         UpdatePotentialPickup();
-
         if (control_pressed) {
-
-            if (carried_block != null) {
+            if (carried_block != null && carried_block.IsSolidified()) {
                 ThrowBlock();
             }
             else if (possible_pickup != null) {
                 carried_block = possible_pickup;
-                carried_block.TakenUp();
+                carried_block.TakenUp(this);
             }
             else if (touching_ground != null) {
                 PickUpBlock();
@@ -81,7 +83,6 @@ public class BlockController : MonoBehaviour {
     }
 
     private void CarryBlock() {
-        var lift_distance = 0.6f;
         carried_block.transform.position = new Vector3(transform.position.x, transform.position.y + lift_distance, 0);
     }
 
@@ -89,7 +90,7 @@ public class BlockController : MonoBehaviour {
 
         BlockCreationGround ground_script = touching_ground.gameObject.GetComponent<BlockCreationGround>();
         carried_block = ground_script.GetBlock();
-        carried_block.TakenUp();
+        carried_block.TakenUp(this);
     }
 
     private void SolidifyBlock() {
