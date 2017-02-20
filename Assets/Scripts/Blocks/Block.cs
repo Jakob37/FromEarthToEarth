@@ -19,6 +19,8 @@ public class Block : MonoBehaviour {
     private float SOLIDIFYING_SPEED = 100;
     private BlockController carrier;
 
+    private float rain_deduction = 0.5f;
+
 	void Awake() {
 
         rigi = gameObject.GetComponent<Rigidbody2D>();
@@ -26,24 +28,11 @@ public class Block : MonoBehaviour {
         rigi.isKinematic = false;
         sprite_renderer = gameObject.GetComponent<SpriteRenderer>();
 
-        remaining_percentage = 10;
-
-        solidified = false;
-        is_solidifying = false;
+        remaining_percentage = 100;
 	}
 
-    public bool IsSolidified() {
-        return solidified;
-    }
-
-    public void Solidify() {
-
-        remaining_percentage += Time.deltaTime * SOLIDIFYING_SPEED;
-        is_solidifying = true;
-    }
-
-    public void StopSolidifying() {
-        is_solidifying = false;
+    public void Initialize() {
+        remaining_percentage = 100;
     }
 
     public void TakenUp(BlockController block_controller) {
@@ -58,29 +47,10 @@ public class Block : MonoBehaviour {
 	
 	void Update () {
 
-        print("Remain percentage: " + remaining_percentage + " solidified: " + solidified + " is_solidifying: " + is_solidifying);
-
-        if (!solidified && !is_solidifying) {
-            remaining_percentage = 0;
-        }
-
-        if (!solidified && is_solidifying) {
-            if (remaining_percentage >= 100) {
-                solidified = true;
-                is_solidifying = false;
-            }
-        }
-
-        remaining_percentage = Mathf.Clamp(remaining_percentage, 0, 100);
-
         var target_frame = (int)((100 - remaining_percentage) / 100 * 7);
         sprite_renderer.sprite = frames[target_frame];
 
         if (remaining_percentage <= 0) {
-            Destroy(gameObject);
-        }
-
-        if (!solidified && (carrier == null || carrier.CarriedBlock != this)) {
             Destroy(gameObject);
         }
 	}
@@ -88,9 +58,7 @@ public class Block : MonoBehaviour {
     void OnParticleCollision(GameObject other) {
 
         if (other.name == "RainFallParticleSystem") {
-            if (solidified) {
-                remaining_percentage -= 1;
-            }
+            remaining_percentage -= rain_deduction;
         }
     }
 }

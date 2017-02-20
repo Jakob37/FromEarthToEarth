@@ -16,49 +16,55 @@ public class BlockController : MonoBehaviour {
     private float pickup_dist = 0.1f;
     private float lift_distance = 0.7f;
 
+    private float pickup_delay = 2f;
+    private float current_pickup_delay;
+
+    private float throw_delay = 0.5f;
+    private float current_throw_delay;
 
     public bool IsCarryingBlock() {
         return carried_block != null;
     }
 
-    public bool IsCarriedBlockSolidified() {
-
-        if (!IsCarryingBlock()) {
-            return false;
-        }
-
-        return carried_block.IsSolidified();
-    }
-
 	void Start() {
         player = GameObject.FindObjectOfType<Player>();
+        current_pickup_delay = 0;
+        current_throw_delay = 0;
 	}
 	
 	public void UpdateController(bool control_pressed, bool control_down) {
 
-        UpdatePotentialPickup();
-        if (control_pressed) {
-            if (carried_block != null && carried_block.IsSolidified()) {
-                ThrowBlock();
-            }
-            else if (possible_pickup != null) {
+        if (current_pickup_delay > 0) {
+            current_pickup_delay -= Time.deltaTime;
+        }
+
+        if (current_throw_delay > 0) {
+            current_throw_delay -= Time.deltaTime;
+        }
+
+        if (control_down) {
+            if (possible_pickup != null && carried_block == null) {
                 carried_block = possible_pickup;
                 carried_block.TakenUp(this);
+                current_pickup_delay = pickup_delay;
+                current_throw_delay = throw_delay;
             }
-            else if (touching_ground != null) {
+            else if (touching_ground != null && carried_block == null && current_pickup_delay <= 0) {
                 PickUpBlock();
+                current_pickup_delay = pickup_delay;
+                current_throw_delay = throw_delay;
+            }
+        }
+
+        UpdatePotentialPickup();
+        if (control_pressed) {
+            if (carried_block != null && current_throw_delay <= 0) {
+                ThrowBlock();
             }
         }
 
         if (carried_block != null) {
             CarryBlock();
-        }
-
-        if (control_down && IsCarryingBlock() && !IsCarriedBlockSolidified()) {
-            SolidifyBlock();
-        }
-        else if (!control_down && IsCarryingBlock()) {
-            carried_block.StopSolidifying();
         }
     }
 
@@ -91,17 +97,7 @@ public class BlockController : MonoBehaviour {
         BlockCreationGround ground_script = touching_ground.gameObject.GetComponent<BlockCreationGround>();
         carried_block = ground_script.GetBlock();
         carried_block.TakenUp(this);
-    }
-
-    private void SolidifyBlock() {
-        carried_block.Solidify();
-    }
-
-    void OnCollisionEnter2D(Collision2D coll) {
-        // if (coll.gameObject.GetComponent<Block>() != null && Input.GetKey(KeyCode.LeftControl)) {
-        //     carried_block = coll.gameObject.GetComponent<Block>();
-        //     carried_block.TakenUp();
-        // }
+        CarryBlock();
     }
 
     void OnTriggerEnter2D(Collider2D other) {
