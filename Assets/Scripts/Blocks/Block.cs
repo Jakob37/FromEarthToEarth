@@ -16,9 +16,6 @@ public class Block : MonoBehaviour {
     private bool solidified;
     private bool is_solidifying;
 
-    private float SOLIDIFYING_SPEED = 100;
-    private BlockController carrier;
-
     private float rain_deduction = 0.5f;
 
     public bool IsFadeInDone() {
@@ -40,7 +37,6 @@ public class Block : MonoBehaviour {
     }
 
     public void TakenUp(BlockController block_controller) {
-        carrier = block_controller;
         rigi.isKinematic = true;
     }
 
