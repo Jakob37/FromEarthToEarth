@@ -21,6 +21,10 @@ public class Block : MonoBehaviour {
 
     private float rain_deduction = 0.5f;
 
+    public bool IsFadeInDone() {
+        return this.sprite_renderer.color.a == 1f;
+    }
+
 	void Awake() {
 
         rigi = gameObject.GetComponent<Rigidbody2D>();
@@ -47,7 +51,8 @@ public class Block : MonoBehaviour {
 	
 	void Update () {
 
-        var target_frame = (int)((100 - remaining_percentage) / 100 * 7);
+        var target_frame = (int)((100 - remaining_percentage) / 100 * (frames.Length));
+        if (target_frame > frames.Length - 1) target_frame = frames.Length - 1;
         sprite_renderer.sprite = frames[target_frame];
 
         if (remaining_percentage <= 0) {

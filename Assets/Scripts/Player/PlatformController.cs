@@ -96,6 +96,10 @@ public class PlatformController : MonoBehaviour {
         return Physics2D.OverlapCircle(player.ground_check.position, player.ground_radius, player.what_is_ground);
     }
 
+    public bool CheckBlockCreationGrounded() {
+        return Physics2D.OverlapCircle(player.ground_check.position, player.ground_radius, player.what_is_block_creation_ground);
+    }
+
     public void Flip() {
         player.facing_right = !player.facing_right;
         Vector3 the_scale = transform.localScale;

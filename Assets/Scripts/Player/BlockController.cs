@@ -10,17 +10,22 @@ public class BlockController : MonoBehaviour {
     private Block carried_block;
     public Block CarriedBlock { get { return carried_block; } }
 
-    private BlockCreationGround touching_ground;
     private Block possible_pickup;
 
     private float pickup_dist = 0.1f;
     private float lift_distance = 0.7f;
 
-    private float pickup_delay = 1f;
+    private float pickup_delay = 0.5f;
     private float current_pickup_delay;
 
-    private float throw_delay = 0.5f;
+    private float throw_delay = 0.2f;
     private float current_throw_delay;
+
+    public GameObject block_prefab;
+
+    public bool IsLiftingBlock() {
+        return carried_block != null && !carried_block.IsFadeInDone();
+    }
 
     public bool IsCarryingBlock() {
         return carried_block != null;
@@ -43,13 +48,13 @@ public class BlockController : MonoBehaviour {
         }
 
         if (control_down) {
-            if (possible_pickup != null && carried_block == null) {
+            if (possible_pickup != null && carried_block == null && current_pickup_delay <= 0) {
                 carried_block = possible_pickup;
                 carried_block.TakenUp(this);
                 current_pickup_delay = pickup_delay;
                 current_throw_delay = throw_delay;
             }
-            else if (touching_ground != null && carried_block == null && current_pickup_delay <= 0) {
+            else if (carried_block == null && current_pickup_delay <= 0 && player.IsBlockCreationGrounded()) {
                 PickUpBlock();
                 current_pickup_delay = pickup_delay;
                 current_throw_delay = throw_delay;
@@ -58,7 +63,7 @@ public class BlockController : MonoBehaviour {
 
         UpdatePotentialPickup();
         if (control_pressed) {
-            if (carried_block != null && current_throw_delay <= 0) {
+            if (carried_block != null && current_throw_delay <= 0 && carried_block.IsFadeInDone()) {
                 ThrowBlock();
             }
         }
@@ -69,9 +74,11 @@ public class BlockController : MonoBehaviour {
     }
 
     private void UpdatePotentialPickup() {
+
         var current_target = Physics2D.OverlapCircle(player.hands.position, pickup_dist, player.what_is_ground);
-        if (current_target != null && current_target.GetComponent<Block>() != null) {
-            possible_pickup = current_target.GetComponent<Block>();
+
+        if (current_target != null && current_target.gameObject.GetComponent<Block>() != null) {
+            possible_pickup = current_target.gameObject.GetComponent<Block>();
         }
         else {
             possible_pickup = null;
@@ -79,6 +86,7 @@ public class BlockController : MonoBehaviour {
     }
 
     private void ThrowBlock() {
+
         var throw_dir = 1;
         if (!player.facing_right) {
             throw_dir = -1;
@@ -86,6 +94,7 @@ public class BlockController : MonoBehaviour {
 
         carried_block.PutDown(new Vector2(throw_dir * throw_force_x, throw_force_y));
         carried_block = null;
+        current_pickup_delay = pickup_delay;
     }
 
     private void CarryBlock() {
@@ -94,23 +103,15 @@ public class BlockController : MonoBehaviour {
 
     private void PickUpBlock() {
 
-        BlockCreationGround ground_script = touching_ground.gameObject.GetComponent<BlockCreationGround>();
-        carried_block = ground_script.GetBlock();
+        carried_block = GetBlock();
         carried_block.TakenUp(this);
         CarryBlock();
     }
 
-    void OnTriggerEnter2D(Collider2D other) {
-
-        if (other.gameObject.GetComponent<BlockCreationGround>() != null) {
-            touching_ground = other.gameObject.GetComponent<BlockCreationGround>();
-        }
-    }
-
-    void OnTriggerExit2D(Collider2D other) {
-
-        if (touching_ground != null && other == touching_ground.gameObject.GetComponent<Collider2D>()) {
-            touching_ground = null;
-        }
+    public Block GetBlock() {
+        GameObject block = GameObject.Instantiate(block_prefab);
+        Block block_script = block.GetComponent<Block>();
+        block_script.Initialize();
+        return block_script;
     }
 }

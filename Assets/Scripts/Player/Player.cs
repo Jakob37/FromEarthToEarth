@@ -24,11 +24,16 @@ public class Player : MonoBehaviour {
 
     public float ground_radius = 0.2f;
     public LayerMask what_is_ground;
+    public LayerMask what_is_block_creation_ground;
 
     private PlatformController platform_controller;
     private BlockController block_controller;
 
     private int raindrop_hit_count;
+
+    public bool IsBlockCreationGrounded() {
+        return platform_controller.CheckBlockCreationGrounded();
+    }
 
     void Awake() {
 
@@ -45,7 +50,11 @@ public class Player : MonoBehaviour {
 
     void FixedUpdate() {
 
-        UpdatePlatformController();
+
+        if (!block_controller.IsLiftingBlock()) {
+            UpdatePlatformController();
+        }
+
         block_controller.UpdateController(Input.GetKeyDown(KeyCode.LeftControl), Input.GetKey(KeyCode.LeftControl));
     }
 
