@@ -1,7 +1,0 @@
-Press [Arrows] to move
-Press [Space] to jump
-Press [Space] midair to double jump
-Press [Control] while standing next to a block to pick it up
-Press [Control] while holding a block to throw it
-Press [Control] while standing on mud to make a block
-Reach the end of the level to travel to the next area

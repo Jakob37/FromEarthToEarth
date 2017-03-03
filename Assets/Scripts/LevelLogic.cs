@@ -13,4 +13,8 @@ public class LevelLogic : MonoBehaviour {
         print("Loading scene: " + new_level);
         SceneManager.LoadScene(new_level);
     }
+
+    public static int GetCurrentLevel() {
+        return SceneManager.GetActiveScene().buildIndex;
+    }
 }

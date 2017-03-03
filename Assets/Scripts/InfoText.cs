@@ -2,39 +2,60 @@
 using System.Collections;
 using UnityEngine.UI;
 using System.Collections.Generic;
+using Assets.LevelLogic;
+using UnityEditor;
+using System.Text.RegularExpressions;
+using System;
 
 public class InfoText : MonoBehaviour {
 
     public bool show_player_stats;
     public Player player;
 
-    public TextAsset level_text;
-
-    private List<string> story_data;
+    private List<LevelEvent> story_data;
 
     private int current_level;
 
     private Text text_object;
     private int current_text_index;
+    private string level_text_field_delim = ";";
 
 	void Start () {
         text_object = GetComponent<Text>();
-        story_data = GenerateTestStoryData();
+        int current_level = LevelLogic.GetCurrentLevel();
+        story_data = ParseLevelEvents(current_level);
         current_text_index = 0;
 
-        // current_level
 	}
 
-    private List<string> GenerateTestStoryData() {
-        var story_text = new List<string>();
-        story_text.Add("Press [Arrows] to move");
-        story_text.Add("Press [Space] to jump");
-        story_text.Add("Press [Space] midair to double jump");
-        story_text.Add("Press [Control] while standing next to a block to pick it up");
-        story_text.Add("Press [Control] while holding a block to throw it");
-        story_text.Add("Press [Control] while standing on mud to make a block");
-        story_text.Add("Reach the end of the level to travel to the next area");
-        return story_text;
+    private List<LevelEvent> ParseLevelEvents(int current_level) {
+
+        int level_number = current_level + 1;
+        var level_data_path = "Assets/Text/LevelText/l" + level_number + ".txt";
+
+        print(level_data_path);
+
+        TextAsset level_text = (TextAsset)AssetDatabase.LoadAssetAtPath(level_data_path, typeof(TextAsset));
+        var splitFile = new string[] { "\r\n", "\r", "\n" };
+        string[] level_text_lines = level_text.text.Split(splitFile, StringSplitOptions.None);
+
+        var story_events = new List<LevelEvent>();
+        for (int i = 0; i < level_text_lines.Length; i++) {
+
+            string valueLine = level_text_lines[i];
+            print("--- new entry ---");
+            print(valueLine);
+            string[] values = Regex.Split(valueLine, level_text_field_delim); // your splitter here
+            print(values[0]);
+            print(values[1]);
+
+            var entry_event_trig_description = values[0];
+            var entry_text = values[1];
+            var level_event = new LevelEvent(entry_event_trig_description, entry_text);
+            story_events.Add(level_event);
+        }
+
+        return story_events;
     }
 
     void Update () {
@@ -54,7 +75,7 @@ public class InfoText : MonoBehaviour {
         }
         else {
             if (current_text_index < story_data.Count) {
-                show_text = story_data[current_text_index];
+                show_text = story_data[current_text_index].GetLevelText();
             }
             else {
                 show_text = "";
