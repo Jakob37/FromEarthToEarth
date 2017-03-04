@@ -12,7 +12,7 @@ public class InfoText : MonoBehaviour {
     public bool show_player_stats;
     public Player player;
 
-    private List<LevelEvent> story_data;
+    private List<LevelTextEntry> story_data;
 
     private int current_level;
 
@@ -28,7 +28,7 @@ public class InfoText : MonoBehaviour {
 
 	}
 
-    private List<LevelEvent> ParseLevelEvents(int current_level) {
+    private List<LevelTextEntry> ParseLevelEvents(int current_level) {
 
         int level_number = current_level + 1;
         var level_data_path = "Assets/Text/LevelText/l" + level_number + ".txt";
@@ -39,19 +39,15 @@ public class InfoText : MonoBehaviour {
         var splitFile = new string[] { "\r\n", "\r", "\n" };
         string[] level_text_lines = level_text.text.Split(splitFile, StringSplitOptions.None);
 
-        var story_events = new List<LevelEvent>();
+        var story_events = new List<LevelTextEntry>();
         for (int i = 0; i < level_text_lines.Length; i++) {
 
             string valueLine = level_text_lines[i];
-            print("--- new entry ---");
-            print(valueLine);
             string[] values = Regex.Split(valueLine, level_text_field_delim); // your splitter here
-            print(values[0]);
-            print(values[1]);
 
             var entry_event_trig_description = values[0];
             var entry_text = values[1];
-            var level_event = new LevelEvent(entry_event_trig_description, entry_text);
+            var level_event = new LevelTextEntry(entry_event_trig_description, entry_text, player);
             story_events.Add(level_event);
         }
 
@@ -60,7 +56,11 @@ public class InfoText : MonoBehaviour {
 
     void Update () {
 
-        if (Input.GetButtonDown("Jump")) {
+        //if (Input.GetButtonDown("Jump")) {
+        //    current_text_index += 1;
+        //}
+
+        if (story_data[current_text_index].IsEventTriggered()) {
             current_text_index += 1;
         }
         

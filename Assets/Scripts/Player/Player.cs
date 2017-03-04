@@ -35,6 +35,31 @@ public class Player : MonoBehaviour {
         return platform_controller.CheckBlockCreationGrounded();
     }
 
+    public bool IsHorizontalMovePressed() {
+        return Input.GetButtonDown("Horizontal");
+    }
+
+    public bool IsJumpButtonPressed() {
+        return Input.GetButtonDown("Jump");
+    }
+
+    public bool IsMidairJumping() {
+        return Input.GetButtonDown("Jump") && !platform_controller.CheckGrounded();
+    }
+
+    public bool IsLiftingBlock() {
+        return block_controller.IsLiftingBlock();
+    }
+
+    public bool IsThrowingBlock() {
+        return block_controller.IsThrowingBlock();
+    }
+
+    public bool IsMakingBlock() {
+        return false;
+    }
+
+
     void Awake() {
 
         level_logic = FindObjectOfType<LevelLogic>();

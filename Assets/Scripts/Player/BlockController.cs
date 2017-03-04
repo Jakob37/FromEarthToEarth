@@ -23,8 +23,18 @@ public class BlockController : MonoBehaviour {
 
     public GameObject block_prefab;
 
+    private bool is_making_block;
+
     public bool IsLiftingBlock() {
         return carried_block != null && !carried_block.IsFadeInDone();
+    }
+
+    public bool IsThrowingBlock() {
+        return current_throw_delay > 0;
+    }
+
+    public bool IsMakingBlock() {
+        return is_making_block;
     }
 
     public bool IsCarryingBlock() {
@@ -38,6 +48,8 @@ public class BlockController : MonoBehaviour {
 	}
 	
 	public void UpdateController(bool control_pressed, bool control_down) {
+
+        is_making_block = false;
 
         if (current_pickup_delay > 0) {
             current_pickup_delay -= Time.deltaTime;
@@ -53,6 +65,7 @@ public class BlockController : MonoBehaviour {
                 carried_block.TakenUp(this);
                 current_pickup_delay = pickup_delay;
                 current_throw_delay = throw_delay;
+                is_making_block = true;
             }
             else if (carried_block == null && current_pickup_delay <= 0 && player.IsBlockCreationGrounded()) {
                 PickUpBlock();
