@@ -13,6 +13,18 @@ public class PlatformController : MonoBehaviour {
 
     private bool has_been_off_ground_since_jump;
 
+    private InfoText listener;
+
+    public void AssignListener(InfoText info_text) {
+        this.listener = info_text;
+    }
+
+    private void DispatchEvent(Assets.LevelLogic.LevelEventType occured_event) {
+        if (listener != null) {
+            listener.DispatchEvent(occured_event);
+        }
+    }
+
     public bool IsMoving() {
         return rigi.velocity.x != 0;
     }
@@ -45,11 +57,13 @@ public class PlatformController : MonoBehaviour {
         if (jump_key_down) {
             if (player.is_grounded) {
                 player.is_jumping = true;
+                DispatchEvent(Assets.LevelLogic.LevelEventType.IsJumping);
             }
             else if (player.remaining_jumps > 0) {
                 player.is_jumping = true;
                 player.remaining_jumps -= 1;
                 rigi.velocity = new Vector2(rigi.velocity.x, 0);
+                DispatchEvent(Assets.LevelLogic.LevelEventType.IsDoubleJumping);
             }
         }
 
@@ -75,6 +89,10 @@ public class PlatformController : MonoBehaviour {
     }
 
     public void UpdateHorizontalMovement() {
+
+        if (Input.GetButtonDown("Horizontal")) {
+            DispatchEvent(Assets.LevelLogic.LevelEventType.IsMoving);
+        }
 
         float h = Input.GetAxis("Horizontal");
         if (h * rigi.velocity.x < player.max_speed) {

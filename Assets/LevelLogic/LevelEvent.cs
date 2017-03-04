@@ -17,13 +17,9 @@ namespace Assets.LevelLogic {
 
     class LevelEvent {
 
-        private string event_string;
-        private Player player;
         private LevelEventType event_type;
 
-        public LevelEvent(string event_string, Player player) {
-            this.event_string = event_string;
-            this.player = player;
+        public LevelEvent(string event_string) {
             event_type = SetupEvent(event_string);
         }
 
@@ -48,26 +44,28 @@ namespace Assets.LevelLogic {
             }
         }
 
-        public bool IsTriggered() {
+        public bool IsTriggered(List<LevelEventType> occured_events) {
 
-            switch (event_type) {
-                case LevelEventType.IsMoving:
-                    return player.IsHorizontalMovePressed();
-                case LevelEventType.IsJumping:
-                    return player.IsJumpButtonPressed();
-                case LevelEventType.IsDoubleJumping:
-                    return player.IsMidairJumping();
-                case LevelEventType.LiftingBlock:
-                    return player.IsLiftingBlock();
-                case LevelEventType.MakingBlock:
-                    return player.IsMakingBlock();
-                case LevelEventType.ThrowingBlock:
-                    return player.IsThrowingBlock();
-                case LevelEventType.EndReached:
-                    return false;
-                default:
-                    throw new ArgumentException("LevelEventType instance not recognized: " + event_type);
-            }
+            return occured_events.Contains(event_type);
+
+            //switch (event_type) {
+            //    case LevelEventType.IsMoving:
+            //        return player.IsHorizontalMovePressed();
+            //    case LevelEventType.IsJumping:
+            //        return player.IsJumpButtonPressed();
+            //    case LevelEventType.IsDoubleJumping:
+            //        return player.IsMidairJumping();
+            //    case LevelEventType.LiftingBlock:
+            //        return player.IsLiftingBlock();
+            //    case LevelEventType.MakingBlock:
+            //        return player.IsMakingBlock();
+            //    case LevelEventType.ThrowingBlock:
+            //        return player.IsThrowingBlock();
+            //    case LevelEventType.EndReached:
+            //        return false;
+            //    default:
+            //        throw new ArgumentException("LevelEventType instance not recognized: " + event_type);
+            //}
         }
     }
 }

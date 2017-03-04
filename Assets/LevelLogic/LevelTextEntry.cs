@@ -9,8 +9,8 @@ namespace Assets.LevelLogic {
         private string level_text;
         private LevelEvent next_text_event;
 
-        public LevelTextEntry(string event_text, string level_text, Player player) {
-            this.next_text_event = new LevelEvent(event_text, player);
+        public LevelTextEntry(string event_text, string level_text) {
+            this.next_text_event = new LevelEvent(event_text);
             this.level_text = level_text;
         }
 
@@ -22,8 +22,8 @@ namespace Assets.LevelLogic {
             return next_text_event;
         }
 
-        public bool IsEventTriggered() {
-            return next_text_event.IsTriggered();
+        public bool IsEventTriggered(List<LevelEventType> occured_events) {
+            return next_text_event.IsTriggered(occured_events);
         }
     }
 }

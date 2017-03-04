@@ -20,13 +20,20 @@ public class InfoText : MonoBehaviour {
     private int current_text_index;
     private string level_text_field_delim = ";";
 
+    private List<LevelEventType> occured_events;
+
 	void Start () {
         text_object = GetComponent<Text>();
         int current_level = LevelLogic.GetCurrentLevel();
         story_data = ParseLevelEvents(current_level);
         current_text_index = 0;
-
+        occured_events = new List<LevelEventType>();
+        player.AssignListener(this);
 	}
+
+    public void DispatchEvent(LevelEventType occured_event) {
+        occured_events.Add(occured_event);
+    }
 
     private List<LevelTextEntry> ParseLevelEvents(int current_level) {
 
@@ -47,7 +54,7 @@ public class InfoText : MonoBehaviour {
 
             var entry_event_trig_description = values[0];
             var entry_text = values[1];
-            var level_event = new LevelTextEntry(entry_event_trig_description, entry_text, player);
+            var level_event = new LevelTextEntry(entry_event_trig_description, entry_text);
             story_events.Add(level_event);
         }
 
@@ -56,13 +63,10 @@ public class InfoText : MonoBehaviour {
 
     void Update () {
 
-        //if (Input.GetButtonDown("Jump")) {
-        //    current_text_index += 1;
-        //}
-
-        if (story_data[current_text_index].IsEventTriggered()) {
+        if (story_data[current_text_index].IsEventTriggered(occured_events)) {
             current_text_index += 1;
         }
+        occured_events.Clear();
         
         var show_text = "";
 

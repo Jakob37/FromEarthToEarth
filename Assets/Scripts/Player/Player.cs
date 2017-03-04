@@ -31,41 +31,23 @@ public class Player : MonoBehaviour {
 
     private int raindrop_hit_count;
 
+    private InfoText listener;
+
     public bool IsBlockCreationGrounded() {
         return platform_controller.CheckBlockCreationGrounded();
     }
 
-    public bool IsHorizontalMovePressed() {
-        return Input.GetButtonDown("Horizontal");
+    public void AssignListener(InfoText info_text) {
+        this.listener = info_text;
+        platform_controller.AssignListener(info_text);
+        block_controller.AssignListener(info_text);
     }
-
-    public bool IsJumpButtonPressed() {
-        return Input.GetButtonDown("Jump");
-    }
-
-    public bool IsMidairJumping() {
-        return Input.GetButtonDown("Jump") && !platform_controller.CheckGrounded();
-    }
-
-    public bool IsLiftingBlock() {
-        return block_controller.IsLiftingBlock();
-    }
-
-    public bool IsThrowingBlock() {
-        return block_controller.IsThrowingBlock();
-    }
-
-    public bool IsMakingBlock() {
-        return false;
-    }
-
 
     void Awake() {
 
         level_logic = FindObjectOfType<LevelLogic>();
         platform_controller = GetComponent<PlatformController>();
         block_controller = GetComponent<BlockController>();
-
         raindrop_hit_count = 0;
     }
 
@@ -74,7 +56,6 @@ public class Player : MonoBehaviour {
 	}
 
     void FixedUpdate() {
-
 
         if (!block_controller.IsLiftingBlock()) {
             UpdatePlatformController();

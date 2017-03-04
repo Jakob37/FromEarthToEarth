@@ -24,6 +24,7 @@ public class BlockController : MonoBehaviour {
     public GameObject block_prefab;
 
     private bool is_making_block;
+    private InfoText listener;
 
     public bool IsLiftingBlock() {
         return carried_block != null && !carried_block.IsFadeInDone();
@@ -46,8 +47,18 @@ public class BlockController : MonoBehaviour {
         current_pickup_delay = 0;
         current_throw_delay = 0;
 	}
-	
-	public void UpdateController(bool control_pressed, bool control_down) {
+
+    public void AssignListener(InfoText info_text) {
+        listener = info_text;
+    }
+
+    private void DispatchEvent(Assets.LevelLogic.LevelEventType occured_event) {
+        if (listener != null) {
+            listener.DispatchEvent(occured_event);
+        }
+    }
+
+    public void UpdateController(bool control_pressed, bool control_down) {
 
         is_making_block = false;
 
@@ -61,16 +72,10 @@ public class BlockController : MonoBehaviour {
 
         if (control_down) {
             if (possible_pickup != null && carried_block == null && current_pickup_delay <= 0) {
-                carried_block = possible_pickup;
-                carried_block.TakenUp(this);
-                current_pickup_delay = pickup_delay;
-                current_throw_delay = throw_delay;
-                is_making_block = true;
+                LiftBlock();
             }
             else if (carried_block == null && current_pickup_delay <= 0 && player.IsBlockCreationGrounded()) {
                 PickUpBlock();
-                current_pickup_delay = pickup_delay;
-                current_throw_delay = throw_delay;
             }
         }
 
@@ -78,12 +83,22 @@ public class BlockController : MonoBehaviour {
         if (control_pressed) {
             if (carried_block != null && current_throw_delay <= 0 && carried_block.IsFadeInDone()) {
                 ThrowBlock();
+                DispatchEvent(Assets.LevelLogic.LevelEventType.ThrowingBlock);
             }
         }
 
         if (carried_block != null) {
             CarryBlock();
         }
+    }
+
+    private void LiftBlock() {
+        carried_block = possible_pickup;
+        carried_block.TakenUp(this);
+        current_pickup_delay = pickup_delay;
+        current_throw_delay = throw_delay;
+        is_making_block = true;
+        DispatchEvent(Assets.LevelLogic.LevelEventType.LiftingBlock);
     }
 
     private void UpdatePotentialPickup() {
@@ -116,9 +131,12 @@ public class BlockController : MonoBehaviour {
 
     private void PickUpBlock() {
 
+        listener.DispatchEvent(Assets.LevelLogic.LevelEventType.MakingBlock);
         carried_block = GetBlock();
         carried_block.TakenUp(this);
         CarryBlock();
+        current_pickup_delay = pickup_delay;
+        current_throw_delay = throw_delay;
     }
 
     public Block GetBlock() {
