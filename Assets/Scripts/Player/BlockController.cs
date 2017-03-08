@@ -131,7 +131,7 @@ public class BlockController : MonoBehaviour {
 
     private void PickUpBlock() {
 
-        listener.DispatchEvent(Assets.LevelLogic.LevelEventType.MakingBlock);
+        DispatchEvent(Assets.LevelLogic.LevelEventType.MakingBlock);
         carried_block = GetBlock();
         carried_block.TakenUp(this);
         CarryBlock();
