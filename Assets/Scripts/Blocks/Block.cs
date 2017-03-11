@@ -17,6 +17,7 @@ public class Block : MonoBehaviour {
     private bool is_solidifying;
 
     private float rain_deduction = 0.5f;
+    public bool is_water_resistant = false;
 
     public bool IsFadeInDone() {
         return this.sprite_renderer.color.a == 1f;
@@ -58,7 +59,7 @@ public class Block : MonoBehaviour {
 
     void OnParticleCollision(GameObject other) {
 
-        if (other.name == "RainFallParticleSystem") {
+        if (!is_water_resistant && other.name == "RainFallParticleSystem") {
             remaining_percentage -= rain_deduction;
         }
     }
