@@ -3,7 +3,7 @@ using System.Collections;
 using UnityEngine.UI;
 using System.Collections.Generic;
 using Assets.LevelLogic;
-using UnityEditor;
+// using UnityEditor;
 using System.Text.RegularExpressions;
 using System;
 
@@ -22,7 +22,11 @@ public class InfoText : MonoBehaviour {
 
     private List<LevelEventType> occured_events;
 
-	void Start () {
+    // Check this out for text asset reading
+    // http://gamedev.stackexchange.com/questions/85807/how-to-read-a-data-from-text-file-in-unity
+
+    void Start () {
+
         text_object = GetComponent<Text>();
         int current_level = LevelLogic.GetCurrentLevel();
         story_data = ParseLevelEvents(current_level);
@@ -35,16 +39,18 @@ public class InfoText : MonoBehaviour {
         occured_events.Add(occured_event);
     }
 
-    private List<LevelTextEntry> ParseLevelEvents(int current_level) {
+    private List<LevelTextEntry> ParseLevelEventsManual(int current_level) {
 
         int level_number = current_level + 1;
-        var level_data_path = "Assets/Text/LevelText/l" + level_number + ".txt";
-
-        print(level_data_path);
-
-        TextAsset level_text = (TextAsset)AssetDatabase.LoadAssetAtPath(level_data_path, typeof(TextAsset));
-        var splitFile = new string[] { "\r\n", "\r", "\n" };
-        string[] level_text_lines = level_text.text.Split(splitFile, StringSplitOptions.None);
+        string[] level_text_lines = {
+            "press arrow;Press [Arrows] to move",
+            "press space;Press [Space] to jump",
+            "do midair_jump;[Space] midair to double jump",
+            "do block_pickup;[Control] while standing next to a block to pick it up",
+            "do throw_block;[Control] while holding a block to throw it",
+            "do make_block;[Control] while standing on mud to make a block",
+            "do reach_end;Reach the end of the level to travel to the next area"
+        };
 
         var story_events = new List<LevelTextEntry>();
         for (int i = 0; i < level_text_lines.Length; i++) {
@@ -58,6 +64,32 @@ public class InfoText : MonoBehaviour {
             story_events.Add(level_event);
         }
 
+        return story_events;
+    }
+
+    private List<LevelTextEntry> ParseLevelEvents(int current_level) {
+    
+        int level_number = current_level + 1;
+        var level_data_path = "Assets/Text/LevelText/l" + level_number + ".txt";
+
+        TextAsset level_text = (TextAsset)Resources.Load("l1");
+
+        // TextAsset level_text = (TextAsset)AssetDatabase.LoadAssetAtPath(level_data_path, typeof(TextAsset));
+        var splitFile = new string[] { "\r\n", "\r", "\n" };
+        string[] level_text_lines = level_text.text.Split(splitFile, StringSplitOptions.None);
+    
+        var story_events = new List<LevelTextEntry>();
+        for (int i = 0; i < level_text_lines.Length; i++) {
+    
+            string valueLine = level_text_lines[i];
+            string[] values = Regex.Split(valueLine, level_text_field_delim); // your splitter here
+    
+            var entry_event_trig_description = values[0];
+            var entry_text = values[1];
+            var level_event = new LevelTextEntry(entry_event_trig_description, entry_text);
+            story_events.Add(level_event);
+        }
+    
         return story_events;
     }
 
