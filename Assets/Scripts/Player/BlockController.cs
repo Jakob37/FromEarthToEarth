@@ -12,6 +12,8 @@ public class BlockController : MonoBehaviour {
 
     private Block possible_pickup;
 
+    private bool use_delays = true;
+
     private float pickup_dist = 0.1f;
     private float lift_distance = 0.7f;
 
@@ -95,10 +97,13 @@ public class BlockController : MonoBehaviour {
     private void LiftBlock() {
         carried_block = possible_pickup;
         carried_block.TakenUp(this);
-        current_pickup_delay = pickup_delay;
-        current_throw_delay = throw_delay;
         is_making_block = true;
         DispatchEvent(Assets.LevelLogic.LevelEventType.LiftingBlock);
+
+        if (use_delays) {
+            current_pickup_delay = pickup_delay;
+            current_throw_delay = throw_delay;
+        }
     }
 
     private void UpdatePotentialPickup() {
@@ -122,7 +127,10 @@ public class BlockController : MonoBehaviour {
 
         carried_block.PutDown(new Vector2(throw_dir * throw_force_x, throw_force_y));
         carried_block = null;
-        current_pickup_delay = pickup_delay;
+
+        if (use_delays) {
+            current_pickup_delay = pickup_delay;
+        }
     }
 
     private void CarryBlock() {
@@ -135,8 +143,11 @@ public class BlockController : MonoBehaviour {
         carried_block = GetBlock();
         carried_block.TakenUp(this);
         CarryBlock();
-        current_pickup_delay = pickup_delay;
-        current_throw_delay = throw_delay;
+
+        if (use_delays) {
+            current_pickup_delay = pickup_delay;
+            current_throw_delay = throw_delay;
+        }
     }
 
     public Block GetBlock() {

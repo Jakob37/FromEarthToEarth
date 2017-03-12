@@ -6,9 +6,9 @@ public class Player : MonoBehaviour {
     public float move_force = 10;
     public float max_speed = 5;
     public float max_speed_y = 7;
-    public float jump_force = 5;
+    public float jump_force = 8;
 
-    public int air_jumps = 1;
+    public int air_jumps = 0;
     [HideInInspector] public int remaining_jumps;
 
     [HideInInspector] public bool facing_right = true;
@@ -19,8 +19,6 @@ public class Player : MonoBehaviour {
 
     public Transform ground_check;
     public Transform hands;
-
-    public int test;
 
     public float ground_radius = 0.2f;
     public LayerMask what_is_ground;
@@ -33,6 +31,9 @@ public class Player : MonoBehaviour {
 
     private InfoText listener;
 
+    public bool test_frame_rate = false;
+    public int testing_fps = 30;
+
     public bool IsBlockCreationGrounded() {
         return platform_controller.CheckBlockCreationGrounded();
     }
@@ -44,6 +45,13 @@ public class Player : MonoBehaviour {
     }
 
     void Awake() {
+
+        if (test_frame_rate) {
+            #if UNITY_EDITOR
+            QualitySettings.vSyncCount = 0;  // VSync must be disabled
+            Application.targetFrameRate = testing_fps;
+            #endif
+        }
 
         level_logic = FindObjectOfType<LevelLogic>();
         platform_controller = GetComponent<PlatformController>();
@@ -61,14 +69,17 @@ public class Player : MonoBehaviour {
             UpdatePlatformController();
         }
 
-        block_controller.UpdateController(Input.GetKeyDown(KeyCode.LeftControl), Input.GetKey(KeyCode.LeftControl));
+        block_controller.UpdateController(Input.GetKeyDown(KeyCode.Space), Input.GetKey(KeyCode.Space));
     }
 
     private void UpdatePlatformController() {
         platform_controller.EdgeCheck();
 
-        bool jump_key_down = Input.GetButtonDown("Jump");
-        platform_controller.UpdateJump(jump_key_down);
+        // bool jump_key_down = Input.GetButtonDown("Jump");
+        bool up_arrow_down = Input.GetKeyDown(KeyCode.UpArrow);
+        bool up_arrow_press = Input.GetKey(KeyCode.UpArrow);
+        
+        platform_controller.UpdateJump(up_arrow_down, up_arrow_press);
 
         platform_controller.UpdateHorizontalMovement();
         is_grounded = platform_controller.CheckGrounded();

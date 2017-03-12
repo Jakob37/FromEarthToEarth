@@ -8,8 +8,10 @@ public class PlatformController : MonoBehaviour {
     private Rigidbody2D rigi;
     private Animator player_anim;
 
-    private float JUMP_DELAY_MILLISECONDS = 10;
-    private float current_jump_delay;
+    private bool is_extending_jump;
+
+    public float high_jump_delay = 0.1f;
+    private float high_jump_press_duration;
 
     private bool has_been_off_ground_since_jump;
 
@@ -34,7 +36,8 @@ public class PlatformController : MonoBehaviour {
         rigi = player.gameObject.GetComponent<Rigidbody2D>();
         player_anim = player.gameObject.GetComponent<Animator>();
 
-        current_jump_delay = 0;
+        high_jump_press_duration = 0;
+        is_extending_jump = false;
     }
 
     public void EdgeCheck() {
@@ -47,12 +50,12 @@ public class PlatformController : MonoBehaviour {
     }
 
     void FixedUpdate() {
-        if (current_jump_delay > 0) {
-            current_jump_delay -= Time.deltaTime * 1000;
-        }
+        // if (current_jump_delay > 0) {
+        //     current_jump_delay -= Time.deltaTime * 1000;
+        // }
     }
 
-    public void UpdateJump(bool jump_key_down) {
+    public void UpdateJump(bool jump_key_down, bool jump_key_press) {
 
         if (jump_key_down) {
             if (player.is_grounded) {
@@ -60,11 +63,25 @@ public class PlatformController : MonoBehaviour {
                 DispatchEvent(Assets.LevelLogic.LevelEventType.IsJumping);
             }
             else if (player.remaining_jumps > 0) {
-                player.is_jumping = true;
-                player.remaining_jumps -= 1;
-                rigi.velocity = new Vector2(rigi.velocity.x, 0);
-                DispatchEvent(Assets.LevelLogic.LevelEventType.IsDoubleJumping);
+                // player.is_jumping = true;
+                // player.remaining_jumps -= 1;
+                // rigi.velocity = new Vector2(rigi.velocity.x, 0);
+                // DispatchEvent(Assets.LevelLogic.LevelEventType.IsDoubleJumping);
+                PerformDoubleJump();
             }
+        }
+
+        if (jump_key_press) {
+            high_jump_press_duration += Time.deltaTime;
+            is_extending_jump = true;
+        }
+        else {
+            high_jump_press_duration = 0;
+            is_extending_jump = false;
+        }
+
+        if (high_jump_press_duration > high_jump_delay && player.remaining_jumps > 0) {
+            PerformDoubleJump();
         }
 
         if (Mathf.Abs(rigi.velocity.y) > player.max_speed_y) {
@@ -78,10 +95,23 @@ public class PlatformController : MonoBehaviour {
             rigi.velocity = new Vector2(rigi.velocity.x, player.jump_force);
             player.is_jumping = false;
             player.is_grounded = false;
+        }
 
-            current_jump_delay = JUMP_DELAY_MILLISECONDS;
+        if (high_jump_press_duration < high_jump_delay && is_extending_jump) {
+            rigi.velocity = new Vector2(rigi.velocity.x, player.jump_force);
         }
     }
+
+    private void PerformDoubleJump() {
+        player.is_jumping = true;
+        player.remaining_jumps -= 1;
+        rigi.velocity = new Vector2(rigi.velocity.x, 0);
+        DispatchEvent(Assets.LevelLogic.LevelEventType.IsDoubleJumping);
+    }
+
+    // private void ExtendJump() {
+        // rigi.velocity = new Vector2(rigi.)
+    // }
 
     private void SetAnimParams() {
         player_anim.SetBool("is_jumping", player.is_jumping);
@@ -124,5 +154,4 @@ public class PlatformController : MonoBehaviour {
         the_scale.x *= -1;
         transform.localScale = the_scale;
     }
-
 }

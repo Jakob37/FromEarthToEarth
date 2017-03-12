@@ -39,9 +39,8 @@ public class InfoText : MonoBehaviour {
         occured_events.Add(occured_event);
     }
 
-    private List<LevelTextEntry> ParseLevelEventsManual(int current_level) {
+    private List<LevelTextEntry> ParseLevelEventsManual() {
 
-        int level_number = current_level + 1;
         string[] level_text_lines = {
             "press arrow;Press [Arrows] to move",
             "press space;Press [Space] to jump",
