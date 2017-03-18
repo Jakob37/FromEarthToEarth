@@ -10,8 +10,9 @@ public class PlatformController : MonoBehaviour {
 
     private bool is_extending_jump;
 
-    public float high_jump_delay = 0.1f;
+    public float high_jump_delay = 0.2f;
     private float high_jump_press_duration;
+    private float time_since_jump;
 
     private bool has_been_off_ground_since_jump;
 
@@ -38,6 +39,7 @@ public class PlatformController : MonoBehaviour {
 
         high_jump_press_duration = 0;
         is_extending_jump = false;
+        time_since_jump = 0;
     }
 
     public void EdgeCheck() {
@@ -57,32 +59,37 @@ public class PlatformController : MonoBehaviour {
 
     public void UpdateJump(bool jump_key_down, bool jump_key_press) {
 
+        time_since_jump += Time.deltaTime;
+
         if (jump_key_down) {
             if (player.is_grounded) {
+                print("Jump performed");
                 player.is_jumping = true;
+                time_since_jump = 0;
                 DispatchEvent(Assets.LevelLogic.LevelEventType.IsJumping);
             }
-            else if (player.remaining_jumps > 0) {
+            //else if (player.remaining_jumps > 0) {
                 // player.is_jumping = true;
                 // player.remaining_jumps -= 1;
                 // rigi.velocity = new Vector2(rigi.velocity.x, 0);
                 // DispatchEvent(Assets.LevelLogic.LevelEventType.IsDoubleJumping);
-                PerformDoubleJump();
-            }
+            //    PerformDoubleJump();
+            //}
         }
 
-        if (jump_key_press) {
+        if (jump_key_press && time_since_jump < high_jump_delay) {
             high_jump_press_duration += Time.deltaTime;
             is_extending_jump = true;
         }
         else {
             high_jump_press_duration = 0;
             is_extending_jump = false;
+            time_since_jump = int.MaxValue;
         }
 
-        if (high_jump_press_duration > high_jump_delay && player.remaining_jumps > 0) {
-            PerformDoubleJump();
-        }
+        //if (high_jump_press_duration > high_jump_delay && player.remaining_jumps > 0) {
+        //    PerformDoubleJump();
+        //}
 
         if (Mathf.Abs(rigi.velocity.y) > player.max_speed_y) {
             rigi.velocity = new Vector2(rigi.velocity.x, Mathf.Sign(rigi.velocity.x) * player.max_speed_y);

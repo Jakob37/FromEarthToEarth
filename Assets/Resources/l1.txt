@@ -1,7 +1,6 @@
 press arrow;Press [Arrows] to move
-press space;Press [Space] to jump
-do midair_jump;[Space] midair to double jump
-do block_pickup;[Control] while standing next to a block to pick it up
-do throw_block;[Control] while holding a block to throw it
-do make_block;[Control] while standing on mud to make a block
+press space;Press [Up arrow] to jump
+do block_pickup;[Space] while standing next to a block to pick it up
+do throw_block;[Space] while holding a block to throw it
+do make_block;[Space] while standing on mud to make a block
 do reach_end;Reach the end of the level to travel to the next area
