@@ -22,7 +22,7 @@ namespace Assets.LevelLogic {
             return next_text_event;
         }
 
-        public bool IsEventTriggered(List<LevelEventType> occured_events) {
+        public bool IsEventTriggered(List<LevelEventCarrier> occured_events) {
             return next_text_event.IsTriggered(occured_events);
         }
     }

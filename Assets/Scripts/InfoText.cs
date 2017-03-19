@@ -11,6 +11,7 @@ public class InfoText : MonoBehaviour {
 
     public bool show_player_stats;
     public Player player;
+    private LevelLogic level_logic;
 
     private List<LevelTextEntry> story_data;
 
@@ -20,7 +21,7 @@ public class InfoText : MonoBehaviour {
     private int current_text_index;
     private string level_text_field_delim = ";";
 
-    private List<LevelEventType> occured_events;
+    private List<LevelEventCarrier> occured_events;
 
     // Check this out for text asset reading
     // http://gamedev.stackexchange.com/questions/85807/how-to-read-a-data-from-text-file-in-unity
@@ -31,11 +32,18 @@ public class InfoText : MonoBehaviour {
         int current_level = LevelLogic.GetCurrentLevel();
         story_data = ParseLevelEvents(current_level);
         current_text_index = 0;
-        occured_events = new List<LevelEventType>();
+        occured_events = new List<LevelEventCarrier>();
+
         player.AssignListener(this);
+        level_logic = GameObject.FindObjectOfType<LevelLogic>();
+        level_logic.AssignListener(this);
 	}
 
     public void DispatchEvent(LevelEventType occured_event) {
+        occured_events.Add(new LevelEventCarrier(occured_event));
+    }
+
+    public void DispatchEvent(LevelEventCarrier occured_event) {
         occured_events.Add(occured_event);
     }
 
@@ -69,11 +77,9 @@ public class InfoText : MonoBehaviour {
     private List<LevelTextEntry> ParseLevelEvents(int current_level) {
     
         int level_number = current_level + 1;
-        var level_data_path = "Assets/Text/LevelText/l" + level_number + ".txt";
 
-        TextAsset level_text = (TextAsset)Resources.Load("l1");
+        TextAsset level_text = (TextAsset)Resources.Load("l" + level_number);
 
-        // TextAsset level_text = (TextAsset)AssetDatabase.LoadAssetAtPath(level_data_path, typeof(TextAsset));
         var splitFile = new string[] { "\r\n", "\r", "\n" };
         string[] level_text_lines = level_text.text.Split(splitFile, StringSplitOptions.None);
     
@@ -94,7 +100,7 @@ public class InfoText : MonoBehaviour {
 
     void Update () {
 
-        if (story_data[current_text_index].IsEventTriggered(occured_events)) {
+        if (story_data.Count > current_text_index && story_data[current_text_index].IsEventTriggered(occured_events)) {
             current_text_index += 1;
         }
         occured_events.Clear();

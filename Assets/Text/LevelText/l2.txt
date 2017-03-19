@@ -1,3 +1,0 @@
-time 3;Hi
-time 5;Rainy day today
-time 7;I can't remember when it last stopped for more than a moment

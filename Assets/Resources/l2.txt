@@ -1,0 +1,5 @@
+time|3;Hi
+time|5; 
+time|7;Rainy day today
+time|9; 
+time|11;I can't remember when it last stopped for more than a moment
