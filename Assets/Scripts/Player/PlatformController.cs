@@ -51,32 +51,54 @@ public class PlatformController : MonoBehaviour {
         transform.position = Camera.main.ViewportToWorldPoint(viewport_pos);
     }
 
-    void FixedUpdate() {
-        // if (current_jump_delay > 0) {
-        //     current_jump_delay -= Time.deltaTime * 1000;
-        // }
-    }
-
     public void UpdateJump(bool jump_key_down, bool jump_key_press) {
 
         time_since_jump += Time.deltaTime;
 
         if (jump_key_down) {
             if (player.is_grounded) {
-                print("Jump performed");
-                player.is_jumping = true;
-                time_since_jump = 0;
-                DispatchEvent(Assets.LevelLogic.LevelEventType.IsJumping);
+                SetupGroundJump();
             }
-            //else if (player.remaining_jumps > 0) {
-                // player.is_jumping = true;
-                // player.remaining_jumps -= 1;
-                // rigi.velocity = new Vector2(rigi.velocity.x, 0);
-                // DispatchEvent(Assets.LevelLogic.LevelEventType.IsDoubleJumping);
-            //    PerformDoubleJump();
-            //}
+            else if (player.remaining_jumps > 0) {
+                DoDoubleJump();
+            }
         }
 
+        UpdateExtendedJump(jump_key_press);
+        if (high_jump_press_duration > high_jump_delay && player.remaining_jumps > 0) {
+            PerformDoubleJump();
+        }
+
+        if (Mathf.Abs(rigi.velocity.y) > player.max_speed_y) {
+            rigi.velocity = new Vector2(rigi.velocity.x, Mathf.Sign(rigi.velocity.x) * player.max_speed_y);
+        }
+
+        SetAnimParams();
+
+        if (player.is_jumping) {
+            StartJump();
+        }
+
+        if (high_jump_press_duration < high_jump_delay && is_extending_jump) {
+            rigi.velocity = new Vector2(rigi.velocity.x, player.jump_force);
+        }
+    }
+
+    private void SetupGroundJump() {
+        player.is_jumping = true;
+        time_since_jump = 0;
+        DispatchEvent(Assets.LevelLogic.LevelEventType.IsJumping);
+    }
+
+    private void DoDoubleJump() {
+        player.is_jumping = true;
+        player.remaining_jumps -= 1;
+        rigi.velocity = new Vector2(rigi.velocity.x, 0);
+        DispatchEvent(Assets.LevelLogic.LevelEventType.IsDoubleJumping);
+        PerformDoubleJump();
+    }
+
+    private void UpdateExtendedJump(bool jump_key_press) {
         if (jump_key_press && time_since_jump < high_jump_delay) {
             high_jump_press_duration += Time.deltaTime;
             is_extending_jump = true;
@@ -86,27 +108,12 @@ public class PlatformController : MonoBehaviour {
             is_extending_jump = false;
             time_since_jump = int.MaxValue;
         }
+    }
 
-        //if (high_jump_press_duration > high_jump_delay && player.remaining_jumps > 0) {
-        //    PerformDoubleJump();
-        //}
-
-        if (Mathf.Abs(rigi.velocity.y) > player.max_speed_y) {
-            rigi.velocity = new Vector2(rigi.velocity.x, Mathf.Sign(rigi.velocity.x) * player.max_speed_y);
-        }
-
-        SetAnimParams();
-
-        if (player.is_jumping) {
-
-            rigi.velocity = new Vector2(rigi.velocity.x, player.jump_force);
-            player.is_jumping = false;
-            player.is_grounded = false;
-        }
-
-        if (high_jump_press_duration < high_jump_delay && is_extending_jump) {
-            rigi.velocity = new Vector2(rigi.velocity.x, player.jump_force);
-        }
+    private void StartJump() {
+        rigi.velocity = new Vector2(rigi.velocity.x, player.jump_force);
+        player.is_jumping = false;
+        player.is_grounded = false;
     }
 
     private void PerformDoubleJump() {
@@ -115,10 +122,6 @@ public class PlatformController : MonoBehaviour {
         rigi.velocity = new Vector2(rigi.velocity.x, 0);
         DispatchEvent(Assets.LevelLogic.LevelEventType.IsDoubleJumping);
     }
-
-    // private void ExtendJump() {
-        // rigi.velocity = new Vector2(rigi.)
-    // }
 
     private void SetAnimParams() {
         player_anim.SetBool("is_jumping", player.is_jumping);
