@@ -46,6 +46,10 @@ public class Block : MonoBehaviour {
         rigi.AddForce(throwForce);
     }
 	
+    public void PutDownGently() {
+        rigi.isKinematic = false;
+    }
+
 	void Update () {
 
         var target_frame = (int)((100 - remaining_percentage) / 100 * (frames.Length));

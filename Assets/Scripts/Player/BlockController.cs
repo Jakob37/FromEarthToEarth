@@ -5,6 +5,7 @@ public class BlockController : MonoBehaviour {
 
     public float throw_force_x = 100;
     public float throw_force_y = 150;
+    public float put_down_dist = 0.1f;
 
     private Player player;
     private Block carried_block;
@@ -60,7 +61,7 @@ public class BlockController : MonoBehaviour {
         }
     }
 
-    public void UpdateController(bool control_pressed, bool control_down) {
+    public void UpdateController(bool control_pressed, bool control_down, bool key_down_held) {
 
         is_making_block = false;
 
@@ -84,7 +85,7 @@ public class BlockController : MonoBehaviour {
         UpdatePotentialPickup();
         if (control_pressed) {
             if (carried_block != null && current_throw_delay <= 0 && carried_block.IsFadeInDone()) {
-                ThrowBlock();
+                ThrowBlock(key_down_held);
                 DispatchEvent(Assets.LevelLogic.LevelEventType.ThrowingBlock);
             }
         }
@@ -118,14 +119,21 @@ public class BlockController : MonoBehaviour {
         }
     }
 
-    private void ThrowBlock() {
+    private void ThrowBlock(bool key_down_held) {
 
         var throw_dir = 1;
         if (!player.facing_right) {
             throw_dir = -1;
         }
 
-        carried_block.PutDown(new Vector2(throw_dir * throw_force_x, throw_force_y));
+        if (!key_down_held) {
+            carried_block.PutDown(new Vector2(throw_dir * throw_force_x, throw_force_y));
+        }
+        else {
+            carried_block.PutDownGently();
+            carried_block.transform.position = player.hands.position + new Vector3(put_down_dist * throw_dir, 0, 0);
+        }
+
         carried_block = null;
 
         if (use_delays) {

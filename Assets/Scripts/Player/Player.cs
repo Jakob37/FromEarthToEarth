@@ -69,7 +69,9 @@ public class Player : MonoBehaviour {
             UpdatePlatformController();
         }
 
-        block_controller.UpdateController(Input.GetKeyDown(KeyCode.Space), Input.GetKey(KeyCode.Space));
+        block_controller.UpdateController(Input.GetKeyDown(KeyCode.Space), 
+            Input.GetKey(KeyCode.Space),
+            Input.GetKey(KeyCode.DownArrow));
     }
 
     private void UpdatePlatformController() {
