@@ -1,7 +1,22 @@
-time|0; 
-time|5;Phew, it's raining even more now
-time|8; 
-time|11; We need to be quick with the blocks
-time|13;
-time|15; In this rain they will dissolve quickly
-time|17;  
+time|1; 
+time|3;This one seems a bit more tricky
+time|5; 
+time|7; I'm sure you can figure it out
+time|10;
+time|12; Those blocks, it's funny...
+time|15; 
+time|17; They are made from the same clay as I
+time|20; 
+time|22; We think of them as 'things', but what is the difference really?
+time|25; 
+time|27; Am I more mobile? Sure
+time|30; 
+time|32; But we are both here for a while in this rain
+time|35; ...and then we aren't
+time|37; 
+time|39; Can we really claim my thinkingness makes me so much more?
+time|41; I wonder
+time|56; 
+time|90;Maybe you can use that platform to shelter blocks from the rain
+time|93;Collect enough, and then go
+time|96; 

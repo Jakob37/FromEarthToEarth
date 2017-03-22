@@ -74,6 +74,9 @@ namespace Assets.LevelLogic {
         public bool IsTriggered(List<LevelEventCarrier> occured_events) {
 
             foreach (LevelEventCarrier e in occured_events) {
+
+                // Debug.Log("Comparing: " + e.event_type + " and " + e.nbr_param + " to " + EventType + " and " + EventParam);
+
                 if (EventType == e.event_type && EventParam == e.nbr_param) {
                     return true;
                 }

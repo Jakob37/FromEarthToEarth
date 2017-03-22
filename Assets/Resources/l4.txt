@@ -1,7 +1,9 @@
-time|0;testing
-time|5;Phew it is raining even more now
-time|8; 
-time|11; We need to be quick with the blocks
-time|13; 
-time|15; In this rain they will dissolve quickly
+time|1; 
+time|2;Phew it is raining even more now
+time|5; 
+time|8;We need to be quick with the blocks
+time|11; 
+time|14;In this rain they will dissolve quickly
 time|17; 
+time|20;You can put down blocks gently by holding [Down] while pressing [Space]
+time|23; 

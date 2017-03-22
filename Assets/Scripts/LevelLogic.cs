@@ -2,6 +2,7 @@
 using System.Collections;
 using UnityEngine.SceneManagement;
 using Assets.LevelLogic;
+using System;
 
 public class LevelLogic : MonoBehaviour {
 
@@ -24,6 +25,9 @@ public class LevelLogic : MonoBehaviour {
         if (listener != null) {
             listener.DispatchEvent(occured_event);
         }
+        else {
+            throw new MissingMemberException("No listener assigned!");
+        }
     }
 
     public void WinCondition() {
@@ -42,7 +46,7 @@ public class LevelLogic : MonoBehaviour {
         elapsed_time += Time.deltaTime;
         if (elapsed_time > last_trig_second + 1) {
             last_trig_second += 1;
-            print("Trigging:" + last_trig_second);
+            // print("Trigging:" + last_trig_second);
             var event_carrier = new LevelEventCarrier(LevelEventType.TimeSinceStartPassed, nbr_param:last_trig_second);
             DispatchEvent(event_carrier);
         } 
