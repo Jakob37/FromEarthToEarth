@@ -10,7 +10,7 @@ using System;
 public class InfoText : MonoBehaviour {
 
     public bool show_player_stats;
-    public Player player;
+    private Player player;
     private LevelLogic level_logic;
 
     private List<LevelTextEntry> story_data;
@@ -34,8 +34,16 @@ public class InfoText : MonoBehaviour {
         current_text_index = 0;
         occured_events = new List<LevelEventCarrier>();
 
+        player = GameObject.FindObjectOfType<Player>();
+
+        print(player);
+
         player.AssignListener(this);
+
         level_logic = GameObject.FindObjectOfType<LevelLogic>();
+
+        print(level_logic);
+
         level_logic.AssignListener(this);
 	}
 
