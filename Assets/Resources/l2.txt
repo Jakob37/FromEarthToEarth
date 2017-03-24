@@ -1,13 +1,13 @@
 time|1; 
 time|3;Hi
-time|5; 
-time|7;Rainy day today
-time|9; 
-time|11;How are you holding up?
-time|13; 
-time|15;I am fine thank you
-time|17; 
-time|19;Doing some awkward small talk
-time|21; 
+time|6; 
+time|9;Rainy day today
+time|12; 
+time|15;How are you holding up?
+time|18; 
+time|21;I am fine thank you
+time|24; 
+time|27;Doing some awkward small talk
+time|28; 
 time|60; Maybe putting a block on the platform could help
 time|65; 

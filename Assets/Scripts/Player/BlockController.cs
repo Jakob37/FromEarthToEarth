@@ -24,6 +24,8 @@ public class BlockController : MonoBehaviour {
     private float throw_delay = 0.2f;
     private float current_throw_delay;
 
+    public int default_block_life = 100;
+
     public GameObject block_prefab;
 
     private bool is_making_block;
@@ -161,7 +163,7 @@ public class BlockController : MonoBehaviour {
     public Block GetBlock() {
         GameObject block = GameObject.Instantiate(block_prefab);
         Block block_script = block.GetComponent<Block>();
-        block_script.Initialize();
+        block_script.Initialize(start_perc:default_block_life);
         return block_script;
     }
 }

@@ -33,8 +33,8 @@ public class Block : MonoBehaviour {
         remaining_percentage = 100;
 	}
 
-    public void Initialize() {
-        remaining_percentage = 100;
+    public void Initialize(int start_perc=100) {
+        remaining_percentage = start_perc;
     }
 
     public void TakenUp(BlockController block_controller) {
