@@ -34,5 +34,9 @@ public class MusicController : MonoBehaviour {
             Debug.Log("Warning: No song assigned to first_rain_song");
         }
     }
+
+    public void Mute() {
+        first_rain_song.Stop();
+    }
 	
 }

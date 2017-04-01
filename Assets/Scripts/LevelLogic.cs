@@ -13,6 +13,18 @@ public class LevelLogic : MonoBehaviour {
     private float elapsed_time;
     private int last_trig_second = 0;
 
+    private KeyCode[] keyCodes = {
+         KeyCode.Alpha1,
+         KeyCode.Alpha2,
+         KeyCode.Alpha3,
+         KeyCode.Alpha4,
+         KeyCode.Alpha5,
+         KeyCode.Alpha6,
+         KeyCode.Alpha7,
+         KeyCode.Alpha8,
+         KeyCode.Alpha9,
+     };
+
     void Start() {
         elapsed_time = 0;
     }
@@ -49,6 +61,42 @@ public class LevelLogic : MonoBehaviour {
             // print("Trigging:" + last_trig_second);
             var event_carrier = new LevelEventCarrier(LevelEventType.TimeSinceStartPassed, nbr_param:last_trig_second);
             DispatchEvent(event_carrier);
-        } 
+        }
+
+        UpdateLevelControl();
+    }
+
+    private void UpdateLevelControl() {
+        if (Input.GetKeyDown(KeyCode.R)) {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        }
+
+        if (Input.GetKeyDown(KeyCode.N)) {
+            WinCondition();
+        }
+
+        if (Input.GetKeyDown(KeyCode.P)) {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
+        }
+
+        if (Input.GetKeyDown(KeyCode.M)) {
+            MusicController music_controller = GameObject.FindObjectOfType<MusicController>();
+            music_controller.Mute();
+        }
+
+        CheckNumberPress();
+    }
+
+    private void CheckNumberPress() {
+        for (int i = 0; i < keyCodes.Length; i++) {
+            if (Input.GetKeyDown(keyCodes[i])) {
+                int numberPressed = i + 1;
+                SceneManager.LoadScene(numberPressed - 1);
+            }
+        }
     }
 }
+
+
+
+ 
