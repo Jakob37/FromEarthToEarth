@@ -27,7 +27,7 @@ GameObject:
   - 95: {fileID: 95000013545469580}
   - 58: {fileID: 58000010863446138}
   - 114: {fileID: 114000013966443680}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -42,7 +42,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 4000012457389474}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: GroundCheck
   m_TagString: Untagged
   m_Icon: {fileID: 3936346786652291628, guid: 0000000000000000d000000000000000, type: 0}
@@ -58,7 +58,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 4000013776648762}
   - 212: {fileID: 212000010194316292}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Hands
   m_TagString: Untagged
   m_Icon: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000, type: 0}
