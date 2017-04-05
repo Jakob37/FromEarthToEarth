@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class Player : MonoBehaviour {
 
@@ -23,6 +24,7 @@ public class Player : MonoBehaviour {
     public float ground_radius = 0.2f;
     public LayerMask what_is_ground;
     public LayerMask what_is_block_creation_ground;
+    public LayerMask what_is_switch;
 
     private PlatformController platform_controller;
     private BlockController block_controller;
@@ -30,6 +32,8 @@ public class Player : MonoBehaviour {
     private int raindrop_hit_count;
 
     private InfoText listener;
+
+    private Switch[] switches;
 
     public bool test_frame_rate = false;
     public int testing_fps = 30;
@@ -56,6 +60,7 @@ public class Player : MonoBehaviour {
         level_logic = FindObjectOfType<LevelLogic>();
         platform_controller = GetComponent<PlatformController>();
         block_controller = GetComponent<BlockController>();
+        switches = FindObjectsOfType<Switch>();
         raindrop_hit_count = 0;
     }
 
@@ -85,6 +90,10 @@ public class Player : MonoBehaviour {
 
         platform_controller.UpdateHorizontalMovement();
         is_grounded = platform_controller.CheckGrounded();
+
+        foreach (Switch target_switch in switches) {
+            platform_controller.TriggerSwitch(target_switch);
+        }
     }
 
     void OnCollisionEnter2D(Collision2D coll) {

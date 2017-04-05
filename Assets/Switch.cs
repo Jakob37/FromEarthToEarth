@@ -13,6 +13,10 @@ public class Switch : MonoBehaviour {
         sprite_renderer = gameObject.GetComponent<SpriteRenderer>();
 	}
 	
+    public void AssignStatus(bool is_on) {
+        is_pressed = is_on;
+    }
+
 	void Update () {
 	
         if (is_pressed) {
@@ -23,21 +27,21 @@ public class Switch : MonoBehaviour {
         }
 	}
 
-    void OnCollisionEnter2D(Collision2D coll) {
-
-        var target = coll.gameObject;
-
-        if (target.GetComponent<PhysicalObject>() != null) {
-            is_pressed = true;
-        }
-
-    }
-
-    void OnCollisionExit2D(Collision2D coll) {
-        var target = coll.gameObject;
-
-        if (target.GetComponent<PhysicalObject>() != null) {
-            is_pressed = false;
-        }
-    }
+    // void OnCollisionEnter2D(Collision2D coll) {
+    // 
+    //     var target = coll.gameObject;
+    // 
+    //     if (target.GetComponent<PhysicalObject>() != null) {
+    //         is_pressed = true;
+    //     }
+    // 
+    // }
+    // 
+    // void OnCollisionExit2D(Collision2D coll) {
+    //     var target = coll.gameObject;
+    // 
+    //     if (target.GetComponent<PhysicalObject>() != null) {
+    //         is_pressed = false;
+    //     }
+    // }
 }

@@ -154,6 +154,14 @@ public class PlatformController : MonoBehaviour {
         return Physics2D.OverlapCircle(player.ground_check.position, player.ground_radius, player.what_is_ground);
     }
 
+    public void TriggerSwitch(Switch target_switch) {
+
+        Collider2D switch_collider = target_switch.gameObject.GetComponent<Collider2D>();
+        Collider2D feet_collider = player.ground_check.GetComponent<Collider2D>();
+
+        target_switch.AssignStatus(Physics2D.IsTouching(switch_collider, feet_collider));
+    }
+
     public bool CheckBlockCreationGrounded() {
         return Physics2D.OverlapCircle(player.ground_check.position, player.ground_radius, player.what_is_block_creation_ground);
     }
