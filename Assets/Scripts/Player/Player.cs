@@ -92,7 +92,11 @@ public class Player : MonoBehaviour {
         is_grounded = platform_controller.CheckGrounded();
 
         foreach (Switch target_switch in switches) {
-            platform_controller.TriggerSwitch(target_switch);
+            bool is_on_switch = target_switch.IsObjectOnSwitch(this.ground_check.gameObject);
+            if (is_on_switch) {
+                target_switch.Press();
+            }
+            //platform_controller.TriggerSwitch(target_switch);
         }
     }
 

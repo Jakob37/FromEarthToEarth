@@ -3,23 +3,27 @@ using System.Collections;
 
 public class Switch : MonoBehaviour {
 
-    private bool is_pressed;
-    public bool IsPressed { get { return is_pressed; } }
 
     private SpriteRenderer sprite_renderer;
 
-	void Start () {
-        is_pressed = false;
+    private float seconds_since_switch;
+    public float retain_after_press_time = 0.3f;
+    public bool IsPressed { get { return seconds_since_switch < retain_after_press_time; } }
+
+    void Start () {
         sprite_renderer = gameObject.GetComponent<SpriteRenderer>();
+        seconds_since_switch = float.MaxValue;
 	}
 	
-    public void AssignStatus(bool is_on) {
-        is_pressed = is_on;
+    public void Press() {
+        seconds_since_switch = 0;
     }
 
 	void Update () {
-	
-        if (is_pressed) {
+
+        seconds_since_switch += Time.deltaTime;
+
+        if (IsPressed) {
             sprite_renderer.color = new Color(1, 0, 0);
         }
         else {
@@ -27,21 +31,11 @@ public class Switch : MonoBehaviour {
         }
 	}
 
-    // void OnCollisionEnter2D(Collision2D coll) {
-    // 
-    //     var target = coll.gameObject;
-    // 
-    //     if (target.GetComponent<PhysicalObject>() != null) {
-    //         is_pressed = true;
-    //     }
-    // 
-    // }
-    // 
-    // void OnCollisionExit2D(Collision2D coll) {
-    //     var target = coll.gameObject;
-    // 
-    //     if (target.GetComponent<PhysicalObject>() != null) {
-    //         is_pressed = false;
-    //     }
-    // }
+    public bool IsObjectOnSwitch(GameObject other_obj) {
+
+        Collider2D switch_collider = gameObject.GetComponent<Collider2D>();
+        Collider2D obj_collider = other_obj.GetComponent<Collider2D>();
+
+        return Physics2D.IsTouching(switch_collider, obj_collider);
+    }
 }

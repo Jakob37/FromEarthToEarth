@@ -19,6 +19,8 @@ public class Block : MonoBehaviour {
     private float rain_deduction = 0.5f;
     public bool is_water_resistant = false;
 
+    private Switch[] switches;
+
     public bool IsFadeInDone() {
         return this.sprite_renderer.color.a == 1f;
     }
@@ -29,6 +31,8 @@ public class Block : MonoBehaviour {
 
         rigi.isKinematic = false;
         sprite_renderer = gameObject.GetComponent<SpriteRenderer>();
+
+        switches = FindObjectsOfType<Switch>();
 
         remaining_percentage = 100;
 	}
@@ -58,6 +62,13 @@ public class Block : MonoBehaviour {
 
         if (remaining_percentage <= 0) {
             Destroy(gameObject);
+        }
+
+        foreach (Switch target_switch in switches) {
+            bool is_on_switch = target_switch.IsObjectOnSwitch(this.gameObject);
+            if (is_on_switch) {
+                target_switch.Press();
+            }
         }
 	}
 
