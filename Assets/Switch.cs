@@ -27,7 +27,7 @@ public class Switch : MonoBehaviour {
             sprite_renderer.color = new Color(1, 0, 0);
         }
         else {
-            sprite_renderer.color = new Color(0, 0, 0);
+            sprite_renderer.color = new Color(1, 1, 1);
         }
 	}
 
