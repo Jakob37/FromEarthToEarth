@@ -60,6 +60,7 @@ public class PlatformController : MonoBehaviour {
                 SetupGroundJump();
             }
             else if (player.remaining_jumps > 0) {
+                print("Doing double jump");
                 DoDoubleJump();
             }
         }

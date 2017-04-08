@@ -31,7 +31,7 @@ public class Player : MonoBehaviour {
 
     private int raindrop_hit_count;
 
-    private InfoText listener;
+    // private InfoText listener;
 
     private Switch[] switches;
 
@@ -43,7 +43,7 @@ public class Player : MonoBehaviour {
     }
 
     public void AssignListener(InfoText info_text) {
-        this.listener = info_text;
+        // this.listener = info_text;
         platform_controller.AssignListener(info_text);
         block_controller.AssignListener(info_text);
     }
