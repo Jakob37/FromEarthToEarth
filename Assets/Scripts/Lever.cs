@@ -45,6 +45,8 @@ public class Lever : MonoBehaviour {
         platform = GetComponentInChildren<LeverPlatform>();
         pole_object = pole.gameObject;
         platform_object = platform.gameObject;
+        pole_object.transform.rotation = gameObject.transform.rotation;
+        platform_object.transform.rotation = gameObject.transform.rotation;
     }
 
     void Start () {
@@ -82,9 +84,17 @@ public class Lever : MonoBehaviour {
 
         float sprite_frac = 1 + pole.LocalSpriteSize.y / 2;
         var effective_scaling = (current_scale_factor - 1) / scale_factor;
-        pole_object.transform.localPosition = pole.OrigPos + (pole_object.transform.up * sprite_frac) * effective_scaling;
+        pole_object.transform.localPosition = pole.OrigPos + (gameObject.transform.up * sprite_frac) * effective_scaling;
 
-        var platform_pos_scale = 2 + pole.LocalSpriteSize.y / 2;
-        platform_object.transform.localPosition = platform.OrigPos + (pole_object.transform.up * platform_pos_scale) * effective_scaling;
+        float platform_pos_scale = 2 + pole.LocalSpriteSize.y / 2;
+
+        print("up vector: " + platform_object.transform.localRotation * platform_object.transform.up + " position: " + platform_object.transform.localRotation * platform_object.transform.position);
+        // print("platform_pos_scale: " + platform_pos_scale);
+        //print("transform: " + (gameObject.transform.up * platform_pos_scale) * effective_scaling);
+
+
+
+        //platform_object.transform.localPosition = platform.OrigPos + platform_object.transform.forward;
+        platform_object.transform.localPosition = platform.OrigPos + (gameObject.transform.up * platform_pos_scale) * effective_scaling;
     }
 }
