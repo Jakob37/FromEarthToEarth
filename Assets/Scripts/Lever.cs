@@ -7,21 +7,13 @@ public class Lever : MonoBehaviour {
 
     private SpriteRenderer sprite_renderer;
 
-    private Vector3 orig_pos;
-    // private float initial_length;
     private float current_scale_factor;
-    private float scale_factor = 4;
+    private float max_scale_factor = 4;
     private float SCALE_OFFSET_FACTOR = 1.25f;  // TODO: Calculate from real values
 
     public float lever_speed = 0.1f;
 
     private LeverPole pole;
-    private LeverPlatform platform;
-
-    private GameObject pole_object;
-    private GameObject platform_object;
-
-    private Vector2 local_sprite_size;
 
     public float GetSpriteHeight() {
         return sprite_renderer.sprite.rect.size.y;
@@ -40,14 +32,7 @@ public class Lever : MonoBehaviour {
     }
 
     void Awake() {
-        orig_pos = gameObject.transform.localPosition;
-
-        local_sprite_size = Lever.CalculateLocalSpriteSize(GetComponent<SpriteRenderer>());
-
         pole = GetComponentInChildren<LeverPole>();
-        platform = GetComponentInChildren<LeverPlatform>();
-        pole_object = pole.gameObject;
-        platform_object = platform.gameObject;
     }
 
     void Start () {
@@ -59,11 +44,11 @@ public class Lever : MonoBehaviour {
 
         if (my_switch.IsPressed) {
 
-            if (current_scale_factor + lever_speed < scale_factor) {
+            if (current_scale_factor + lever_speed < max_scale_factor) {
                 current_scale_factor += lever_speed;
             }
             else {
-                current_scale_factor = scale_factor;
+                current_scale_factor = max_scale_factor;
             }
         }
         else {
@@ -76,27 +61,6 @@ public class Lever : MonoBehaviour {
             }
         }
 
-        //pole_object.transform.localScale = new Vector2(1, current_scale_factor);
-        pole.transform.localScale = new Vector2(1, current_scale_factor);
-
-        //float sprite_frac = 1 + local_sprite_size.y / 2;
-        //var effective_scaling = (current_scale_factor - 1) / scale_factor;
-        //gameObject.transform.localPosition = orig_pos + (transform.up * sprite_frac) * effective_scaling;
-
-        //float sprite_frac = 1 + pole.LocalSpriteSize.y / 2;
-        //var effective_scaling = (current_scale_factor - 1) / scale_factor;
-        // pole_object.transform.localPosition = pole.OrigPos + (gameObject.transform.up * sprite_frac) * effective_scaling;
-
-        //float platform_pos_scale = 2 + pole.LocalSpriteSize.y / 2;
-
-        //pole.transform.position = orig_pos + new Vector3(0, pole.transform.localScale.y / 2);
-
-        // print("up vector: " + platform_object.transform.up + " position: " + platform_object.transform.localRotation * platform_object.transform.position);
-
-        //gameObject.transform.localPosition = orig_pos + gameObject.transform.up * effective_scaling;
-
-        // platform_object.transform.localPosition = platform.OrigPos + platform_object.transform.forward;
-        // platform_object.transform.localPosition = platform.OrigPos + (gameObject.transform.up * platform_pos_scale) * effective_scaling;
-        // platform_object.transform.localPosition = platform.OrigPos + (gameObject.transform.up) * effective_scaling;
+        pole.AssignCurrentScale(current_scale_factor);
     }
 }
