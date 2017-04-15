@@ -61,6 +61,7 @@ public class Lever : MonoBehaviour {
             }
         }
 
-        pole.AssignCurrentScale(current_scale_factor);
+        // pole.AssignCurrentScale(current_scale_factor);
+        pole.AssignOffset((current_scale_factor - 1) / 1.5f);
     }
 }
