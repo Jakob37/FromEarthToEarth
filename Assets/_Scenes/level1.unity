@@ -1061,6 +1061,16 @@ Prefab:
       propertyPath: my_switch
       value: 
       objectReference: {fileID: 440687642}
+    - target: {fileID: 61000013388435810, guid: ebb519b886e37094eb77514ace1cf9de,
+        type: 2}
+      propertyPath: m_Size.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 61000013388435810, guid: ebb519b886e37094eb77514ace1cf9de,
+        type: 2}
+      propertyPath: m_Offset.y
+      value: 2.8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ebb519b886e37094eb77514ace1cf9de, type: 2}
   m_IsPrefabParent: 0

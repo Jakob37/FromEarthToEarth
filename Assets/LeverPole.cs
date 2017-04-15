@@ -15,11 +15,14 @@ public class LeverPole : MonoBehaviour {
     private float current_scale_factor;
     private float current_offset;
 
-    public float y_shift;
+    // public float y_shift;
 
     private SpriteRenderer renderer;
     private Texture2D tex;
     private BoxCollider2D coll;
+
+    private Vector2 orig_coll_size;
+    private Vector2 orig_coll_offset;
 
 	void Start () {
         orig_pos = gameObject.transform.localPosition;
@@ -30,9 +33,15 @@ public class LeverPole : MonoBehaviour {
         tex = renderer.sprite.texture;
 
         coll = GetComponent<BoxCollider2D>();
+        orig_coll_size = coll.size;
+        orig_coll_offset = (Vector2)coll.offset;
 
         // MakePartTransparent(tex.height * (2 - current_offset));
     }
+
+    // private float YShift() {
+    //     return transform.localPosition.y - orig_pos.y;
+    // }
 
     private void MakePartTransparent(float y_range, float y_start=0) {
 
@@ -53,17 +62,21 @@ public class LeverPole : MonoBehaviour {
 
     void Update() {
 
-        if (scaling_mode) {
-            transform.localScale = new Vector2(orig_scale.x, current_scale_factor);
-            y_shift = (transform.localScale.y - orig_scale.y) / (scale_factor - 1);
-            transform.localPosition = orig_pos + new Vector3(0, y_shift);
-        }
-        else {
-            transform.localPosition = orig_pos + new Vector3(0, current_offset);
-        }
+        //if (scaling_mode) {
+        //    transform.localScale = new Vector2(orig_scale.x, current_scale_factor);
+        //    y_shift = (transform.localScale.y - orig_scale.y) / (scale_factor - 1);
+        //    transform.localPosition = orig_pos + new Vector3(0, y_shift);
+        //}
+        //else {
+        transform.localPosition = orig_pos + new Vector3(0, current_offset);
+        //}
 
-        // coll.size = new Vector2();
-        coll.transform.localPosition = orig_pos + new Vector3(0, current_offset);
+        coll.size = new Vector2(orig_coll_size.x, orig_coll_size.y + current_offset);
+
+        print(current_offset);
+
+        coll.offset = new Vector2(0, orig_coll_offset.y - current_offset / 2);
+        // coll.transform.localPosition = orig_coll_pos + new Vector2(0, current_offset / 2 - (coll.size.y - orig_coll_size.y));
     }
 
     public void AssignCurrentScale(float current_scale) {

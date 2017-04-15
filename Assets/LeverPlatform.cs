@@ -24,7 +24,7 @@ public class LeverPlatform : MonoBehaviour {
     }
 
     void Update() {
-        var y_shift = lever_pole.y_shift * 2;
-        transform.localPosition = orig_pos + new Vector3(0, y_shift);
+        //var y_shift = lever_pole.y_shift * 2;
+        // transform.localPosition = orig_pos + new Vector3(0, y_shift);
     }
 }
