@@ -14,11 +14,11 @@ Shader "Tiled2Unity/TextureTintSnap (Legacy)"
         Tags
         { 
             "Queue"="Transparent" 
-            "IgnoreProjector"="True" 
+			"IgnoreProjector"="True"
             "RenderType"="Transparent" 
-            "PreviewType"="Plane"
+			"PreviewType"="Plane"
             "CanUseSpriteAtlas"="True"
-        }
+		}
 
         Cull Off
         Lighting Off
