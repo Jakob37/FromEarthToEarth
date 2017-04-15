@@ -19,6 +19,7 @@ public class LeverPole : MonoBehaviour {
 
     private SpriteRenderer renderer;
     private Texture2D tex;
+    private BoxCollider2D coll;
 
 	void Start () {
         orig_pos = gameObject.transform.localPosition;
@@ -27,6 +28,8 @@ public class LeverPole : MonoBehaviour {
 
         renderer = GetComponent<SpriteRenderer>();
         tex = renderer.sprite.texture;
+
+        coll = GetComponent<BoxCollider2D>();
 
         // MakePartTransparent(tex.height * (2 - current_offset));
     }
@@ -59,6 +62,8 @@ public class LeverPole : MonoBehaviour {
             transform.localPosition = orig_pos + new Vector3(0, current_offset);
         }
 
+        // coll.size = new Vector2();
+        coll.transform.localPosition = orig_pos + new Vector3(0, current_offset);
     }
 
     public void AssignCurrentScale(float current_scale) {
