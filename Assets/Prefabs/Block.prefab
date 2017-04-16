@@ -156,7 +156,7 @@ MonoBehaviour:
   - {fileID: 21300006, guid: 17f5c283a00feb549a04b39fcd151c82, type: 3}
   - {fileID: 21300008, guid: 17f5c283a00feb549a04b39fcd151c82, type: 3}
   - {fileID: 21300010, guid: 17f5c283a00feb549a04b39fcd151c82, type: 3}
-  is_water_resistant: 1
+  is_water_resistant: 0
 --- !u!114 &114000013703274366
 MonoBehaviour:
   m_ObjectHideFlags: 1
