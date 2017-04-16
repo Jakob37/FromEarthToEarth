@@ -70,13 +70,13 @@ public class Player : MonoBehaviour {
 
     void FixedUpdate() {
 
-        if (!block_controller.IsLiftingBlock()) {
-            UpdatePlatformController();
-        }
-
         block_controller.UpdateController(Input.GetKeyDown(KeyCode.Space), 
             Input.GetKey(KeyCode.Space),
             Input.GetKey(KeyCode.DownArrow));
+
+        if (!block_controller.IsLiftingBlock()) {
+            UpdatePlatformController();
+        }
     }
 
     private void UpdatePlatformController() {
