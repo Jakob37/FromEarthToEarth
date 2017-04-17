@@ -7,6 +7,8 @@ public class Lever : MonoBehaviour {
     private SpriteRenderer sprite_renderer;
     public float lever_speed = 0.1f;
 
+    public bool inverse_lever = false;
+
     private LeverPole pole;
     private Transform max_pos_transform;
     private Transform curr_top_transform;
@@ -62,7 +64,7 @@ public class Lever : MonoBehaviour {
 
         float offset;
 
-        if (my_switch.IsPressed) {
+        if ((my_switch.IsPressed && !inverse_lever) || (!my_switch.IsPressed &&  inverse_lever)) {
 
             if (DistToTop > lever_speed) {
                 offset = DistToBottom + lever_speed * Time.deltaTime;
