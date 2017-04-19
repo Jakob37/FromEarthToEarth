@@ -1,9 +1,10 @@
 ﻿using UnityEngine;
 using System.Collections;
+using Tiled2Unity;
 
 public class ShadowOverlay : MonoBehaviour {
 
-    private GameObject[] shadow_boxes;
+    private GameObject[,] shadow_boxes;
 
     public GameObject shadow_box_prefab;
     public GameObject level_tiles_object;
@@ -15,39 +16,51 @@ public class ShadowOverlay : MonoBehaviour {
 
     private Vector2 Origin {
         get {
-            return new Vector2(level_tiles_object.transform.position.x, 0);
-            // return level_tiles_object.transform.position;
+            return new Vector2(level_tiles_object.transform.position.x, -4);
         }
+    }
+
+    private Vector2 GetLevelSizeInPixels() {
+        TiledMap tiled_map = GameObject.FindObjectOfType<TiledMap>();
+        return new Vector2(tiled_map.MapWidthInPixels, tiled_map.MapHeightInPixels);
+    }
+
+    private float GetTileSizeInPixels() {
+        TiledMap tiled_map = GameObject.FindObjectOfType<TiledMap>();
+        return tiled_map.TileWidth;
+    }
+
+    private Vector2 GetTilesDimensions() {
+        Vector2 level_size_pixels = GetLevelSizeInPixels();
+        float tile_size_pixels = GetTileSizeInPixels();
+        return new Vector2(level_size_pixels.x / tile_size_pixels, level_size_pixels.y / tile_size_pixels);
     }
 
 	void Start () {
 
-        SpriteRenderer box_renderer = shadow_box_prefab.GetComponent<SpriteRenderer>();
-
-        // box_size = box_renderer.sprite.texture.width * shadow_box_prefab.transform.localScale.x / box_renderer.sprite.pixelsPerUnit;
-        //box_size = shadow_box_prefab.GetComponent<SpriteRenderer>().sprite.texture.width / shadow_box_prefab.GetComponent<SpriteRenderer>().sprite.pixelsPerUnit;
-
-        ShadowBox shadow_box_script = box_renderer.gameObject.GetComponent<ShadowBox>();
-
-        box_size = box_renderer.gameObject.GetComponent<ShadowBox>().Size;
-        box_size = 32f / 100f;
+        GameObject template_object = (GameObject)Instantiate(shadow_box_prefab);
+        SpriteRenderer box_renderer = template_object.GetComponent<SpriteRenderer>();
+        box_size = box_renderer.sprite.rect.width / box_renderer.sprite.pixelsPerUnit * box_renderer.transform.lossyScale.x;
 
         left_edge = GameObject.FindObjectOfType<LeftEdge>();
         right_edge = GameObject.FindObjectOfType<RightEdge>();
 
-        shadow_boxes = new GameObject[10];
+        Vector2 level_size_pixels = GetLevelSizeInPixels();
+        float tile_size_pixels = GetTileSizeInPixels();
+        Vector2 tiles_dim = GetTilesDimensions();
 
-        for (int i = 0; i < shadow_boxes.Length; i++) {
-            shadow_boxes[i] = (GameObject)Instantiate(shadow_box_prefab);
+        shadow_boxes = new GameObject[(int)tiles_dim.x, (int)tiles_dim.y];
 
-            // float box_size = 10;
+        for (int x = 0; x < shadow_boxes.GetLength(0); x++) {
+            for (int y = 0; y < shadow_boxes.GetLength(1); y++) {
+                shadow_boxes[x,y] = (GameObject)Instantiate(shadow_box_prefab);
 
-            // shadow_boxes[i].transform.position = new Vector2(left_edge.transform.position.x + i * box_size, 0);
-            shadow_boxes[i].transform.position = new Vector2(Origin.x + i * box_size, 0);
-            print(shadow_boxes[i].transform.position);
-            print("Created at: " + shadow_boxes[i].transform.position);
+                float x_pos = Origin.x + box_size / 2 + x * box_size;
+                float y_pos = Origin.y + box_size / 2 + y * box_size;
+
+                shadow_boxes[x,y].transform.position = new Vector2(x_pos, y_pos);
+            }
         }
-
 	}
 	
 	void Update () {
