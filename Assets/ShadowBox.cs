@@ -27,6 +27,6 @@ public class ShadowBox : MonoBehaviour {
 	}
 	
 	void Update () {
-	
+	    
 	}
 }
