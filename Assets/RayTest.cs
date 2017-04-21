@@ -22,14 +22,17 @@ public class RayTest : MonoBehaviour {
         }
 	}
 
-    private void DoLinecast() {
-        RaycastHit hit;
-        //var hit : Raycasthit;
+    private void DoLinecast(bool debug_line=true) {
 
-        Debug.DrawLine(target.position, transform.position, Color.yellow, 2, false);
-        var output = Physics.Linecast(transform.position, target.position, out hit, hit_mask);
+        RaycastHit2D hit;
 
-        print(output);
+        if (debug_line) {
+            Debug.DrawLine(target.position, transform.position, Color.yellow, 2, false);
+        }
+
+        hit = Physics2D.Linecast(transform.position, target.position, hit_mask);
+
+        print(hit.transform.gameObject);
         print(hit.point);
     }
 }
