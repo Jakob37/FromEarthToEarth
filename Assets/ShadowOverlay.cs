@@ -59,6 +59,11 @@ public class ShadowOverlay : MonoBehaviour {
                 float y_pos = Origin.y + box_size / 2 + y * box_size;
 
                 shadow_boxes[x,y].transform.position = new Vector2(x_pos, y_pos);
+
+                // TEST ASSIGNING TRANSPARENCY
+                if (x < 10) {
+                    shadow_boxes[x, y].GetComponent<ShadowBox>().AssignTransparency(0.1f);
+                }
             }
         }
 	}
