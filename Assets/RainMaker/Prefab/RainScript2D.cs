@@ -20,6 +20,8 @@ namespace DigitalRuby.RainMaker
         private float initialStartSizeExplosion;
         private readonly ParticleSystem.Particle[] particles = new ParticleSystem.Particle[2048];
 
+        public bool move_rain_with_camera;
+
         [Tooltip("The starting y offset for rain and mist. This will be offset as a percentage of visible height from the top of the visible world.")]
         public float RainHeightMultiplier = 0.15f;
 
@@ -57,14 +59,19 @@ namespace DigitalRuby.RainMaker
             }
         }
 
-        private void TransformParticleSystem(ParticleSystem p, float initialStartSpeed, float initialStartSize)
+        private void TransformParticleSystem(ParticleSystem p, float initialStartSpeed, float initialStartSize, bool translate_rain_pos=false)
         {
             if (p == null)
             {
                 return;
             }
 
-            p.transform.position = new Vector3(Camera.transform.position.x, visibleBounds.max.y + yOffset, p.transform.position.z);
+            if (translate_rain_pos) {
+                p.transform.position = new Vector3(transform.position.x, visibleBounds.max.y + yOffset, p.transform.position.z);
+            }
+            else {
+                p.transform.position = new Vector3(Camera.transform.position.x, visibleBounds.max.y + yOffset, p.transform.position.z);
+            }
             p.transform.localScale = new Vector3(visibleWorldWidth * RainWidthMultiplier, 1.0f, 1.0f);
             p.startSpeed = initialStartSpeed * cameraMultiplier;
             p.startSize = initialStartSize * cameraMultiplier;
@@ -180,7 +187,7 @@ namespace DigitalRuby.RainMaker
             visibleWorldWidth = visibleBounds.size.x;
             yOffset = (visibleBounds.max.y - visibleBounds.min.y) * RainHeightMultiplier;
 
-            TransformParticleSystem(RainFallParticleSystem, initialStartSpeedRain, initialStartSizeRain);
+            TransformParticleSystem(RainFallParticleSystem, initialStartSpeedRain, initialStartSizeRain, translate_rain_pos:move_rain_with_camera);
             TransformParticleSystem(RainMistParticleSystem, initialStartSpeedMist, initialStartSizeMist);
             TransformParticleSystem(RainExplosionParticleSystem, initialStartSpeedExplosion, initialStartSizeExplosion);
 

@@ -1295,6 +1295,11 @@ Prefab:
       propertyPath: InitialModule.startSpeed.maxCurve.m_Curve.Array.data[0].value
       value: -1
       objectReference: {fileID: 0}
+    - target: {fileID: 114000013897745496, guid: fff7d0b503d7b7b4893c07ee12ecc7bd,
+        type: 2}
+      propertyPath: move_rain_with_camera
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fff7d0b503d7b7b4893c07ee12ecc7bd, type: 2}
   m_IsPrefabParent: 0
