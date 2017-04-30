@@ -172,10 +172,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 1000012302385544, guid: 1ed56211c1f438e4e8708f72dbade104, type: 2}
-      propertyPath: m_Layer
-      value: 5
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 1ed56211c1f438e4e8708f72dbade104, type: 2}
   m_IsPrefabParent: 0
@@ -455,10 +451,6 @@ Prefab:
       propertyPath: m_Name
       value: blue_flower_2 (1)
       objectReference: {fileID: 0}
-    - target: {fileID: 1000010330578144, guid: 446da28779efd7947aaa89b8b598a432, type: 2}
-      propertyPath: m_Layer
-      value: 5
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 446da28779efd7947aaa89b8b598a432, type: 2}
   m_IsPrefabParent: 0
@@ -714,11 +706,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 4
       objectReference: {fileID: 0}
-    - target: {fileID: 114000011351785182, guid: b5d9b82df12bc1f4199436feef7d4264,
-        type: 2}
-      propertyPath: is_water_resistant
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b5d9b82df12bc1f4199436feef7d4264, type: 2}
   m_IsPrefabParent: 0
@@ -920,10 +907,6 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4000013131396210, guid: f0038b209ba1c5b4d886f3f6be2ad081, type: 2}
       propertyPath: m_RootOrder
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 1000013302384174, guid: f0038b209ba1c5b4d886f3f6be2ad081, type: 2}
-      propertyPath: m_Layer
       value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -1299,6 +1282,10 @@ Prefab:
         type: 2}
       propertyPath: move_rain_with_camera
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000011392349596, guid: fff7d0b503d7b7b4893c07ee12ecc7bd, type: 2}
+      propertyPath: m_LocalScale.x
+      value: 2.4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fff7d0b503d7b7b4893c07ee12ecc7bd, type: 2}
