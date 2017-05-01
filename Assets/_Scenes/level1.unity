@@ -867,6 +867,12 @@ Prefab:
       propertyPath: m_RootOrder
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 212000011817970630, guid: bf083a09d45c23e438a9a4714a728387,
+        type: 2}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300020, guid: 4b1094b20929eaa4c922b9a48966ad61,
+        type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: bf083a09d45c23e438a9a4714a728387, type: 2}
   m_IsPrefabParent: 0
@@ -1056,7 +1062,7 @@ Prefab:
     - target: {fileID: 114000013897745496, guid: fff7d0b503d7b7b4893c07ee12ecc7bd,
         type: 2}
       propertyPath: RainIntensity
-      value: 0.197
+      value: 0.493
       objectReference: {fileID: 0}
     - target: {fileID: 198000014122852268, guid: fff7d0b503d7b7b4893c07ee12ecc7bd,
         type: 2}
