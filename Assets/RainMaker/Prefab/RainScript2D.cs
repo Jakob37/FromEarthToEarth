@@ -18,7 +18,7 @@ namespace DigitalRuby.RainMaker
         private float initialStartSizeMist;
         private float initialStartSpeedExplosion;
         private float initialStartSizeExplosion;
-        private readonly ParticleSystem.Particle[] particles = new ParticleSystem.Particle[2048];
+        private readonly ParticleSystem.Particle[] particles = new ParticleSystem.Particle[4096];
 
         public bool move_rain_with_camera;
 
@@ -70,7 +70,8 @@ namespace DigitalRuby.RainMaker
                 p.transform.position = new Vector3(transform.position.x, visibleBounds.max.y + yOffset, p.transform.position.z);
             }
             else {
-                p.transform.position = new Vector3(Camera.transform.position.x, visibleBounds.max.y + yOffset, p.transform.position.z);
+                p.transform.position = new Vector3(transform.position.x, visibleBounds.max.y + yOffset, p.transform.position.z);
+                // p.transform.position = new Vector3(Camera.transform.position.x, visibleBounds.max.y + yOffset, p.transform.position.z);
             }
             p.transform.localScale = new Vector3(visibleWorldWidth * RainWidthMultiplier, 1.0f, 1.0f);
             p.startSpeed = initialStartSpeed * cameraMultiplier;
@@ -186,11 +187,11 @@ namespace DigitalRuby.RainMaker
             visibleBounds.max = Camera.main.ViewportToWorldPoint(Vector3.one);
             visibleWorldWidth = visibleBounds.size.x;
             yOffset = (visibleBounds.max.y - visibleBounds.min.y) * RainHeightMultiplier;
-
+            
             TransformParticleSystem(RainFallParticleSystem, initialStartSpeedRain, initialStartSizeRain, translate_rain_pos:move_rain_with_camera);
             TransformParticleSystem(RainMistParticleSystem, initialStartSpeedMist, initialStartSizeMist);
             TransformParticleSystem(RainExplosionParticleSystem, initialStartSpeedExplosion, initialStartSizeExplosion);
-
+            
             CheckForCollisionsRainParticles();
             CheckForCollisionsMistParticles();
         }
