@@ -178,7 +178,7 @@ MonoBehaviour:
   RainSoundLight: {fileID: 8300000, guid: c980eda1ec9b9ff4b930005976b00f41, type: 3}
   RainSoundMedium: {fileID: 8300000, guid: 3359e9d10af08ca46ae396298dbd1ed9, type: 3}
   RainSoundHeavy: {fileID: 8300000, guid: db1471092e49b7445bfbd374a17ea61a, type: 3}
-  RainIntensity: 0.197
+  RainIntensity: 0.524
   RainFallParticleSystem: {fileID: 198000011163655242}
   RainExplosionParticleSystem: {fileID: 198000014122852268}
   RainMistParticleSystem: {fileID: 0}
@@ -189,6 +189,8 @@ MonoBehaviour:
   WindSpeedRange: {x: 1, y: 150, z: 150}
   WindChangeInterval: {x: 5, y: 30}
   EnableWind: 0
+  base_level_size_unit: 8
+  move_rain_with_camera: 0
   RainHeightMultiplier: 0.15
   RainWidthMultiplier: 1.5
   CollisionMask:
@@ -4019,9 +4021,9 @@ ParticleSystem:
     enabled: 1
     multiplier: 0.05
   ClampVelocityModule:
-    enabled: 0
+    enabled: 1
     x:
-      scalar: 1
+      scalar: 0
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -4060,7 +4062,7 @@ ParticleSystem:
         m_RotationOrder: 4
       minMaxState: 0
     y:
-      scalar: 1
+      scalar: 100
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -4176,7 +4178,7 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
       minMaxState: 0
-    separateAxis: 0
+    separateAxis: 1
     inWorldSpace: 0
     dampen: 1
   NoiseModule:

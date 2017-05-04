@@ -7,6 +7,8 @@ namespace DigitalRuby.RainMaker
     {
         private static readonly Color32 explosionColor = new Color32(255, 255, 255, 255);
 
+        public float base_level_size_unit;
+
         private float cameraMultiplier = 1.0f;
         private Bounds visibleBounds;
         private float yOffset;
@@ -161,6 +163,8 @@ namespace DigitalRuby.RainMaker
         {
             base.Start();
 
+            AdjustForLevelSize();
+
             initialEmissionRain = RainFallParticleSystem.emission.rate.constantMax;
             initialStartSpeedRain = RainFallParticleSystem.startSpeed;
             initialStartSizeRain = RainFallParticleSystem.startSize;
@@ -176,6 +180,22 @@ namespace DigitalRuby.RainMaker
                 initialStartSpeedExplosion = RainExplosionParticleSystem.startSpeed;
                 initialStartSizeExplosion = RainExplosionParticleSystem.startSize;
             }
+        }
+
+        private void AdjustForLevelSize() {
+            transform.position = new Vector3(0, 0, 0);
+
+            LeftEdge left_edge = FindObjectOfType<LeftEdge>();
+            RightEdge right_edge = FindObjectOfType<RightEdge>();
+
+            float width = right_edge.gameObject.transform.position.x - left_edge.gameObject.transform.position.x;
+            float scaling = width / base_level_size_unit;
+
+            print(width);
+            print(scaling);
+            print(base_level_size_unit);
+
+            transform.localScale = new Vector3(scaling, 1, 1);
         }
 
         protected override void Update()

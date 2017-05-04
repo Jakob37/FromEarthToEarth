@@ -1293,6 +1293,26 @@ Prefab:
       propertyPath: m_LocalScale.x
       value: 2.4
       objectReference: {fileID: 0}
+    - target: {fileID: 198000011163655242, guid: fff7d0b503d7b7b4893c07ee12ecc7bd,
+        type: 2}
+      propertyPath: ShapeModule.radius
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 198000011163655242, guid: fff7d0b503d7b7b4893c07ee12ecc7bd,
+        type: 2}
+      propertyPath: InitialModule.startSize.minCurve.m_Curve.Array.data[0].value
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 198000011163655242, guid: fff7d0b503d7b7b4893c07ee12ecc7bd,
+        type: 2}
+      propertyPath: InitialModule.startSize.scalar
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 198000011163655242, guid: fff7d0b503d7b7b4893c07ee12ecc7bd,
+        type: 2}
+      propertyPath: InitialModule.startSize.maxCurve.m_Curve.Array.data[0].value
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fff7d0b503d7b7b4893c07ee12ecc7bd, type: 2}
   m_IsPrefabParent: 0
