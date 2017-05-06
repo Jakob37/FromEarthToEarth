@@ -18,6 +18,8 @@ public class InfoText : MonoBehaviour {
     private int current_level;
 
     private Text text_object;
+    private InfoTextPanel info_text_panel;
+
     private int current_text_index;
     private string level_text_field_delim = ";";
 
@@ -28,22 +30,17 @@ public class InfoText : MonoBehaviour {
 
     void Start () {
 
-        text_object = GetComponent<Text>();
+        text_object = GetComponentInChildren<Text>();
+        info_text_panel = GetComponentInChildren<InfoTextPanel>();
+
         int current_level = LevelLogic.GetCurrentLevel();
         story_data = ParseLevelEvents(current_level);
         current_text_index = 0;
         occured_events = new List<LevelEventCarrier>();
 
         player = GameObject.FindObjectOfType<Player>();
-
-        print(player);
-
         player.AssignListener(this);
-
         level_logic = GameObject.FindObjectOfType<LevelLogic>();
-
-        print(level_logic);
-
         level_logic.AssignListener(this);
 	}
 
@@ -131,7 +128,27 @@ public class InfoText : MonoBehaviour {
             }
         }
         text_object.text = show_text;
+
+        UpdatePanel(show_text);
 	}
+
+    private void UpdatePanel(string target_text) {
+
+        if (target_text == " ") {
+            info_text_panel.gameObject.SetActive(false);
+        }
+        else {
+            info_text_panel.gameObject.SetActive(true);
+            AdaptPanelSizeToText(target_text);
+        }
+
+
+    }
+    
+    private void AdaptPanelSizeToText(string target_text) {
+
+    }
+
 
     private string GetMonText(string descr, string text) {
         return string.Format("{0}: {1}\n", descr, text);

@@ -284,12 +284,6 @@ RectTransform:
   m_PrefabParentObject: {fileID: 224000012827336416, guid: 8d7ea644d2e64714bb298b893c5adad9,
     type: 2}
   m_PrefabInternal: {fileID: 62066742}
---- !u!114 &110109583 stripped
-MonoBehaviour:
-  m_PrefabParentObject: {fileID: 114000011573914428, guid: bf083a09d45c23e438a9a4714a728387,
-    type: 2}
-  m_PrefabInternal: {fileID: 884013227}
-  m_Script: {fileID: 11500000, guid: c83e89c9f6cfeda4786cc8f8cc48839d, type: 3}
 --- !u!4 &118421955 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4000014126929306, guid: 446da28779efd7947aaa89b8b598a432,
@@ -562,11 +556,6 @@ Prefab:
       propertyPath: m_Pivot.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 114000013167845670, guid: 1d5f2ef7368cc6f4c9f5a1b5fbfb71d4,
-        type: 2}
-      propertyPath: player
-      value: 
-      objectReference: {fileID: 110109583}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 1d5f2ef7368cc6f4c9f5a1b5fbfb71d4, type: 2}
   m_IsPrefabParent: 0
