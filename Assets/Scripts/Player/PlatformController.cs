@@ -57,14 +57,10 @@ public class PlatformController : MonoBehaviour {
 
         if (jump_key_down) {
 
-            print("Jump key is down");
-
             if (player.is_grounded) {
-                print("Starting jump");
                 SetupGroundJump();
             }
             else if (player.remaining_jumps > 0) {
-                print("Doing double jump");
                 DoDoubleJump();
             }
         }

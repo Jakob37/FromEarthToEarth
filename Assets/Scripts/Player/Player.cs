@@ -110,6 +110,19 @@ public class Player : MonoBehaviour {
         if (is_grounded) {
             remaining_jumps = air_jumps;
         }
+
+    }
+
+    void OnTriggerEnter2D(Collider2D coll) {
+        if (coll.gameObject.GetComponent<StoryBoard>() != null) {
+            coll.gameObject.GetComponent<StoryBoard>().ActivateStoryBoard();
+        }
+    }
+
+    void OnTriggerExit2D(Collider2D coll) {
+        if (coll.gameObject.GetComponent<StoryBoard>() != null) {
+            coll.gameObject.GetComponent<StoryBoard>().DeactivateStoryBoard();
+        }
     }
 
     void OnParticleCollision(GameObject other) {

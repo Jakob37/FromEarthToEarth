@@ -191,10 +191,6 @@ namespace DigitalRuby.RainMaker
             float width = right_edge.gameObject.transform.position.x - left_edge.gameObject.transform.position.x;
             float scaling = width / base_level_size_unit;
 
-            print(width);
-            print(scaling);
-            print(base_level_size_unit);
-
             transform.localScale = new Vector3(scaling, 1, 1);
         }
 

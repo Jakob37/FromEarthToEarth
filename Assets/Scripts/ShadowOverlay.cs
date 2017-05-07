@@ -9,8 +9,8 @@ public class ShadowOverlay : MonoBehaviour {
     public GameObject shadow_box_prefab;
     public GameObject level_tiles_object;
 
-    private LeftEdge left_edge;
-    private RightEdge right_edge;
+    // private LeftEdge left_edge;
+    // private RightEdge right_edge;
 
     private float box_size;
 
@@ -42,11 +42,11 @@ public class ShadowOverlay : MonoBehaviour {
         SpriteRenderer box_renderer = template_object.GetComponent<SpriteRenderer>();
         box_size = box_renderer.sprite.rect.width / box_renderer.sprite.pixelsPerUnit * box_renderer.transform.lossyScale.x;
 
-        left_edge = GameObject.FindObjectOfType<LeftEdge>();
-        right_edge = GameObject.FindObjectOfType<RightEdge>();
+        // left_edge = GameObject.FindObjectOfType<LeftEdge>();
+        // right_edge = GameObject.FindObjectOfType<RightEdge>();
 
-        Vector2 level_size_pixels = GetLevelSizeInPixels();
-        float tile_size_pixels = GetTileSizeInPixels();
+        //Vector2 level_size_pixels = GetLevelSizeInPixels();
+        //float tile_size_pixels = GetTileSizeInPixels();
         Vector2 tiles_dim = GetTilesDimensions();
 
         shadow_boxes = new GameObject[(int)tiles_dim.x, (int)tiles_dim.y];
