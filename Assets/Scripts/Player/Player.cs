@@ -68,7 +68,7 @@ public class Player : MonoBehaviour {
         remaining_jumps = air_jumps;
 	}
 
-    void FixedUpdate() {
+    void Update() {
 
         block_controller.UpdateController(Input.GetKeyDown(KeyCode.Space), 
             Input.GetKey(KeyCode.Space),
@@ -85,7 +85,7 @@ public class Player : MonoBehaviour {
         // bool jump_key_down = Input.GetButtonDown("Jump");
         bool up_arrow_down = Input.GetKeyDown(KeyCode.UpArrow);
         bool up_arrow_press = Input.GetKey(KeyCode.UpArrow);
-        
+
         platform_controller.UpdateJump(up_arrow_down, up_arrow_press);
 
         platform_controller.UpdateHorizontalMovement();
