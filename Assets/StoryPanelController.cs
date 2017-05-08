@@ -7,6 +7,12 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public enum StoryBoardName {
+    level1_jump,
+    level1_block_pickup,
+    level1_block_throw,
+    level1_block_make,
+    level1_block_putdown,
+    level1_end,
     level3_start,
     dummy
 }
