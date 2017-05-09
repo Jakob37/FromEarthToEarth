@@ -9,6 +9,8 @@ using System;
 
 public class InfoText : MonoBehaviour {
 
+    public bool deactivate;
+
     public bool show_player_stats;
     private Player player;
     private LevelLogic level_logic;
@@ -104,6 +106,10 @@ public class InfoText : MonoBehaviour {
     }
 
     void Update () {
+
+        if (deactivate) {
+            return;
+        }
 
         if (story_data.Count > current_text_index && story_data[current_text_index].IsEventTriggered(occured_events)) {
             current_text_index += 1;
