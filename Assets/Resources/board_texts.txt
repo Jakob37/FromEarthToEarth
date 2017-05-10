@@ -4,5 +4,5 @@ level1_jump|Press up arrow to jump
 level1_block_pickup|[Space] while standing next to a block to pick it up
 level1_block_throw|[Space] while holding a block to throw it
 level1_block_make|[Space] while standing on mud to make a block
-level1_block_putdown|[Space] and [Down arrow] to put down block gently
-level1_end|Reach end of level to travel to the next area
+level1_block_putdown|Hold [Down arrow] and press [Space] to put down block gently
+level1_end|Reach the end of the level to travel to the next area
