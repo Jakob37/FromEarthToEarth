@@ -6,3 +6,11 @@ level1_block_throw|[Space] while holding a block to throw it
 level1_block_make|[Space] while standing on mud to make a block
 level1_block_putdown|Hold [Down arrow] and press [Space] to put down block gently
 level1_end|Reach the end of the level to travel to the next area
+intermission12_1|Hello you. How are you doing? Guess we are in this together.
+intermission12_2|Like the weather? Like talking about the whether? No? Oh well, I'm doing my best.
+intermission23_1|Ever taken a step back, looking at yourself? You look kinda funny you know.
+intermission23_2|That strange nose-thing, the ears. Don't get me started on your silly feet.
+intermission34_1|I hope you didn't find me rude back there. We are made by the same stuff you know.
+intermission34_2|Stuff stuffed together for a while. Stuff coming, stuff going. Fascinating, really.
+intermission45_1|Reach the end of the level to travel to the next area
+intermission45_2|Reach the end of the level to travel to the next area

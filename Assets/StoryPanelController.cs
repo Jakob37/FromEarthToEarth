@@ -14,6 +14,14 @@ public enum StoryBoardName {
     level1_block_putdown,
     level1_end,
     level3_start,
+    intermission12_1,
+    intermission12_2,
+    intermission23_1,
+    intermission23_2,
+    intermission34_1,
+    intermission34_2,
+    intermission45_1,
+    intermission45_2,
     dummy
 }
 
