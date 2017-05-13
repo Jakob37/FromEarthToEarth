@@ -56,7 +56,7 @@ public class LevelLogic : MonoBehaviour {
 
     void Update() {
         elapsed_time += Time.deltaTime;
-        if (elapsed_time > last_trig_second + 1) {
+        if (listener != null && elapsed_time > last_trig_second + 1) {
             last_trig_second += 1;
             // print("Trigging:" + last_trig_second);
             var event_carrier = new LevelEventCarrier(LevelEventType.TimeSinceStartPassed, nbr_param:last_trig_second);
