@@ -4,6 +4,8 @@ using System;
 
 public class PlatformController : MonoBehaviour {
 
+    public bool is_debugging;
+
     private Player player;
     private Rigidbody2D rigi;
     private Animator player_anim;
@@ -59,13 +61,18 @@ public class PlatformController : MonoBehaviour {
 
             if (player.is_grounded) {
                 SetupGroundJump();
+                DebugPrint("Jump initiated");
             }
             else if (player.remaining_jumps > 0) {
                 DoDoubleJump();
+                DebugPrint("Perform double jump");
             }
         }
 
-        UpdateExtendedJump(jump_key_press);
+        if (jump_key_press) {
+            UpdateExtendedJump(jump_key_press);
+        }
+
         if (high_jump_press_duration > high_jump_delay && player.remaining_jumps > 0) {
             PerformDoubleJump();
         }
@@ -85,13 +92,21 @@ public class PlatformController : MonoBehaviour {
         }
     }
 
+    private void DebugPrint(string text) {
+        if (is_debugging) {
+            print(text);
+        }
+    }
+
     private void SetupGroundJump() {
+        DebugPrint("SetupGroundJump");
         player.is_jumping = true;
         time_since_jump = 0;
         DispatchEvent(Assets.LevelLogic.LevelEventType.IsJumping);
     }
 
     private void DoDoubleJump() {
+        DebugPrint("DoDoubleJump");
         player.is_jumping = true;
         player.remaining_jumps -= 1;
         rigi.velocity = new Vector2(rigi.velocity.x, 0);
@@ -101,10 +116,12 @@ public class PlatformController : MonoBehaviour {
 
     private void UpdateExtendedJump(bool jump_key_press) {
         if (jump_key_press && time_since_jump < high_jump_delay) {
+            DebugPrint("Extending jump");
             high_jump_press_duration += Time.deltaTime;
             is_extending_jump = true;
         }
         else {
+            DebugPrint("Aborting jump");
             high_jump_press_duration = 0;
             is_extending_jump = false;
             time_since_jump = int.MaxValue;
