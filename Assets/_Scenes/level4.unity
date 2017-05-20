@@ -144,6 +144,16 @@ Prefab:
       propertyPath: is_debugging
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114000010649180076, guid: bf083a09d45c23e438a9a4714a728387,
+        type: 2}
+      propertyPath: min_jump_height
+      value: 0.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000010649180076, guid: bf083a09d45c23e438a9a4714a728387,
+        type: 2}
+      propertyPath: max_jump_height
+      value: 1.5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: bf083a09d45c23e438a9a4714a728387, type: 2}
   m_IsPrefabParent: 0
@@ -563,7 +573,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e26722a86903514ba2b3f2741860d93, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  story_text_panel_go: {fileID: 1421685309}
+  story_text_panel_go: {fileID: 0}
 --- !u!1001 &396714996
 Prefab:
   m_ObjectHideFlags: 0
