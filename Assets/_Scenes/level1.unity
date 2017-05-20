@@ -888,16 +888,15 @@ Prefab:
       propertyPath: m_RootOrder
       value: 2
       objectReference: {fileID: 0}
-    - target: {fileID: 212000011817970630, guid: bf083a09d45c23e438a9a4714a728387,
+    - target: {fileID: 114000010649180076, guid: bf083a09d45c23e438a9a4714a728387,
         type: 2}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300020, guid: 4b1094b20929eaa4c922b9a48966ad61,
-        type: 3}
-    - target: {fileID: 114000011573914428, guid: bf083a09d45c23e438a9a4714a728387,
+      propertyPath: max_jump_height
+      value: 0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000010649180076, guid: bf083a09d45c23e438a9a4714a728387,
         type: 2}
-      propertyPath: jump_force
-      value: 4.5
+      propertyPath: min_jump_height
+      value: 0.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: bf083a09d45c23e438a9a4714a728387, type: 2}
