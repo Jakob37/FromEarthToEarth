@@ -81,7 +81,7 @@ namespace DigitalRuby.RainMaker
             p.transform.localScale = new Vector3(visibleWorldWidth * RainWidthMultiplier, 1.0f, 1.0f);
 
             var main = p.main;
-            start_speed = initialStartSpeed * cameraMultiplier * -1;
+            start_speed = initialStartSpeed * cameraMultiplier;
             start_size = initialStartSize * cameraMultiplier;
             main.startSpeed = start_speed;
             main.startSize = start_size;

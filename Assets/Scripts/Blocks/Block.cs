@@ -6,6 +6,7 @@ public class Block : MonoBehaviour {
     public bool is_fading = false;
 
     private Rigidbody2D rigi;
+    private Collider2D coll;
 
     private SpriteRenderer sprite_renderer;
 
@@ -25,9 +26,20 @@ public class Block : MonoBehaviour {
         return this.sprite_renderer.color.a == 1f;
     }
 
-	void Awake() {
+    private void DisableBlock() {
+        rigi.isKinematic = true;
+        coll.enabled = false;
+    }
+
+    private void EnableBlock() {
+        rigi.isKinematic = false;
+        coll.enabled = true;
+    }
+
+    void Awake() {
 
         rigi = gameObject.GetComponent<Rigidbody2D>();
+        coll = gameObject.GetComponent<Collider2D>();
 
         rigi.isKinematic = false;
         sprite_renderer = gameObject.GetComponent<SpriteRenderer>();
@@ -42,19 +54,19 @@ public class Block : MonoBehaviour {
     }
 
     public void TakenUp(BlockController block_controller) {
-        rigi.isKinematic = true;
+        DisableBlock();
     }
 
     public void PutDown(Vector2 throwForce) {
-        rigi.isKinematic = false;
+        EnableBlock();
         rigi.AddForce(throwForce);
     }
 	
     public void PutDownGently() {
-        rigi.isKinematic = false;
+        EnableBlock();
     }
 
-	void Update () {
+    void Update () {
 
         var target_frame = (int)((100 - remaining_percentage) / 100 * (frames.Length));
         if (target_frame > frames.Length - 1) target_frame = frames.Length - 1;

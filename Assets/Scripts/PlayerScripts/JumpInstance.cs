@@ -62,7 +62,7 @@ namespace Assets.Scripts.PlayerScripts {
                 return;
             }
 
-            if (player.IsHeadHit) {
+            if (player.IsHeadHit && !player.IsCarryingBlock) {
                 if (debug_jump) Debug.Log("Head hit");
                 is_done = true;
             }

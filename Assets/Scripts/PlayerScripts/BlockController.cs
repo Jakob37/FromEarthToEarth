@@ -16,7 +16,7 @@ public class BlockController : MonoBehaviour {
     private bool use_delays = true;
 
     private float pickup_dist = 0.1f;
-    private float lift_distance = 0.7f;
+    private float lift_distance = 0.6f;
 
     private float pickup_delay = 0.5f;
     private float current_pickup_delay;

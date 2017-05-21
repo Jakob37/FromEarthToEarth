@@ -1,9 +1,9 @@
+﻿
 Microsoft Visual Studio Solution File, Format Version 11.00
-# Visual Studio 2008
-
-Project("{CD2D794A-CCAF-1C82-11D0-E38B452F80D7}") = "FromEarthToEarth", "Assembly-CSharp.csproj", "{97BAE07C-C13D-F5E2-AE8E-BC872BBCB08F}"
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FromEarthToEarth", "Assembly-CSharp.csproj", "{97BAE07C-C13D-F5E2-AE8E-BC872BBCB08F}"
 EndProject
-Project("{CD2D794A-CCAF-1C82-11D0-E38B452F80D7}") = "FromEarthToEarth", "Assembly-CSharp-Editor.csproj", "{13F0013B-9BE8-7F56-18B9-9B5444E52775}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FromEarthToEarth", "Assembly-CSharp-Editor.csproj", "{13F0013B-9BE8-7F56-18B9-9B5444E52775}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

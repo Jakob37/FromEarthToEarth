@@ -25,6 +25,8 @@ public class Player : MonoBehaviour {
     private bool is_head_hit = false;
     public bool IsHeadHit { get { return is_head_hit; } }
 
+    public bool IsCarryingBlock { get { return block_controller.CarriedBlock != null; } }
+
     private LevelLogic level_logic;
 
     public Transform ground_check;

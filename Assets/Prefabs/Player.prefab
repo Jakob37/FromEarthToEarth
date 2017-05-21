@@ -169,6 +169,7 @@ CircleCollider2D:
   m_Material: {fileID: 6200000, guid: 7a20fc15405d2e343b4172c53bbc9896, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 1
+  m_UsedByComposite: 0
   m_Offset: {x: 0, y: -0.1}
   serializedVersion: 2
   m_Radius: 0.2
@@ -183,9 +184,20 @@ BoxCollider2D:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_UsedByEffector: 0
+  m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
   serializedVersion: 2
   m_Size: {x: 0.3, y: 0.08}
+  m_EdgeRadius: 0
 --- !u!61 &61000014127241606
 BoxCollider2D:
   m_ObjectHideFlags: 1
@@ -197,9 +209,20 @@ BoxCollider2D:
   m_Material: {fileID: 6200000, guid: 8a76f14e0348ab04c9b70cd90963e787, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
+  m_UsedByComposite: 0
   m_Offset: {x: -0, y: 0.01}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.48, y: 0.6}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
   serializedVersion: 2
   m_Size: {x: 0.4, y: 0.51}
+  m_EdgeRadius: 0
 --- !u!61 &61261916734427950
 BoxCollider2D:
   m_ObjectHideFlags: 1
@@ -211,9 +234,20 @@ BoxCollider2D:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_UsedByEffector: 0
+  m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.3, y: 0.08}
+  m_Size: {x: 0.2, y: 0.08}
+  m_EdgeRadius: 0
 --- !u!95 &95000013545469580
 Animator:
   serializedVersion: 3
@@ -262,10 +296,7 @@ MonoBehaviour:
   max_speed_y: 20
   jump_force: 4.5
   air_jumps: 0
-  remaining_jumps: 0
   facing_right: 1
-  is_jumping: 0
-  is_grounded: 0
   ground_check: {fileID: 4000012457389474}
   head_check: {fileID: 4689861822153304}
   hands: {fileID: 4000013776648762}
@@ -339,11 +370,16 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
+  m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: d4259104ef830bf4ebfae1068e0bef68, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_FlipX: 0
   m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 1, y: 1}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
 --- !u!212 &212000011817970630
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -374,8 +410,13 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -2089610985
+  m_SortingLayer: 2
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300020, guid: 4b1094b20929eaa4c922b9a48966ad61, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 1, y: 1}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
