@@ -18,6 +18,10 @@ namespace Assets.Scripts.PlayerScripts {
         private bool is_done;
         private bool jump_key_held;
 
+        private int received_impulses;
+
+        private bool debug_jump;
+
         private bool IsPastMaxHeight() {
             return GetCurrentJumpHeight() > max_height;
         }
@@ -34,7 +38,7 @@ namespace Assets.Scripts.PlayerScripts {
             get { return is_done; }
         }
 
-        public JumpInstance(Player player, float min_height, float max_height) {
+        public JumpInstance(Player player, float min_height, float max_height, bool debug_jump=false) {
 
             this.player = player;
             this.rigi = player.GetComponent<Rigidbody2D>();
@@ -46,6 +50,9 @@ namespace Assets.Scripts.PlayerScripts {
             this.is_done = false;
             this.jump_key_held = true;
 
+            this.debug_jump = debug_jump;
+            received_impulses = 1;
+
             rigi.velocity = new Vector2(rigi.velocity.x, player.jump_force);   
         }
 
@@ -55,26 +62,36 @@ namespace Assets.Scripts.PlayerScripts {
                 return;
             }
 
+            if (player.IsHeadHit) {
+                if (debug_jump) Debug.Log("Head hit");
+                is_done = true;
+            }
+
             if (IsPastMinHeight() && player.is_grounded) {
-                // Debug.Log("Grounded");
+                if (debug_jump) Debug.Log("Grounded");
                 is_done = true;
             }
 
             if (IsPastMaxHeight()) {
 
-                // Debug.Log("Past max height");
+                if (debug_jump) {
+                    Debug.Log("Past max height");
+                    Debug.Log("Current pos: " + player.transform.position + ", impulses: " + received_impulses);
+                }
+
                 peak_reached = true;
                 is_done = true;
             }
 
             if (!jump_key_down) {
-                // Debug.Log("Jump key up");
+                if (debug_jump) Debug.Log("Jump key up");
                 is_done = true;
             }
 
             if (!IsPastMinHeight() || (jump_key_down && !IsPastMaxHeight())) {
-                // Debug.Log("Extend jump");
+                if (debug_jump) Debug.Log("Extend jump");
                 rigi.velocity = new Vector2(rigi.velocity.x, player.jump_force);
+                received_impulses += 1;
             }
         }
     }

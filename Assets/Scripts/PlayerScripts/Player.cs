@@ -16,9 +16,14 @@ public class Player : MonoBehaviour {
     [HideInInspector] public bool is_jumping = false;
     [HideInInspector] public bool is_grounded = false;
 
+    private bool is_head_hit = false;
+    public bool IsHeadHit { get { return is_head_hit; } }
+
+
     private LevelLogic level_logic;
 
     public Transform ground_check;
+    public Transform head_check;
     public Transform hands;
 
     public float ground_radius = 0.2f;
@@ -90,6 +95,7 @@ public class Player : MonoBehaviour {
 
         platform_controller.UpdateHorizontalMovement();
         is_grounded = platform_controller.CheckGrounded();
+        is_head_hit = platform_controller.CheckHeadHit();
 
         foreach (Switch target_switch in switches) {
             bool is_on_switch = target_switch.IsObjectOnSwitch(this.ground_check.gameObject);

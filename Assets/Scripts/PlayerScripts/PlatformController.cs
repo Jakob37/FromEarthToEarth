@@ -62,7 +62,7 @@ public class PlatformController : MonoBehaviour {
 
         if (jump_key_down && player.is_grounded) {
             // SetupGroundJump();
-            current_jump = new JumpInstance(player, min_jump_height, max_jump_height);
+            current_jump = new JumpInstance(player, min_jump_height, max_jump_height, debug_jump:true);
         }
 
         if (current_jump != null) {
@@ -70,91 +70,19 @@ public class PlatformController : MonoBehaviour {
         }
     }
 
-    // public void UpdateJump(bool jump_key_down, bool jump_key_press) {
-    // 
-    //     time_since_jump += Time.deltaTime;
-    // 
-    //     if (jump_key_down) {
-    // 
-    //         if (player.is_grounded) {
-    //             SetupGroundJump();
-    //             DebugPrint("Jump initiated");
-    //         }
-    //         else if (player.remaining_jumps > 0) {
-    //             DoDoubleJump();
-    //             DebugPrint("Perform double jump");
-    //         }
-    //     }
-    // 
-    //     UpdateExtendedJump(jump_key_press);
-    // 
-    //     if (high_jump_press_duration > high_jump_delay && player.remaining_jumps > 0) {
-    //         PerformDoubleJump();
-    //     }
-    // 
-    //     if (Mathf.Abs(rigi.velocity.y) > player.max_speed_y) {
-    //         rigi.velocity = new Vector2(rigi.velocity.x, Mathf.Sign(rigi.velocity.x) * player.max_speed_y);
-    //     }
-    // 
-    //     SetAnimParams();
-    // 
-    //     if (player.is_jumping) {
-    //         StartJump();
-    //     }
-    // 
-    //     if (high_jump_press_duration < high_jump_delay && is_extending_jump) {
-    //         rigi.velocity = new Vector2(rigi.velocity.x, player.jump_force);
-    //     }
-    // }
-
-    // private void DebugPrint(string text) {
-    //     if (is_debugging) {
-    //         print(text);
-    //     }
-    // }
-
-    // private void SetupGroundJump() {
-    //     DebugPrint("SetupGroundJump");
-    //     player.is_jumping = true;
-    //     time_since_jump = 0;
-    //     DispatchEvent(Assets.LevelLogic.LevelEventType.IsJumping);
-    // }
-
-    // private void DoDoubleJump() {
-    //     // DebugPrint("DoDoubleJump");
-    //     player.is_jumping = true;
-    //     player.remaining_jumps -= 1;
-    //     rigi.velocity = new Vector2(rigi.velocity.x, 0);
-    //     DispatchEvent(Assets.LevelLogic.LevelEventType.IsDoubleJumping);
-    //     PerformDoubleJump();
-    // }
-
     private void UpdateExtendedJump(bool jump_key_press) {
         if (jump_key_press && time_since_jump < high_jump_delay) {
-            // DebugPrint("Extending jump");
+
             high_jump_press_duration += Time.deltaTime;
             is_extending_jump = true;
         }
         else {
-            // DebugPrint("Aborting jump");
+
             high_jump_press_duration = 0;
             is_extending_jump = false;
             time_since_jump = int.MaxValue;
         }
     }
-
-    // private void StartJump() {
-    //     rigi.velocity = new Vector2(rigi.velocity.x, player.jump_force);
-    //     player.is_jumping = false;
-    //     player.is_grounded = false;
-    // }
-
-    // private void PerformDoubleJump() {
-    //     player.is_jumping = true;
-    //     player.remaining_jumps -= 1;
-    //     rigi.velocity = new Vector2(rigi.velocity.x, 0);
-    //     DispatchEvent(Assets.LevelLogic.LevelEventType.IsDoubleJumping);
-    // }
 
     private void SetAnimParams() {
         player_anim.SetBool("is_jumping", player.is_jumping);
@@ -185,6 +113,10 @@ public class PlatformController : MonoBehaviour {
 
     public bool CheckGrounded() {
         return Physics2D.OverlapCircle(player.ground_check.position, player.ground_radius, player.what_is_ground);
+    }
+
+    public bool CheckHeadHit() {
+        return Physics2D.OverlapCircle(player.head_check.position, player.ground_radius, player.what_is_ground);
     }
 
     public bool CheckBlockCreationGrounded() {
