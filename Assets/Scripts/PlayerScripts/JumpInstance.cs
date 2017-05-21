@@ -67,7 +67,7 @@ namespace Assets.Scripts.PlayerScripts {
                 is_done = true;
             }
 
-            if (IsPastMinHeight() && player.is_grounded) {
+            if (IsPastMinHeight() && player.IsGrounded) {
                 if (debug_jump) Debug.Log("Grounded");
                 is_done = true;
             }

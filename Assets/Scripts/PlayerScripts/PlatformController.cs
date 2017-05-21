@@ -60,7 +60,7 @@ public class PlatformController : MonoBehaviour {
 
     public void UpdateJump(bool jump_key_down, bool jump_key_press) {
 
-        if (jump_key_down && player.is_grounded) {
+        if (jump_key_down && player.IsGrounded) {
             // SetupGroundJump();
             current_jump = new JumpInstance(player, min_jump_height, max_jump_height, debug_jump:true);
         }
@@ -85,7 +85,7 @@ public class PlatformController : MonoBehaviour {
     }
 
     private void SetAnimParams() {
-        player_anim.SetBool("is_jumping", player.is_jumping);
+        player_anim.SetBool("is_jumping", player.IsJumping);
         player_anim.SetFloat("move_speed", Mathf.Abs(rigi.velocity.x));
     }
 

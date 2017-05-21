@@ -22,6 +22,9 @@ namespace DigitalRuby.RainMaker
         private float initialStartSizeExplosion;
         private readonly ParticleSystem.Particle[] particles = new ParticleSystem.Particle[4096];
 
+        private float start_speed;
+        private float start_size;
+
         public bool move_rain_with_camera;
 
         [Tooltip("The starting y offset for rain and mist. This will be offset as a percentage of visible height from the top of the visible world.")]
@@ -76,8 +79,17 @@ namespace DigitalRuby.RainMaker
                 // p.transform.position = new Vector3(Camera.transform.position.x, visibleBounds.max.y + yOffset, p.transform.position.z);
             }
             p.transform.localScale = new Vector3(visibleWorldWidth * RainWidthMultiplier, 1.0f, 1.0f);
-            p.startSpeed = initialStartSpeed * cameraMultiplier;
-            p.startSize = initialStartSize * cameraMultiplier;
+
+            var main = p.main;
+            start_speed = initialStartSpeed * cameraMultiplier * -1;
+            start_size = initialStartSize * cameraMultiplier;
+            main.startSpeed = start_speed;
+            main.startSize = start_size;
+
+
+            //p.main.startSpeed = initialStartSpeed * cameraMultiplier;
+            // p.startSpeed = initialStartSpeed * cameraMultiplier;
+            // p.startSize = initialStartSize * cameraMultiplier;
         }
 
         private void CheckForCollisionsRainParticles()
@@ -165,7 +177,14 @@ namespace DigitalRuby.RainMaker
 
             AdjustForLevelSize();
 
+            RainFallParticleSystem rfps_script = GetComponentInChildren<RainFallParticleSystem>();
+            ParticleSystem p = rfps_script.gameObject.GetComponent<ParticleSystem>();
+            var main = p.main;
+
             initialEmissionRain = RainFallParticleSystem.emission.rate.constantMax;
+            //initialEmissionRain = RainFallParticleSystem.emission.rate.constantMax;
+            // initialStartSpeedRain = start_speed;
+            // initialStartSizeRain = start_size;
             initialStartSpeedRain = RainFallParticleSystem.startSpeed;
             initialStartSizeRain = RainFallParticleSystem.startSize;
 
@@ -179,6 +198,9 @@ namespace DigitalRuby.RainMaker
             {
                 initialStartSpeedExplosion = RainExplosionParticleSystem.startSpeed;
                 initialStartSizeExplosion = RainExplosionParticleSystem.startSize;
+
+                //initialStartSpeedExplosion = RainExplosionParticleSystem.startSpeed;
+                //initialStartSizeExplosion = RainExplosionParticleSystem.startSize;
             }
         }
 

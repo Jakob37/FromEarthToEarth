@@ -10,15 +10,20 @@ public class Player : MonoBehaviour {
     public float jump_force = 8;
 
     public int air_jumps = 0;
-    [HideInInspector] public int remaining_jumps;
 
-    [HideInInspector] public bool facing_right = true;
-    [HideInInspector] public bool is_jumping = false;
-    [HideInInspector] public bool is_grounded = false;
+    private int remaining_jumps;
+    public int RemainingJumps { get { return remaining_jumps; } }
+
+    public bool facing_right = true;
+
+    private bool is_jumping = false;
+    public bool IsJumping { get { return is_jumping; } }
+
+    private bool is_grounded = false;
+    public bool IsGrounded { get { return is_grounded; } }
 
     private bool is_head_hit = false;
     public bool IsHeadHit { get { return is_head_hit; } }
-
 
     private LevelLogic level_logic;
 
@@ -113,7 +118,7 @@ public class Player : MonoBehaviour {
             level_logic.WinCondition();
         }
 
-        if (is_grounded) {
+        if (IsGrounded) {
             remaining_jumps = air_jumps;
         }
 

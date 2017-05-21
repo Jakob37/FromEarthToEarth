@@ -120,9 +120,9 @@ public class InfoText : MonoBehaviour {
 
         if (show_player_stats) {
             string mon_text = "";
-            mon_text += GetMonText("Jump", player.is_jumping.ToString());
-            mon_text += GetMonText("Grounded", player.is_grounded.ToString());
-            mon_text += GetMonText("Jumps", player.remaining_jumps.ToString());
+            mon_text += GetMonText("Jump", player.IsJumping.ToString());
+            mon_text += GetMonText("Grounded", player.IsGrounded.ToString());
+            mon_text += GetMonText("Jumps", player.RemainingJumps.ToString());
             show_text = mon_text;
         }
         else {
