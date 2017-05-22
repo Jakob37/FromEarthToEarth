@@ -14,8 +14,6 @@ public class PlatformController : MonoBehaviour {
     private Rigidbody2D rigi;
     private Animator player_anim;
 
-    private bool is_extending_jump;
-
     public float high_jump_delay = 0.2f;
     private float high_jump_press_duration;
     private float time_since_jump;
@@ -45,7 +43,6 @@ public class PlatformController : MonoBehaviour {
         player_anim = player.gameObject.GetComponent<Animator>();
 
         high_jump_press_duration = 0;
-        is_extending_jump = false;
         time_since_jump = 0;
     }
 
@@ -61,8 +58,7 @@ public class PlatformController : MonoBehaviour {
     public void UpdateJump(bool jump_key_down, bool jump_key_press) {
 
         if (jump_key_down && player.IsGrounded) {
-            // SetupGroundJump();
-            current_jump = new JumpInstance(player, min_jump_height, max_jump_height, debug_jump:true);
+            current_jump = new JumpInstance(player, min_jump_height, max_jump_height, debug_jump:is_debugging);
         }
 
         if (current_jump != null) {
@@ -74,12 +70,10 @@ public class PlatformController : MonoBehaviour {
         if (jump_key_press && time_since_jump < high_jump_delay) {
 
             high_jump_press_duration += Time.deltaTime;
-            is_extending_jump = true;
         }
         else {
 
             high_jump_press_duration = 0;
-            is_extending_jump = false;
             time_since_jump = int.MaxValue;
         }
     }

@@ -14,9 +14,7 @@ namespace Assets.Scripts.PlayerScripts {
         private float max_height;
 
         private Vector2 start_position;
-        private bool peak_reached;
         private bool is_done;
-        private bool jump_key_held;
 
         private int received_impulses;
 
@@ -44,11 +42,9 @@ namespace Assets.Scripts.PlayerScripts {
             this.rigi = player.GetComponent<Rigidbody2D>();
 
             this.start_position = (Vector2)player.transform.position;
-            this.peak_reached = false;
             this.max_height = max_height;
             this.min_height = min_height;
             this.is_done = false;
-            this.jump_key_held = true;
 
             this.debug_jump = debug_jump;
             received_impulses = 1;
@@ -79,7 +75,6 @@ namespace Assets.Scripts.PlayerScripts {
                     Debug.Log("Current pos: " + player.transform.position + ", impulses: " + received_impulses);
                 }
 
-                peak_reached = true;
                 is_done = true;
             }
 
