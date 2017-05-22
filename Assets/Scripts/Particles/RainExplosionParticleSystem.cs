@@ -1,8 +1,9 @@
-﻿using System.Collections;
+﻿using Assets.Particles;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RainFallParticleSystem : MonoBehaviour {
+public class RainExplosionParticleSystem : ParticleSystemScript {
 
 	// Use this for initialization
 	void Start () {

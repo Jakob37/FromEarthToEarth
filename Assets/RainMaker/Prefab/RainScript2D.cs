@@ -1,5 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System;
+using Assets.Particles;
 
 namespace DigitalRuby.RainMaker
 {
@@ -171,36 +173,52 @@ namespace DigitalRuby.RainMaker
             }
         }
 
+        private ParticleSystem.MainModule FindParticleMainInChildren(string main_type) {
+
+            ParticleSystemScript particle_script;
+
+            if (main_type == "rain") {
+                particle_script = GetComponentInChildren<RainFallParticleSystem>();
+            }
+            else if (main_type == "mist") {
+                particle_script = GetComponentInChildren<RainMistParticleSystem>();
+            }
+            else if (main_type == "explosion") {
+                particle_script = GetComponentInChildren<RainExplosionParticleSystem>();
+            }
+            else {
+                throw new ArgumentException("Unknown main type: " + main_type);
+            }
+
+            ParticleSystem p = particle_script.gameObject.GetComponent<ParticleSystem>();
+            var main = p.main;
+            return main;
+        }
+
         protected override void Start()
         {
             base.Start();
 
             AdjustForLevelSize();
 
-            RainFallParticleSystem rfps_script = GetComponentInChildren<RainFallParticleSystem>();
-            ParticleSystem p = rfps_script.gameObject.GetComponent<ParticleSystem>();
-            var main = p.main;
+            var rain_main = FindParticleMainInChildren("rain");
+            var mist_main = FindParticleMainInChildren("mist");
+            var expl_main = FindParticleMainInChildren("explosion");
 
-            initialEmissionRain = RainFallParticleSystem.emission.rate.constantMax;
-            //initialEmissionRain = RainFallParticleSystem.emission.rate.constantMax;
-            // initialStartSpeedRain = start_speed;
-            // initialStartSizeRain = start_size;
-            initialStartSpeedRain = RainFallParticleSystem.startSpeed;
-            initialStartSizeRain = RainFallParticleSystem.startSize;
+            initialEmissionRain = RainFallParticleSystem.emission.rateOverTime.constantMax;
+            initialStartSpeedRain = rain_main.startSpeed.constant;
+            initialStartSizeRain = rain_main.startSize.constant;
 
             if (RainMistParticleSystem != null)
             {
-                initialStartSpeedMist = RainMistParticleSystem.startSpeed;
-                initialStartSizeMist = RainMistParticleSystem.startSize;
+                initialStartSpeedMist = mist_main.startSpeed.constant;
+                initialStartSizeMist = mist_main.startSize.constant;
             }
 
             if (RainExplosionParticleSystem != null)
             {
-                initialStartSpeedExplosion = RainExplosionParticleSystem.startSpeed;
-                initialStartSizeExplosion = RainExplosionParticleSystem.startSize;
-
-                //initialStartSpeedExplosion = RainExplosionParticleSystem.startSpeed;
-                //initialStartSizeExplosion = RainExplosionParticleSystem.startSize;
+                initialStartSpeedExplosion = expl_main.startSpeed.constant;
+                initialStartSizeExplosion = expl_main.startSize.constant;
             }
         }
 
