@@ -66,7 +66,6 @@ namespace DigitalRuby.RainMaker
 
         private ParticleSystem.MainModule rain_main;
         private ParticleSystem.MainModule mist_main;
-        private ParticleSystem.MainModule expl_main;
 
         private float lastRainIntensityValue = -1.0f;
         private float nextWindTime;
@@ -153,7 +152,6 @@ namespace DigitalRuby.RainMaker
                         rate.mode = ParticleSystemCurveMode.Constant;
                         rate.constantMin = rate.constantMax = RainFallEmissionRate();
                         e.rateOverTime = rate;
-                        // e.rate = rate;
                     }
 
                     if (RainMistParticleSystem != null) {
@@ -185,8 +183,6 @@ namespace DigitalRuby.RainMaker
             rain_main = rain_ps.main;
             ParticleSystem mist_ps = GetComponent<ParticleSystem>();
             mist_main = mist_ps.main;
-            ParticleSystem expl_ps = GetComponent<ParticleSystem>();
-            expl_main = expl_ps.main;
 
 #if DEBUG
 

@@ -3,10 +3,10 @@ using System.Collections;
 using System;
 using Assets.Particles;
 
-namespace DigitalRuby.RainMaker
-{
-    public class RainScript2D : BaseRainScript
-    {
+namespace DigitalRuby.RainMaker {
+
+    public class RainScript2D : BaseRainScript {
+
         private static readonly Color32 explosionColor = new Color32(255, 255, 255, 255);
 
         public float base_level_size_unit;
@@ -46,11 +46,9 @@ namespace DigitalRuby.RainMaker
         [Range(0.0f, 0.99f)]
         public float RainMistCollisionMultiplier = 0.75f;
 
-        private void EmitExplosion(ref Vector3 pos)
-        {
+        private void EmitExplosion(ref Vector3 pos) {
             int count = UnityEngine.Random.Range(2, 5);
-            while (count != 0)
-            {
+            while (count != 0) {
                 float xVelocity = UnityEngine.Random.Range(-2.0f, 2.0f) * cameraMultiplier;
                 float yVelocity = UnityEngine.Random.Range(1.0f, 3.0f) * cameraMultiplier;
                 float lifetime = UnityEngine.Random.Range(0.1f, 0.2f);
@@ -66,10 +64,9 @@ namespace DigitalRuby.RainMaker
             }
         }
 
-        private void TransformParticleSystem(ParticleSystem p, float initialStartSpeed, float initialStartSize, bool translate_rain_pos=false)
-        {
-            if (p == null)
-            {
+        private void TransformParticleSystem(ParticleSystem p, float initialStartSpeed, float initialStartSize, bool translate_rain_pos=false) {
+
+            if (p == null) {
                 return;
             }
 
@@ -78,7 +75,6 @@ namespace DigitalRuby.RainMaker
             }
             else {
                 p.transform.position = new Vector3(transform.position.x, visibleBounds.max.y + yOffset, p.transform.position.z);
-                // p.transform.position = new Vector3(Camera.transform.position.x, visibleBounds.max.y + yOffset, p.transform.position.z);
             }
             p.transform.localScale = new Vector3(visibleWorldWidth * RainWidthMultiplier, 1.0f, 1.0f);
 
@@ -87,35 +83,24 @@ namespace DigitalRuby.RainMaker
             start_size = initialStartSize * cameraMultiplier;
             main.startSpeed = start_speed;
             main.startSize = start_size;
-
-
-            //p.main.startSpeed = initialStartSpeed * cameraMultiplier;
-            // p.startSpeed = initialStartSpeed * cameraMultiplier;
-            // p.startSize = initialStartSize * cameraMultiplier;
         }
 
-        private void CheckForCollisionsRainParticles()
-        {
+        private void CheckForCollisionsRainParticles() {
             int count = 0;
             bool changes = false;
 
-            if (CollisionMask != 0)
-            {
+            if (CollisionMask != 0) {
                 count = RainFallParticleSystem.GetParticles(particles);
                 RaycastHit2D hit;
 
-                for (int i = 0; i < count; i++)
-                {
+                for (int i = 0; i < count; i++) {
                     Vector3 pos = particles[i].position + RainFallParticleSystem.transform.position;
                     hit = Physics2D.Raycast(pos, particles[i].velocity.normalized, particles[i].velocity.magnitude * Time.deltaTime);
-                    if (hit.collider != null && ((1 << hit.collider.gameObject.layer) & CollisionMask) != 0)
-                    {
-                        if (CollisionLifeTimeRain == 0.0f)
-                        {
+                    if (hit.collider != null && ((1 << hit.collider.gameObject.layer) & CollisionMask) != 0) {
+                        if (CollisionLifeTimeRain == 0.0f) {
                             particles[i].remainingLifetime = 0.0f;
                         }
-                        else
-                        {
+                        else {
                             particles[i].remainingLifetime = Mathf.Min(particles[i].remainingLifetime, UnityEngine.Random.Range(CollisionLifeTimeRain * 0.5f, CollisionLifeTimeRain * 2.0f));
                             pos += (particles[i].velocity * Time.deltaTime);
                         }
@@ -124,31 +109,25 @@ namespace DigitalRuby.RainMaker
                 }
             }
 
-            if (RainExplosionParticleSystem != null)
-            {
-                if (count == 0)
-                {
+            if (RainExplosionParticleSystem != null) {
+                if (count == 0) {
                     count = RainFallParticleSystem.GetParticles(particles);
                 }
-                for (int i = 0; i < count; i++)
-                {
-                    if (particles[i].remainingLifetime < 0.24f)
-                    {
+                for (int i = 0; i < count; i++) {
+                    if (particles[i].remainingLifetime < 0.24f) {
                         Vector3 pos = particles[i].position + RainFallParticleSystem.transform.position;
                         EmitExplosion(ref pos);
                     }
                 }
             }
-            if (changes)
-            {
+            if (changes) {
                 RainFallParticleSystem.SetParticles(particles, count);
             }
         }
 
-        private void CheckForCollisionsMistParticles()
-        {
-            if (RainMistParticleSystem == null || CollisionMask == 0)
-            {
+        private void CheckForCollisionsMistParticles() {
+
+            if (RainMistParticleSystem == null || CollisionMask == 0) {
                 return;
             }
 
@@ -156,19 +135,16 @@ namespace DigitalRuby.RainMaker
             bool changes = false;
             RaycastHit2D hit;
 
-            for (int i = 0; i < count; i++)
-            {
+            for (int i = 0; i < count; i++) {
                 Vector3 pos = particles[i].position + RainMistParticleSystem.transform.position;
                 hit = Physics2D.Raycast(pos, particles[i].velocity.normalized, particles[i].velocity.magnitude * Time.deltaTime);
-                if (hit.collider != null && ((1 << hit.collider.gameObject.layer) & CollisionMask) != 0)
-                {
+                if (hit.collider != null && ((1 << hit.collider.gameObject.layer) & CollisionMask) != 0) {
                     particles[i].velocity *= RainMistCollisionMultiplier;
                     changes = true;
                 }
             }
 
-            if (changes)
-            {
+            if (changes) {
                 RainMistParticleSystem.SetParticles(particles, count);
             }
         }
@@ -195,8 +171,7 @@ namespace DigitalRuby.RainMaker
             return main;
         }
 
-        protected override void Start()
-        {
+        protected override void Start() {
             base.Start();
 
             AdjustForLevelSize();
@@ -234,8 +209,7 @@ namespace DigitalRuby.RainMaker
             transform.localScale = new Vector3(scaling, 1, 1);
         }
 
-        protected override void Update()
-        {
+        protected override void Update() {
             base.Update();
 
             cameraMultiplier = (Camera.orthographicSize * 0.25f);
@@ -252,17 +226,12 @@ namespace DigitalRuby.RainMaker
             CheckForCollisionsMistParticles();
         }
 
-        protected override float RainFallEmissionRate()
-        {
+        protected override float RainFallEmissionRate() {
             return initialEmissionRain * RainIntensity;
         }
 
-        protected override bool UseRainMistSoftParticles
-        {
-            get
-            {
-                return false;
-            }
+        protected override bool UseRainMistSoftParticles {
+            get { return false; }
         }
     }
 }
