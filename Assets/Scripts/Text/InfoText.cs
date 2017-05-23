@@ -147,8 +147,6 @@ public class InfoText : MonoBehaviour {
             info_text_panel.gameObject.SetActive(true);
             AdaptPanelSizeToText(target_text);
         }
-
-
     }
     
     private void AdaptPanelSizeToText(string target_text) {

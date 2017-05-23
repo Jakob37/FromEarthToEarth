@@ -17,7 +17,7 @@ public class Block : MonoBehaviour {
     private bool solidified;
     private bool is_solidifying;
 
-    private float rain_deduction = 0.5f;
+    public float rain_deduction = 0.5f;
     public bool is_water_resistant = false;
 
     private Switch[] switches;
