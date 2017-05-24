@@ -28,6 +28,7 @@ namespace DigitalRuby.RainMaker {
         private float start_size;
 
         public bool move_rain_with_camera;
+        public float pos_offset;
 
         [Tooltip("The starting y offset for rain and mist. This will be offset as a percentage of visible height from the top of the visible world.")]
         public float RainHeightMultiplier = 0.15f;
@@ -47,6 +48,7 @@ namespace DigitalRuby.RainMaker {
         public float RainMistCollisionMultiplier = 0.75f;
 
         private void EmitExplosion(ref Vector3 pos) {
+
             int count = UnityEngine.Random.Range(2, 5);
             while (count != 0) {
                 float xVelocity = UnityEngine.Random.Range(-2.0f, 2.0f) * cameraMultiplier;
@@ -79,7 +81,7 @@ namespace DigitalRuby.RainMaker {
             p.transform.localScale = new Vector3(visibleWorldWidth * RainWidthMultiplier, 1.0f, 1.0f);
 
             var main = p.main;
-            start_speed = initialStartSpeed * cameraMultiplier;
+            start_speed = initialStartSpeed * cameraMultiplier * -1;
             start_size = initialStartSize * cameraMultiplier;
             main.startSpeed = start_speed;
             main.startSize = start_size;
@@ -198,7 +200,7 @@ namespace DigitalRuby.RainMaker {
         }
 
         private void AdjustForLevelSize() {
-            transform.position = new Vector3(0, 0, 0);
+            // transform.position = new Vector3(pos_offset, 0, 0);
 
             LeftEdge left_edge = FindObjectOfType<LeftEdge>();
             RightEdge right_edge = FindObjectOfType<RightEdge>();
