@@ -179,9 +179,12 @@ namespace DigitalRuby.RainMaker
 
         protected virtual void Start() {
 
-            ParticleSystem rain_ps = GetComponent<ParticleSystem>();
+            GameObject rain_object = GetComponentInChildren<RainFallParticleSystem>().gameObject;
+            ParticleSystem rain_ps = rain_object.GetComponent<ParticleSystem>();
             rain_main = rain_ps.main;
-            ParticleSystem mist_ps = GetComponent<ParticleSystem>();
+
+            GameObject mist_object = GetComponentInChildren<RainMistParticleSystem>().gameObject;
+            ParticleSystem mist_ps = mist_object.GetComponent<ParticleSystem>();
             mist_main = mist_ps.main;
 
 #if DEBUG
@@ -249,7 +252,7 @@ namespace DigitalRuby.RainMaker
 #endif
 
             CheckForRainChange();
-            UpdateWind();
+            // UpdateWind();
             audioSourceRainLight.Update();
             audioSourceRainMedium.Update();
             audioSourceRainHeavy.Update();

@@ -781,7 +781,7 @@ Prefab:
     - target: {fileID: 114448779653434572, guid: e25360b6f362fe84e982e4fb272ef469,
         type: 2}
       propertyPath: board_name
-      value: 8
+      value: 9
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e25360b6f362fe84e982e4fb272ef469, type: 2}
