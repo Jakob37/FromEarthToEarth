@@ -9,9 +9,9 @@ level2_putdown|Hold [Down arrow] and press [Space] to put down block gently
 level3_help|People and blocks alike sometimes need shelter from the rain
 level5_help|Sometimes, a brief time, is just enough
 intermission12_1|Hello you. How are you doing? Guess we are in this together.
-intermission12_2|Like the weather? Like talking about the whether? No? Oh well, I'm doing my best.
-intermission23_1|You know what? You seem nice. But sorry to say - look kinda funny!
-intermission23_2|Have your thought about the shape of your nose? Your ears? Don't get me started on your feet!
+intermission12_2|Like the weather? Like talking about the weather? No? Oh well, I'm doing my best.
+intermission23_1|You know what? You seem nice.
+intermission23_2|Feet!
 intermission34_1|I was rude back there, wasn't I? Sorry! I get a bit carried away sometimes.
 intermission34_2|But you know what? We are made by the same stuff. Random stuff stuffed together for a brief time. Stuff coming, stuff going.
 intermission45_1|Next question. We are made by the same stuff as the mud over there. What makes us different?
