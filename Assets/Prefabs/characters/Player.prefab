@@ -277,8 +277,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   is_debugging: 0
-  max_jump_height: 0.8
-  min_jump_height: 0.4
+  max_jump_height: 0.85
+  min_jump_height: 0.5
   high_jump_delay: 0.2
 --- !u!114 &114000011573914428
 MonoBehaviour:
