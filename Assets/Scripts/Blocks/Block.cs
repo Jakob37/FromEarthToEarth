@@ -47,7 +47,7 @@ public class Block : MonoBehaviour {
         switches = FindObjectsOfType<Switch>();
 
         remaining_percentage = 100;
-	}
+    }
 
     public void Initialize(int start_perc=100) {
         remaining_percentage = start_perc;

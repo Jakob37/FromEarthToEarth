@@ -15,6 +15,9 @@ namespace DigitalRuby.RainMaker {
         private Bounds visibleBounds;
         private float yOffset;
         private float visibleWorldWidth;
+
+        public float fixed_y_offset;
+
         private float initialEmissionRain;
         private float initialStartSpeedRain;
         private float initialStartSizeRain;
@@ -73,7 +76,8 @@ namespace DigitalRuby.RainMaker {
             }
 
             if (translate_rain_pos) {
-                p.transform.position = new Vector3(transform.position.x, visibleBounds.max.y + yOffset, p.transform.position.z);
+                // p.transform.position = new Vector3(transform.position.x, transform.position.y, p.transform.position.z);
+                p.transform.position = new Vector3(transform.position.x, fixed_y_offset, p.transform.position.z);
             }
             else {
                 p.transform.position = new Vector3(transform.position.x, visibleBounds.max.y + yOffset, p.transform.position.z);
@@ -176,6 +180,8 @@ namespace DigitalRuby.RainMaker {
         protected override void Start() {
             base.Start();
 
+            print(gameObject.transform.position);
+
             AdjustForLevelSize();
 
             var rain_main = FindParticleMainInChildren("rain");
@@ -218,7 +224,7 @@ namespace DigitalRuby.RainMaker {
             visibleBounds.min = Camera.main.ViewportToWorldPoint(Vector3.zero);
             visibleBounds.max = Camera.main.ViewportToWorldPoint(Vector3.one);
             visibleWorldWidth = visibleBounds.size.x;
-            yOffset = (visibleBounds.max.y - visibleBounds.min.y) * RainHeightMultiplier;
+            // yOffset = (visibleBounds.max.y - visibleBounds.min.y) * RainHeightMultiplier;
             
             TransformParticleSystem(RainFallParticleSystem, initialStartSpeedRain, initialStartSizeRain, translate_rain_pos:move_rain_with_camera);
             TransformParticleSystem(RainMistParticleSystem, initialStartSpeedMist, initialStartSizeMist);
