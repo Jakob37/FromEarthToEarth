@@ -10,6 +10,9 @@ public class PlatformController : MonoBehaviour {
     public float max_jump_height;
     public float min_jump_height;
 
+    public float max_block_jump_height;
+    public float min_block_jump_height;
+
     private Player player;
     private Rigidbody2D rigi;
     private Animator player_anim;
@@ -58,7 +61,13 @@ public class PlatformController : MonoBehaviour {
     public void UpdateJump(bool jump_key_down, bool jump_key_press) {
 
         if (jump_key_down && player.IsGrounded) {
-            current_jump = new JumpInstance(player, min_jump_height, max_jump_height, debug_jump:is_debugging);
+
+            if (!player.IsCarryingBlock) {
+                current_jump = new JumpInstance(player, min_jump_height, max_jump_height, debug_jump: is_debugging);
+            }
+            else {
+                current_jump = new JumpInstance(player, min_block_jump_height, max_block_jump_height, debug_jump: is_debugging);
+            }
         }
 
         if (current_jump != null) {
