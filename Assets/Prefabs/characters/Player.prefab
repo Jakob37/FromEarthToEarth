@@ -103,7 +103,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000011249417320}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -5.04, y: -1.47, z: 0}
+  m_LocalPosition: {x: -4.72, y: -0.89, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 0}
   m_Children:
   - {fileID: 4000012457389474}
@@ -133,7 +133,7 @@ Transform:
   m_GameObject: {fileID: 1873205835220148}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0.237, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.4749999, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4000013175408356}
   m_RootOrder: 2
@@ -279,6 +279,8 @@ MonoBehaviour:
   is_debugging: 0
   max_jump_height: 0.85
   min_jump_height: 0.5
+  max_block_jump_height: 0
+  min_block_jump_height: 0
   high_jump_delay: 0.2
 --- !u!114 &114000011573914428
 MonoBehaviour:
@@ -337,7 +339,7 @@ MonoBehaviour:
   throw_force_x: 100
   throw_force_y: 150
   put_down_dist: 0.3
-  default_block_life: 100
+  default_block_life: 50
   block_prefab: {fileID: 1000011161960530, guid: b5d9b82df12bc1f4199436feef7d4264,
     type: 2}
 --- !u!212 &212000010194316292
