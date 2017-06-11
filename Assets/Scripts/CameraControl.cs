@@ -39,9 +39,6 @@ public class CameraControl : MonoBehaviour {
         var top_pos = top_edge.position.y;
         var bottom_pos = bottom_edge.position.y;
 
-        print(top_pos);
-        print(bottom_pos);
-
         var newX = Mathf.Clamp(transform.position.x, left_pos + screen_width / 2, right_pos - screen_width / 2);
         var newY = Mathf.Clamp(transform.position.y, bottom_pos + screen_height / 2, top_pos - screen_height / 2);
         transform.position = new Vector3(newX, newY, transform.position.z);
