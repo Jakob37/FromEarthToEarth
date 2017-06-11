@@ -103,7 +103,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000011249417320}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -4.72, y: -0.89, z: 0}
+  m_LocalPosition: {x: -1.55, y: -0.89, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 0}
   m_Children:
   - {fileID: 4000012457389474}
@@ -305,7 +305,7 @@ MonoBehaviour:
   ground_radius: 0.2
   what_is_ground:
     serializedVersion: 2
-    m_Bits: 4294965704
+    m_Bits: 4294966216
   what_is_block_creation_ground:
     serializedVersion: 2
     m_Bits: 512
