@@ -38,6 +38,8 @@ namespace Assets.Scripts.PlayerScripts {
 
         public JumpInstance(Player player, float min_height, float max_height, bool debug_jump=false) {
 
+            if (debug_jump) Debug.Log("New jump, min: " + min_height + " max: " + max_height);
+
             this.player = player;
             this.rigi = player.GetComponent<Rigidbody2D>();
 
@@ -49,7 +51,8 @@ namespace Assets.Scripts.PlayerScripts {
             this.debug_jump = debug_jump;
             received_impulses = 1;
 
-            rigi.velocity = new Vector2(rigi.velocity.x, player.jump_force);   
+            rigi.velocity = new Vector2(rigi.velocity.x, player.jump_force);
+
         }
 
         public void UpdateJump(bool jump_key_down) {
@@ -63,10 +66,10 @@ namespace Assets.Scripts.PlayerScripts {
                 is_done = true;
             }
 
-            if (IsPastMinHeight() && player.IsGrounded) {
-                if (debug_jump) Debug.Log("Grounded");
-                is_done = true;
-            }
+            // if (IsPastMinHeight() && player.IsGrounded) {
+            //     if (debug_jump) Debug.Log("Grounded");
+            //     is_done = true;
+            // }
 
             if (IsPastMaxHeight()) {
 
@@ -84,7 +87,7 @@ namespace Assets.Scripts.PlayerScripts {
             }
 
             if (!IsPastMinHeight() || (jump_key_down && !IsPastMaxHeight())) {
-                if (debug_jump) Debug.Log("Extend jump");
+                //if (debug_jump) Debug.Log("Extend jump");
                 rigi.velocity = new Vector2(rigi.velocity.x, player.jump_force);
                 received_impulses += 1;
             }
