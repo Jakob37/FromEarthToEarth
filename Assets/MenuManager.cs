@@ -1,32 +1,57 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+
+public enum MenuState {
+    main,
+    level_pick,
+    credits
+}
 
 public class MenuManager : MonoBehaviour {
 
     public GameObject main_canvas;
     public GameObject level_pick_canvas;
+    public GameObject credits_canvas;
 
     void Start() {
 
         main_canvas.SetActive(true);
         level_pick_canvas.SetActive(false);
+        credits_canvas.SetActive(false);
     }
 
-    public void SwitchMenuState(bool level_pick_active) {
-        if (level_pick_active) {
-            level_pick_canvas.SetActive(true);
-            main_canvas.SetActive(false);
-        }
-        else {
-            level_pick_canvas.SetActive(false);
-            main_canvas.SetActive(true);
+    public void SwitchMenuState(string menu_state) {
+
+        switch (menu_state) {
+            case "main":
+                main_canvas.SetActive(true);
+                level_pick_canvas.SetActive(false);
+                credits_canvas.SetActive(false);
+                break;
+            case "level_pick":
+                main_canvas.SetActive(false);
+                level_pick_canvas.SetActive(true);
+                credits_canvas.SetActive(false);
+                break;
+            case "credits":
+                main_canvas.SetActive(false);
+                level_pick_canvas.SetActive(false);
+                credits_canvas.SetActive(true);
+                break;
+            default:
+                throw new ArgumentException("Unknown MenuState: " + menu_state);
         }
     }
 
     public void SwitchScene(int level_index) {
         SceneManager.LoadScene(level_index);
+    }
+
+    public void ExitGame() {
+        Application.Quit();
     }
 
 }

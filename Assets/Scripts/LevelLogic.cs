@@ -71,6 +71,10 @@ public class LevelLogic : MonoBehaviour {
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
 
+        if (Input.GetKeyDown(KeyCode.Escape)) {
+            SceneManager.LoadScene(0);
+        }
+
         if (Input.GetKeyDown(KeyCode.N)) {
             WinCondition();
         }
