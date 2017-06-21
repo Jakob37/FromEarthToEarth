@@ -30,6 +30,7 @@ public class BlockController : MonoBehaviour {
 
     private bool is_making_block;
     private InfoText listener;
+    private SoundEffectManager sound_manager;
 
     public bool IsLiftingBlock() {
         return carried_block != null && !carried_block.IsFadeInDone();
@@ -51,6 +52,7 @@ public class BlockController : MonoBehaviour {
         player = GameObject.FindObjectOfType<Player>();
         current_pickup_delay = 0;
         current_throw_delay = 0;
+        sound_manager = FindObjectOfType<SoundEffectManager>();
 	}
 
     public void AssignListener(InfoText info_text) {
@@ -77,9 +79,11 @@ public class BlockController : MonoBehaviour {
 
         if (control_down) {
             if (possible_pickup != null && carried_block == null && current_pickup_delay <= 0) {
+                sound_manager.PlaySound(SoundEffect.basic_click);
                 LiftBlock();
             }
             else if (carried_block == null && current_pickup_delay <= 0 && player.IsBlockCreationGrounded()) {
+                sound_manager.PlaySound(SoundEffect.basic_click);
                 PickUpBlock();
             }
         }
@@ -87,6 +91,7 @@ public class BlockController : MonoBehaviour {
         UpdatePotentialPickup();
         if (control_pressed) {
             if (carried_block != null && current_throw_delay <= 0 && carried_block.IsFadeInDone()) {
+                sound_manager.PlaySound(SoundEffect.basic_click);
                 ThrowBlock(key_down_held);
                 DispatchEvent(Assets.LevelLogic.LevelEventType.ThrowingBlock);
             }

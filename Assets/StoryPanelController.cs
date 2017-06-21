@@ -24,6 +24,10 @@ public enum StoryBoardName {
     intermission34_2,
     intermission45_1,
     intermission45_2,
+    griever1_1,
+    griever1_2,
+    griever1_3,
+    griever1_4,
     dummy
 }
 

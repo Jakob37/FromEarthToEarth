@@ -26,6 +26,8 @@ public class PlatformController : MonoBehaviour {
     private InfoText listener;
     private JumpInstance current_jump;
 
+    private SoundEffectManager sound_manager;
+
     public void AssignListener(InfoText info_text) {
         this.listener = info_text;
     }
@@ -47,6 +49,7 @@ public class PlatformController : MonoBehaviour {
 
         high_jump_press_duration = 0;
         time_since_jump = 0;
+        sound_manager = FindObjectOfType<SoundEffectManager>();
     }
 
     public void EdgeCheck() {
@@ -61,6 +64,8 @@ public class PlatformController : MonoBehaviour {
     public void UpdateJump(bool jump_key_down, bool jump_key_press) {
 
         if (jump_key_down && player.IsGrounded) {
+
+            sound_manager.PlaySound(SoundEffect.basic_click);
 
             if (!player.IsCarryingBlock) {
                 current_jump = new JumpInstance(player, min_jump_height, max_jump_height, debug_jump: is_debugging);
