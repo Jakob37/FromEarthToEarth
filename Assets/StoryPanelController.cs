@@ -24,10 +24,25 @@ public enum StoryBoardName {
     intermission34_2,
     intermission45_1,
     intermission45_2,
+    
+    level2_s1_1,
+    level2_s1_2,
+    level2_s1_3,
+    level2_s2_1,
+    level2_s2_2,
+    level2_s2_3,
     griever1_1,
     griever1_2,
     griever1_3,
     griever1_4,
+
+    level3_s1_1,
+    level3_s1_2,
+    level3_s1_3,
+    level3_s2_1,
+    level3_s2_2,
+    level3_s3_1,
+    level3_s3_2,
     dummy
 }
 
