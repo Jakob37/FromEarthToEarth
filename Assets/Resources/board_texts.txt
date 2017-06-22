@@ -35,3 +35,6 @@ level3_s3_1|...
 level3_s3_2|Do you feel the breeze? On days like this, I truly feel alive.
 level4_s1_1|Great job making it this far! I want to warn you though, this final level is quite a bit more tricky than previous.
 level4_s1_2|No shame in giving in here. If you make it through though, make sure to let Jakob know. He will be impressed!
+level_levers_s1_1|Ever seen one of these before? Press the button, and its poles will move.
+level_levers_s1_2|Took decennia of effort to build and polish. It is amazing what we when working together over time.
+level_levers_s1_3|What are you waiting for? Try it! You can either stand on it yourself, or place the block there.

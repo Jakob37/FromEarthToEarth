@@ -47,6 +47,9 @@ public enum StoryBoardName {
     level4_s1_1,
     level4_s1_2,
 
+    level_levers_s1_1,
+    level_levers_s1_2,
+    level_levers_s1_3,   
     dummy
 }
 

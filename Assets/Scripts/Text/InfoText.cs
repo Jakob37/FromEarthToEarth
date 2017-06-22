@@ -36,7 +36,7 @@ public class InfoText : MonoBehaviour {
         info_text_panel = GetComponentInChildren<InfoTextPanel>();
 
         int current_level = LevelLogic.GetCurrentLevel();
-        story_data = ParseLevelEvents(current_level);
+        // story_data = ParseLevelEvents(current_level);
         current_text_index = 0;
         occured_events = new List<LevelEventCarrier>();
 

@@ -36,18 +36,6 @@ public class Lever : MonoBehaviour {
         return sprite_renderer.sprite.rect.size.y;
     }
 
-    // public Vector2 GetWorldSize() {
-    //     Vector2 sprite_size = sprite_renderer.sprite.rect.size;
-    //     Vector2 world_sprite_size = sprite_size / sprite_renderer.sprite.pixelsPerUnit;
-    //     return world_sprite_size;
-    // }
-
-    // public static Vector2 CalculateLocalSpriteSize(SpriteRenderer sprite_renderer) {
-    //     Vector2 sprite_size = sprite_renderer.sprite.rect.size;
-    //     Vector2 local_sprite_size = sprite_size / sprite_renderer.sprite.pixelsPerUnit;
-    //     return local_sprite_size;
-    // }
-
     void Awake() {
         pole = GetComponentInChildren<LeverPole>();
     }
