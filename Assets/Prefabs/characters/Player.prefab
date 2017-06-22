@@ -90,7 +90,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000011497138940}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.272, z: 0}
+  m_LocalPosition: {x: 0, y: -0.29, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4000013175408356}
@@ -103,7 +103,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000011249417320}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.55, y: -0.89, z: 0}
+  m_LocalPosition: {x: -4.82, y: -1.88, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 0}
   m_Children:
   - {fileID: 4000012457389474}
@@ -132,7 +132,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1873205835220148}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.237, z: 0}
+  m_LocalPosition: {x: 0, y: 0.321, z: 0}
   m_LocalScale: {x: 0.4749999, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4000013175408356}
@@ -179,7 +179,7 @@ BoxCollider2D:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000011497138940}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 1
@@ -302,7 +302,7 @@ MonoBehaviour:
   ground_check: {fileID: 4000012457389474}
   head_check: {fileID: 4689861822153304}
   hands: {fileID: 4000013776648762}
-  ground_radius: 0.2
+  ground_radius: 0.01
   head_radius: 0.01
   what_is_ground:
     serializedVersion: 2
