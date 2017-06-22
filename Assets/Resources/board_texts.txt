@@ -33,3 +33,5 @@ level3_s2_1|Why should I be the one cleaning up all the mud in here? Just becaus
 level3_s2_2|*Grumble grumble*
 level3_s3_1|...
 level3_s3_2|Do you feel the breeze? On days like this, I truly feel alive.
+level4_s1_1|Great job making it this far! I want to warn you though, this final level is quite a bit more tricky than previous.
+level4_s1_2|No shame in giving in here. If you make it through though, make sure to let Jakob know. He will be impressed!

@@ -43,6 +43,10 @@ public enum StoryBoardName {
     level3_s2_2,
     level3_s3_1,
     level3_s3_2,
+
+    level4_s1_1,
+    level4_s1_2,
+
     dummy
 }
 
