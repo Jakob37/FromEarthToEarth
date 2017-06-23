@@ -47,6 +47,7 @@ public class MenuManager : MonoBehaviour {
     }
 
     public void SwitchScene(int level_index) {
+        print("Loading level index: " + level_index);
         SceneManager.LoadScene(level_index);
     }
 

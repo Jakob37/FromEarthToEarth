@@ -38,3 +38,5 @@ level4_s1_2|No shame in giving in here. If you make it through though, make sure
 level_levers_s1_1|Ever seen one of these before? Press the button, and its poles will move.
 level_levers_s1_2|Took decennia of effort to build and polish. It is amazing what we when working together over time.
 level_levers_s1_3|What are you waiting for? Try it! You can either stand on it yourself, or place the block there.
+level_levers_s2_1|It is so high! I wonder how to get up there.
+level_levers_s2_2|Personally, I am terribly afraid of heights. I better stay down here. Forever.
