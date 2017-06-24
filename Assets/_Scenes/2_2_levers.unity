@@ -1845,6 +1845,11 @@ Prefab:
       propertyPath: inverse_lever
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 61000013388435810, guid: ebb519b886e37094eb77514ace1cf9de,
+        type: 2}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 6200000, guid: 7a20fc15405d2e343b4172c53bbc9896, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ebb519b886e37094eb77514ace1cf9de, type: 2}
   m_IsPrefabParent: 0

@@ -48,6 +48,8 @@ public class Player : MonoBehaviour {
 
     private Switch[] switches;
 
+    private StoryBoard current_story_board;
+
     public bool test_frame_rate = false;
     public int testing_fps = 30;
 
@@ -90,6 +92,10 @@ public class Player : MonoBehaviour {
         if (!block_controller.IsLiftingBlock()) {
             UpdatePlatformController();
         }
+
+        if (current_story_board != null && Input.GetKeyDown(KeyCode.DownArrow)) {
+            current_story_board.IterateStoryBoard();
+        }
     }
 
     private void UpdatePlatformController() {
@@ -129,6 +135,7 @@ public class Player : MonoBehaviour {
 
     void OnTriggerEnter2D(Collider2D coll) {
         if (coll.gameObject.GetComponent<StoryBoard>() != null) {
+            current_story_board = coll.gameObject.GetComponent<StoryBoard>();
             coll.gameObject.GetComponent<StoryBoard>().ActivateStoryBoard();
         }
     }
@@ -136,6 +143,7 @@ public class Player : MonoBehaviour {
     void OnTriggerExit2D(Collider2D coll) {
         if (coll.gameObject.GetComponent<StoryBoard>() != null) {
             coll.gameObject.GetComponent<StoryBoard>().DeactivateStoryBoard();
+            current_story_board = null;
         }
     }
 
