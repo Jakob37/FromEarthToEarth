@@ -62,9 +62,13 @@ public class StoryPanelController : MonoBehaviour {
     private string board_text_file = "board_texts";
     private Dictionary<StoryBoardName, string> story_board_texts;
 
+    private StoryArrow story_arrow;
+
     void Start() {
         ParseStoryText(board_text_file);
         story_board_texts = ParseStoryText(board_text_file);
+
+        story_arrow = story_text_panel_go.GetComponentInChildren<StoryArrow>();
     }
 
     private Dictionary<StoryBoardName, string> ParseStoryText(string resource_name, string splitter="\\|") {
@@ -85,9 +89,18 @@ public class StoryPanelController : MonoBehaviour {
     public void ActivateStoryBoard(StoryBoardName board_name) {
         story_text_panel_go.SetActive(true);
         story_text_panel_go.GetComponentInChildren<Text>().text = story_board_texts[board_name];
+        story_arrow.Reset();
+    }
+
+    public void IterateStoryBoard(StoryBoardName board_name) {
+        story_text_panel_go.GetComponentInChildren<Text>().text = story_board_texts[board_name];
     }
 
     public void DeactivateStoryBoard() {
         story_text_panel_go.SetActive(false);
+    }
+
+    public void SignalFullIteration() {
+        story_arrow.SignalIteratedThrough();
     }
 }

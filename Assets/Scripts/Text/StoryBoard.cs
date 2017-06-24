@@ -12,10 +12,14 @@ public class StoryBoard : MonoBehaviour {
     private int board_index;
     private bool has_been_active;
 
+    private bool is_iterated_through;
+    public bool IsIteratedThrough { get { return false; } }
+
     void Start() {
         story_board_controller = FindObjectOfType<StoryPanelController>();
         board_index = 0;
         has_been_active = false;
+        is_iterated_through = false;
     }
 
     public void ActivateStoryBoard() {
@@ -38,7 +42,11 @@ public class StoryBoard : MonoBehaviour {
         board_index += 1;
         if (board_index > board_names.Length - 1) {
             board_index -= board_names.Length;
+            is_iterated_through = true;
+            story_board_controller.SignalFullIteration();
         }
-        ActivateStoryBoard();
+        // ActivateStoryBoard();
+        StoryBoardName board_name = board_names[board_index];
+        story_board_controller.IterateStoryBoard(board_name);
     }
 }
