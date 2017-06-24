@@ -38,9 +38,9 @@ GameObject:
   - component: {fileID: 212000014247423108}
   - component: {fileID: 50000013592904422}
   - component: {fileID: 114000011351785182}
-  - component: {fileID: 61000012353617864}
   - component: {fileID: 95000010829917776}
   - component: {fileID: 114000013703274366}
+  - component: {fileID: 60640587587151954}
   m_Layer: 8
   m_Name: Block
   m_TagString: Untagged
@@ -68,7 +68,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000011161960530}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.78, y: -1.35, z: 0}
+  m_LocalPosition: {x: -0.57793784, y: -0.63555217, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1.9641186}
   m_Children:
   - {fileID: 4000012640688974}
@@ -95,15 +95,15 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!61 &61000012353617864
-BoxCollider2D:
+--- !u!60 &60640587587151954
+PolygonCollider2D:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000011161960530}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 6200000, guid: 07883102e4bd7cd4cb11e78adb1632a8, type: 2}
+  m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
@@ -117,9 +117,14 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 0.72, y: 0.68}
-  m_EdgeRadius: 0
+  m_Points:
+    m_Paths:
+    - - {x: -0.32, y: 0.32}
+      - {x: -0.32, y: -0.26609892}
+      - {x: -0.22516292, y: -0.3193496}
+      - {x: 0.22201535, y: -0.32}
+      - {x: 0.32074505, y: -0.26412678}
+      - {x: 0.32, y: 0.32}
 --- !u!61 &61000013891684964
 BoxCollider2D:
   m_ObjectHideFlags: 1
