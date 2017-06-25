@@ -188,7 +188,7 @@ MonoBehaviour:
   - {fileID: 21300030, guid: 4b1094b20929eaa4c922b9a48966ad61, type: 3}
   pour_modifier: 10
   default_rain_deduction: 0.5
-  is_water_resistant: 1
+  is_water_resistant: 0
 --- !u!114 &114000013703274366
 MonoBehaviour:
   m_ObjectHideFlags: 1

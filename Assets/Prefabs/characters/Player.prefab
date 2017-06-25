@@ -341,8 +341,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0377715eed06c1e4d86b5e4856c91063, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  throw_force_x: 100
-  throw_force_y: 150
+  throw_speed_x: 2
+  throw_speed_y: 3.5
   put_down_dist: 0.3
   default_block_life: 50
   block_prefab: {fileID: 1000011161960530, guid: b5d9b82df12bc1f4199436feef7d4264,

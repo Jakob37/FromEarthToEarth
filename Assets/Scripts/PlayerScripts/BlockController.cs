@@ -3,8 +3,8 @@ using System.Collections;
 
 public class BlockController : MonoBehaviour {
 
-    public float throw_force_x = 100;
-    public float throw_force_y = 150;
+    public float throw_speed_x = 1f;
+    public float throw_speed_y = 1.5f;
     public float put_down_dist = 0.1f;
 
     private Player player;
@@ -77,8 +77,6 @@ public class BlockController : MonoBehaviour {
 
         Block possible_pickup = GetPotentialPickup();
 
-        print(possible_pickup);
-
         if (button_down) {
             if (possible_pickup != null && carried_block == null && current_pickup_delay <= 0) {
                 sound_manager.PlaySound(SoundEffect.basic_click);
@@ -140,7 +138,7 @@ public class BlockController : MonoBehaviour {
         }
 
         if (!key_down_held) {
-            carried_block.PutDown(new Vector2(throw_dir * throw_force_x, throw_force_y));
+            carried_block.PutDown(new Vector2(throw_dir * throw_speed_x, throw_speed_y), player.Rigi.velocity);
         }
         else {
             carried_block.PutDownGently();

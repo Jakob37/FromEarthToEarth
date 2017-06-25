@@ -54,6 +54,9 @@ public class Player : MonoBehaviour {
     public bool test_frame_rate = false;
     public int testing_fps = 30;
 
+    private Rigidbody2D rigi;
+    public Rigidbody2D Rigi { get {return rigi; }}
+
     public bool IsBlockCreationGrounded() {
         return platform_controller.CheckBlockCreationGrounded();
     }
@@ -77,6 +80,8 @@ public class Player : MonoBehaviour {
         platform_controller = GetComponent<PlatformController>();
         block_controller = GetComponent<BlockController>();
         switches = FindObjectsOfType<Switch>();
+
+        rigi = GetComponent<Rigidbody2D>();
         raindrop_hit_count = 0;
     }
 

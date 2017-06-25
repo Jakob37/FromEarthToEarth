@@ -68,9 +68,14 @@ public class Block : MonoBehaviour {
         DisableBlock();
     }
 
-    public void PutDown(Vector2 throwForce) {
+    public void PutDown(Vector2 throwForce, Vector2 player_movement) {
         EnableBlock();
-        rigi.AddForce(throwForce);
+        // rigi.AddForce(throwForce);
+
+        float x_vel = throwForce.x + player_movement.x * 0.5f;
+        float y_vel = throwForce.y + player_movement.y * 0.25f;
+
+        rigi.velocity = new Vector2(x_vel, y_vel);
     }
 	
     public void PutDownGently() {
