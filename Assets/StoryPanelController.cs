@@ -64,11 +64,13 @@ public class StoryPanelController : MonoBehaviour {
 
     private StoryArrow story_arrow;
 
+    void Awake() {
+        story_arrow = story_text_panel_go.GetComponentInChildren<StoryArrow>();
+    }
+
     void Start() {
         ParseStoryText(board_text_file);
         story_board_texts = ParseStoryText(board_text_file);
-
-        story_arrow = story_text_panel_go.GetComponentInChildren<StoryArrow>();
     }
 
     private Dictionary<StoryBoardName, string> ParseStoryText(string resource_name, string splitter="\\|") {
