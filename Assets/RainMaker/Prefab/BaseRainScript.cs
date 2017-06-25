@@ -200,6 +200,7 @@ namespace DigitalRuby.RainMaker
 
             // intensity_modifier = 1;
             intensity_modifier_active = false;
+            original_rain_intensity = RainIntensity;
 
 #if DEBUG
 

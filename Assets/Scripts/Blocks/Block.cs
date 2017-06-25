@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using DigitalRuby.RainMaker;
 
 public class Block : MonoBehaviour {
 
@@ -17,10 +18,15 @@ public class Block : MonoBehaviour {
     private bool solidified;
     private bool is_solidifying;
 
-    public float rain_deduction = 0.5f;
+    public float pour_modifier = 10f;
+
+    public float default_rain_deduction = 0.5f;
+    private float rain_deduction;
     public bool is_water_resistant = false;
 
     private Switch[] switches;
+
+    private BaseRainScript base_rain_script;
 
     public bool IsFadeInDone() {
         return this.sprite_renderer.color.a == 1f;
@@ -47,10 +53,15 @@ public class Block : MonoBehaviour {
         switches = FindObjectsOfType<Switch>();
 
         remaining_percentage = 100;
+
+        base_rain_script = FindObjectOfType<BaseRainScript>();
     }
 
     public void Initialize(int start_perc=100) {
-        remaining_percentage = start_perc;
+
+        // remaining_percentage = start_perc;
+        float perc_frac = 100 / start_perc;
+        rain_deduction = default_rain_deduction / perc_frac;
     }
 
     public void TakenUp(BlockController block_controller) {
@@ -87,7 +98,15 @@ public class Block : MonoBehaviour {
     void OnParticleCollision(GameObject other) {
 
         if (!is_water_resistant && other.name == "RainFallParticleSystem") {
-            remaining_percentage -= rain_deduction;
+
+            bool is_pour_active = base_rain_script.intensity_modifier_active;
+
+            float modifier = 1f;
+            if (is_pour_active) {
+                modifier = pour_modifier;
+            }
+
+            remaining_percentage -= rain_deduction * modifier;
         }
     }
 }

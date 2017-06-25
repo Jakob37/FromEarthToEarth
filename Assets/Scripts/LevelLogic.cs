@@ -3,11 +3,11 @@ using System.Collections;
 using UnityEngine.SceneManagement;
 using Assets.LevelLogic;
 using System;
+using DigitalRuby.RainMaker;
 
 public class LevelLogic : MonoBehaviour {
 
     // public int current_level;
-
     private InfoText listener;
 
     private float elapsed_time;
@@ -75,12 +75,8 @@ public class LevelLogic : MonoBehaviour {
             SceneManager.LoadScene(0);
         }
 
-        if (Input.GetKeyDown(KeyCode.N)) {
+        if (Input.GetKeyDown(KeyCode.W)) {
             WinCondition();
-        }
-
-        if (Input.GetKeyDown(KeyCode.P)) {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
         }
 
         if (Input.GetKeyDown(KeyCode.M)) {
