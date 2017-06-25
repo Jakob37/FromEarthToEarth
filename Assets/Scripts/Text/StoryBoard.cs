@@ -11,11 +11,17 @@ public class StoryBoard : MonoBehaviour {
     private StoryPanelController story_board_controller;
     private int board_index;
 
+    private SoundEffectManager sound_manager;
+
     private bool is_iterated_through;
     public bool IsIteratedThrough { get { return false; } }
 
-    void Start() {
+    void Awake() {
         story_board_controller = FindObjectOfType<StoryPanelController>();
+        sound_manager = FindObjectOfType<SoundEffectManager>();
+    }
+
+    void Start() {
         board_index = 0;
         is_iterated_through = false;
     }
@@ -33,6 +39,8 @@ public class StoryBoard : MonoBehaviour {
     }
 
     public void IterateStoryBoard() {
+
+        sound_manager.PlaySound(SoundEffect.basic_click);
 
         board_index += 1;
         CheckIteratedThrough();
