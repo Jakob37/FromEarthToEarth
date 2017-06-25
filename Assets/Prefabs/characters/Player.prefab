@@ -28,6 +28,7 @@ GameObject:
   - component: {fileID: 58000010863446138}
   - component: {fileID: 114000013966443680}
   - component: {fileID: 114000012067455924}
+  - component: {fileID: 114977601596157346}
   m_Layer: 10
   m_Name: Player
   m_TagString: Untagged
@@ -103,7 +104,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000011249417320}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.55, y: -0.89, z: 0}
+  m_LocalPosition: {x: -4.907, y: -1.966, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 0}
   m_Children:
   - {fileID: 4000012457389474}
@@ -313,6 +314,9 @@ MonoBehaviour:
   what_is_switch:
     serializedVersion: 2
     m_Bits: 2048
+  what_is_block:
+    serializedVersion: 2
+    m_Bits: 8192
   test_frame_rate: 0
   testing_fps: 10
 --- !u!114 &114000012067455924
@@ -343,6 +347,17 @@ MonoBehaviour:
   default_block_life: 50
   block_prefab: {fileID: 1000011161960530, guid: b5d9b82df12bc1f4199436feef7d4264,
     type: 2}
+--- !u!114 &114977601596157346
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000011249417320}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2f6207212d12c04798dd22748ad7649, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!212 &212000010194316292
 SpriteRenderer:
   m_ObjectHideFlags: 1

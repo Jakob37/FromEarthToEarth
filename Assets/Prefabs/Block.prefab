@@ -20,7 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4000012640688974}
   - component: {fileID: 61000013891684964}
-  m_Layer: 8
+  m_Layer: 13
   m_Name: GroundCheck
   m_TagString: Untagged
   m_Icon: {fileID: 3936346786652291628, guid: 0000000000000000d000000000000000, type: 0}
@@ -41,7 +41,7 @@ GameObject:
   - component: {fileID: 95000010829917776}
   - component: {fileID: 114000013703274366}
   - component: {fileID: 60640587587151954}
-  m_Layer: 8
+  m_Layer: 13
   m_Name: Block
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -68,7 +68,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000011161960530}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.57793784, y: -0.63555217, z: 0}
+  m_LocalPosition: {x: 2.79, y: -1.55, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1.9641186}
   m_Children:
   - {fileID: 4000012640688974}
@@ -186,8 +186,9 @@ MonoBehaviour:
   - {fileID: 21300034, guid: 4b1094b20929eaa4c922b9a48966ad61, type: 3}
   - {fileID: 21300032, guid: 4b1094b20929eaa4c922b9a48966ad61, type: 3}
   - {fileID: 21300030, guid: 4b1094b20929eaa4c922b9a48966ad61, type: 3}
-  rain_deduction: 0.2
-  is_water_resistant: 0
+  pour_modifier: 10
+  default_rain_deduction: 0.5
+  is_water_resistant: 1
 --- !u!114 &114000013703274366
 MonoBehaviour:
   m_ObjectHideFlags: 1

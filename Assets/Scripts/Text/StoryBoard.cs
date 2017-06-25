@@ -33,8 +33,8 @@ public class StoryBoard : MonoBehaviour {
     }
 
     public void IterateStoryBoard() {
-        board_index += 1;
 
+        board_index += 1;
         CheckIteratedThrough();
 
         if (board_index > board_names.Length - 1) {

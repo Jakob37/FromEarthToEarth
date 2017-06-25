@@ -11,8 +11,6 @@ public class BlockController : MonoBehaviour {
     private Block carried_block;
     public Block CarriedBlock { get { return carried_block; } }
 
-    private Block possible_pickup;
-
     private bool use_delays = true;
 
     private float pickup_dist = 0.1f;
@@ -65,7 +63,7 @@ public class BlockController : MonoBehaviour {
         }
     }
 
-    public void UpdateController(bool control_pressed, bool control_down, bool key_down_held) {
+    public void UpdateController(bool control_pressed, bool button_down, bool key_down_held) {
 
         is_making_block = false;
 
@@ -77,18 +75,21 @@ public class BlockController : MonoBehaviour {
             current_throw_delay -= Time.deltaTime;
         }
 
-        if (control_down) {
+        Block possible_pickup = GetPotentialPickup();
+
+        print(possible_pickup);
+
+        if (button_down) {
             if (possible_pickup != null && carried_block == null && current_pickup_delay <= 0) {
                 sound_manager.PlaySound(SoundEffect.basic_click);
-                LiftBlock();
+                LiftBlock(possible_pickup);
             }
             else if (carried_block == null && current_pickup_delay <= 0 && player.IsBlockCreationGrounded()) {
                 sound_manager.PlaySound(SoundEffect.basic_click);
-                PickUpBlock();
+                MakeBlockFromGround();
             }
         }
 
-        UpdatePotentialPickup();
         if (control_pressed) {
             if (carried_block != null && current_throw_delay <= 0 && carried_block.IsFadeInDone()) {
                 sound_manager.PlaySound(SoundEffect.basic_click);
@@ -102,7 +103,8 @@ public class BlockController : MonoBehaviour {
         }
     }
 
-    private void LiftBlock() {
+    private void LiftBlock(Block possible_pickup) {
+
         carried_block = possible_pickup;
         carried_block.TakenUp(this);
         is_making_block = true;
@@ -114,16 +116,20 @@ public class BlockController : MonoBehaviour {
         }
     }
 
-    private void UpdatePotentialPickup() {
+    private Block GetPotentialPickup() {
 
-        var current_target = Physics2D.OverlapCircle(player.hands.position, pickup_dist, player.what_is_ground);
+        Block potential_pickup;
+
+        var current_target = Physics2D.OverlapCircle(player.hands.position, pickup_dist, player.what_is_block);
 
         if (current_target != null && current_target.gameObject.GetComponent<Block>() != null) {
-            possible_pickup = current_target.gameObject.GetComponent<Block>();
+            potential_pickup = current_target.gameObject.GetComponent<Block>();
         }
         else {
-            possible_pickup = null;
+            potential_pickup = null;
         }
+
+        return potential_pickup;
     }
 
     private void ThrowBlock(bool key_down_held) {
@@ -152,7 +158,7 @@ public class BlockController : MonoBehaviour {
         carried_block.transform.position = new Vector3(transform.position.x, transform.position.y + lift_distance, 0);
     }
 
-    private void PickUpBlock() {
+    private void MakeBlockFromGround() {
 
         DispatchEvent(Assets.LevelLogic.LevelEventType.MakingBlock);
         carried_block = GetBlock();

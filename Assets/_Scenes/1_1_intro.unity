@@ -998,11 +998,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 114000011351785182, guid: b5d9b82df12bc1f4199436feef7d4264,
-        type: 2}
-      propertyPath: is_water_resistant
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b5d9b82df12bc1f4199436feef7d4264, type: 2}
   m_IsPrefabParent: 0
@@ -1580,22 +1575,6 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fff7d0b503d7b7b4893c07ee12ecc7bd, type: 2}
   m_IsPrefabParent: 0
---- !u!1 &1257455625 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1000011249417320, guid: bf083a09d45c23e438a9a4714a728387,
-    type: 2}
-  m_PrefabInternal: {fileID: 884013227}
---- !u!114 &1257455626
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1257455625}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f2f6207212d12c04798dd22748ad7649, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &1275970429
 Prefab:
   m_ObjectHideFlags: 0

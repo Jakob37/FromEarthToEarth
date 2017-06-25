@@ -13,7 +13,7 @@ namespace DigitalRuby.RainMaker {
 
         private float cameraMultiplier = 1.0f;
         private Bounds visibleBounds;
-        private float yOffset;
+        public float yOffset;
         private float visibleWorldWidth;
 
         public float fixed_y_offset;

@@ -38,6 +38,7 @@ public class Player : MonoBehaviour {
     public LayerMask what_is_ground;
     public LayerMask what_is_block_creation_ground;
     public LayerMask what_is_switch;
+    public LayerMask what_is_block;
 
     private PlatformController platform_controller;
     private BlockController block_controller;
