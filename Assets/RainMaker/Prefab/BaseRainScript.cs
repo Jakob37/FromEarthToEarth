@@ -20,9 +20,16 @@ namespace DigitalRuby.RainMaker
         [Tooltip("Heavy rain looping clip")]
         public AudioClip RainSoundHeavy;
 
-        [Tooltip("Intensity of rain (0-1)")]
-        [Range(0.0f, 1.0f)]
+        [Tooltip("Intensity of rain (0-10)")]
+        // [Range(0.0f, 2.0f)]
         public float RainIntensity;
+
+        private float original_rain_intensity;
+
+        public bool intensity_modifier_active;
+        // private bool last_intensity_modifier_active;
+        // protected float intensity_modifier;
+        public float intensity_modifier_level;
 
         [Tooltip("Rain particle system")]
         public ParticleSystem RainFallParticleSystem;
@@ -102,7 +109,11 @@ namespace DigitalRuby.RainMaker
         }
 
         private void CheckForRainChange() {
+
             if (lastRainIntensityValue != RainIntensity) {
+
+                print("Change triggered");
+
                 lastRainIntensityValue = RainIntensity;
                 if (RainIntensity <= 0.01f) {
                     if (audioSourceRainCurrent != null) {
@@ -187,6 +198,9 @@ namespace DigitalRuby.RainMaker
             ParticleSystem mist_ps = mist_object.GetComponent<ParticleSystem>();
             mist_main = mist_ps.main;
 
+            // intensity_modifier = 1;
+            intensity_modifier_active = false;
+
 #if DEBUG
 
             if (RainFallParticleSystem == null) {
@@ -256,6 +270,10 @@ namespace DigitalRuby.RainMaker
             audioSourceRainLight.Update();
             audioSourceRainMedium.Update();
             audioSourceRainHeavy.Update();
+
+            UpdateIntensityModifier();
+
+            // last_intensity_modifier_active = intensity_modifier_active;
         }
 
         protected virtual float RainFallEmissionRate() {
@@ -268,6 +286,16 @@ namespace DigitalRuby.RainMaker
 
         protected virtual bool UseRainMistSoftParticles {
             get { return true; }
+        }
+
+        private void UpdateIntensityModifier() {
+            if (intensity_modifier_active) {
+                RainIntensity = original_rain_intensity * intensity_modifier_level;
+            }
+            else {
+                RainIntensity = original_rain_intensity;
+            }
+            
         }
     }
 

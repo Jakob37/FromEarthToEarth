@@ -25,7 +25,8 @@ namespace DigitalRuby.RainMaker {
         private float initialStartSizeMist;
         private float initialStartSpeedExplosion;
         private float initialStartSizeExplosion;
-        private readonly ParticleSystem.Particle[] particles = new ParticleSystem.Particle[4096];
+        private readonly ParticleSystem.Particle[] particles = new ParticleSystem.Particle[50000];
+        // private readonly ParticleSystem.Particle[] particles = new ParticleSystem.Particle[8192];
 
         private float start_speed;
         private float start_size;
@@ -232,6 +233,10 @@ namespace DigitalRuby.RainMaker {
             
             CheckForCollisionsRainParticles();
             CheckForCollisionsMistParticles();
+        }
+
+        public void ForceRainBurst() {
+            
         }
 
         protected override float RainFallEmissionRate() {
