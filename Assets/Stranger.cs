@@ -4,18 +4,133 @@ using UnityEngine;
 
 public class Stranger : MonoBehaviour {
 
-    private Collider2D player_coll;
-    private Collider2D coll;
-
-    void Start() {
-        player_coll = FindObjectOfType<Player>().gameObject.GetComponent<Collider2D>();
-        coll = GetComponent<Collider2D>();
+    private enum GoalStatus {
+        Walking,
+        AwaitingNewGoal,
+        AwaitingNextWalk
     }
 
-    void OnCollisionEnter2D(Collision2D collision) {
+    private GoalStatus current_goal_status;
 
-        if (collision.gameObject.GetComponent<Player>() != null) {
-            Physics2D.IgnoreCollision(collision.collider, coll);
+    private float left_bound;
+    private float right_bound;
+
+    private Rigidbody2D rigi;
+
+    private float min_paus_time = 1;
+    private float max_paus_time = 5;
+    private float remain_paus_time;
+
+    private Vector3 velocity;
+    private SpriteRenderer sprite_renderer;
+    private bool facing_right;
+
+    private float goal_x;
+    private bool is_forward_right;
+
+    private bool IsWalking { get { return !IsGoalReached(); } }
+    private float XPos { get { return transform.position.x; } }
+
+    void Awake() {
+        rigi = GetComponent<Rigidbody2D>();
+        sprite_renderer = GetComponent<SpriteRenderer>();
+        left_bound = GetComponentInChildren<LeftBound>().gameObject.transform.position.x;
+        right_bound = GetComponentInChildren<RightBound>().gameObject.transform.position.x;
+    }
+
+    void Start() {
+
+        remain_paus_time = 0;
+        goal_x = GetNewGoalPosition();
+        UpdateFlip();
+        current_goal_status = GoalStatus.Walking;
+    }
+
+    void Update() {
+
+        if (Input.GetKeyDown(KeyCode.S)) {
+            GenerateNewGoalPosition();
         }
+
+        bool goal_reached = IsGoalReached();
+
+        if (current_goal_status == GoalStatus.Walking && goal_reached) {
+            current_goal_status = GoalStatus.AwaitingNewGoal;
+        }
+
+        if (current_goal_status == GoalStatus.Walking) {
+            WalkTowardsGoalPosition();
+        }
+        else if (current_goal_status == GoalStatus.AwaitingNewGoal) {
+            StopMovement();
+            GenerateNewGoalPosition();
+            remain_paus_time = Random.Range(min_paus_time, max_paus_time);
+            current_goal_status = GoalStatus.AwaitingNextWalk;
+        }
+        else if (current_goal_status == GoalStatus.AwaitingNextWalk && remain_paus_time > 0) {
+            remain_paus_time -= Time.deltaTime;
+        }
+        else if (current_goal_status == GoalStatus.AwaitingNextWalk && remain_paus_time <= 0) {
+            current_goal_status = GoalStatus.Walking;
+        }
+
+        transform.position += velocity;
+    }
+
+    private void GenerateNewGoalPosition() {
+        goal_x = GetNewGoalPosition();
+        is_forward_right = (goal_x > XPos);
+        UpdateFlip();
+    }
+
+    private void WalkTowardsGoalPosition() {
+        
+        if (is_forward_right) {
+            velocity = new Vector2(0.01f, 0);
+        }
+        else {
+            velocity = new Vector2(-0.01f, 0);
+        }
+    }
+
+    private void StopMovement() {
+        velocity = new Vector2(0, 0);
+    }
+
+    private bool IsGoalReached() {
+        if (is_forward_right && XPos > goal_x) {
+            return true;
+        }
+        else if (!is_forward_right && XPos < goal_x) {
+            return true;
+        }
+        return false;
+    }
+
+    private float GetNewGoalPosition() {
+
+        float low_x = left_bound;
+        float high_x = right_bound;
+        float new_target_x = Random.Range(low_x, high_x);
+
+        return new_target_x;
+    }
+
+    private void UpdateFlip() {
+
+        if (is_forward_right && !facing_right) {
+            Flip();
+        }
+        else if (!is_forward_right && facing_right) {
+            Flip();
+        }
+    }
+
+    private void Flip() {
+
+        facing_right = !facing_right;
+        Vector3 new_scale = transform.localScale;
+        new_scale *= -1;
+        transform.localScale = new Vector3(new_scale.x, transform.localScale.y);
     }
 }

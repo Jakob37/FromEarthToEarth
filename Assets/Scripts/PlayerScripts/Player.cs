@@ -42,13 +42,11 @@ public class Player : MonoBehaviour {
 
     private PlatformController platform_controller;
     private BlockController block_controller;
-
     private int raindrop_hit_count;
 
     // private InfoText listener;
 
     private Switch[] switches;
-
     private StoryBoard current_story_board;
 
     public bool test_frame_rate = false;
