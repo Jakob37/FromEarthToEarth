@@ -29,7 +29,7 @@ namespace DigitalRuby.RainMaker
         public bool intensity_modifier_active;
         // private bool last_intensity_modifier_active;
         // protected float intensity_modifier;
-        public float intensity_modifier_level;
+        private float intensity_modifier_level = 10f;
 
         [Tooltip("Rain particle system")]
         public ParticleSystem RainFallParticleSystem;

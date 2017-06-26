@@ -36,6 +36,7 @@ public class Player : MonoBehaviour {
     public float ground_radius = 0.01f;
     public float head_radius = 0.01f;
     public LayerMask what_is_ground;
+    public LayerMask what_is_head_ground;
     public LayerMask what_is_block_creation_ground;
     public LayerMask what_is_switch;
     public LayerMask what_is_block;

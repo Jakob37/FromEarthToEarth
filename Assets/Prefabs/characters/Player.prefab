@@ -308,6 +308,9 @@ MonoBehaviour:
   what_is_ground:
     serializedVersion: 2
     m_Bits: 4294966216
+  what_is_head_ground:
+    serializedVersion: 2
+    m_Bits: 4352
   what_is_block_creation_ground:
     serializedVersion: 2
     m_Bits: 512

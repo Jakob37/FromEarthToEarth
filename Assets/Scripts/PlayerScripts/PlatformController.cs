@@ -124,7 +124,7 @@ public class PlatformController : MonoBehaviour {
     }
 
     public bool CheckHeadHit() {
-        return Physics2D.OverlapCircle(player.head_check.position, player.head_radius, player.what_is_ground);
+        return Physics2D.OverlapCircle(player.head_check.position, player.head_radius, player.what_is_head_ground);
     }
 
     public bool CheckBlockCreationGrounded() {
