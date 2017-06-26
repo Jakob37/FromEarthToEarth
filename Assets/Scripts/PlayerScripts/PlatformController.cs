@@ -65,7 +65,7 @@ public class PlatformController : MonoBehaviour {
 
         if (jump_key_down && player.IsGrounded) {
 
-            sound_manager.PlaySound(SoundEffect.basic_click);
+            sound_manager.PlaySound(SoundEffect.jump);
 
             if (!player.IsCarryingBlock) {
                 current_jump = new JumpInstance(player, min_jump_height, max_jump_height, debug_jump: is_debugging);

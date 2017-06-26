@@ -79,18 +79,18 @@ public class BlockController : MonoBehaviour {
 
         if (button_down) {
             if (possible_pickup != null && carried_block == null && current_pickup_delay <= 0) {
-                sound_manager.PlaySound(SoundEffect.basic_click);
+                sound_manager.PlaySound(SoundEffect.pickup_block);
                 LiftBlock(possible_pickup);
             }
             else if (carried_block == null && current_pickup_delay <= 0 && player.IsBlockCreationGrounded()) {
-                sound_manager.PlaySound(SoundEffect.basic_click);
+                sound_manager.PlaySound(SoundEffect.make_block);
                 MakeBlockFromGround();
             }
         }
 
         if (control_pressed) {
             if (carried_block != null && current_throw_delay <= 0 && carried_block.IsFadeInDone()) {
-                sound_manager.PlaySound(SoundEffect.basic_click);
+                sound_manager.PlaySound(SoundEffect.throw_block);
                 ThrowBlock(key_down_held);
                 DispatchEvent(Assets.LevelLogic.LevelEventType.ThrowingBlock);
             }

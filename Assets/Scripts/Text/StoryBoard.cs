@@ -40,7 +40,7 @@ public class StoryBoard : MonoBehaviour {
 
     public void IterateStoryBoard() {
 
-        sound_manager.PlaySound(SoundEffect.basic_click);
+        sound_manager.PlaySound(SoundEffect.iterate_stranger);
 
         board_index += 1;
         CheckIteratedThrough();
