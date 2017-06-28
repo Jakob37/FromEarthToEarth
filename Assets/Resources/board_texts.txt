@@ -40,3 +40,4 @@ level_levers_s1_2|Took decennia of effort to build and polish. It is amazing wha
 level_levers_s1_3|What are you waiting for? Try it! You can either stand on it yourself, or place the block there.
 level_levers_s2_1|It is so high! I wonder how to get up there.
 level_levers_s2_2|Personally, I am terribly afraid of heights. I better stay down here. Forever.
+level1_further_controls|Restart level with 'R'. Speed up block dissolving with 'P'.

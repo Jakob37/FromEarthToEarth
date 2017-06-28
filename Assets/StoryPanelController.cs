@@ -53,7 +53,8 @@ public enum StoryBoardName {
     level_levers_s2_1,
     level_levers_s2_2,
     dummy,
-    none
+    none,
+    level1_further_controls
 }
 
 public class StoryPanelController : MonoBehaviour {
