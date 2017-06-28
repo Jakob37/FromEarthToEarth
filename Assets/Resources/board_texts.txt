@@ -18,7 +18,7 @@ intermission45_1|Next question. We are made by the same stuff as the mud over th
 intermission45_2|We seem to have a strange ability to think, dream and worry unlike any mud-block I have seen. What's all that about?
 griever1_1|I lost my brother yesterday, right over there. He wasn't able to resist the rain any longer.
 griever1_2|It is sad, but it is how it is around here. Everyone has to come to terms with this.
-griever1_3|I'm trying to figure out how to tackle this. It feels like a thick clump in my stomache.
+griever1_3|I'm trying to figure out how to tackle this. It feels like a thick ball in my stomache.
 griever1_4|Hey, thanks for hearing me out. Sometimes just talking about it and having someone listening helps a lot.
 level2_s1_1|You see that block over there? It is made out of the same stuff as us. A temporary mud-blob.
 level2_s1_2|I wonder. If we are made from the same stuff. What makes us so different? Are we different?
