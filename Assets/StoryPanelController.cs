@@ -52,7 +52,8 @@ public enum StoryBoardName {
     level_levers_s1_3,
     level_levers_s2_1,
     level_levers_s2_2,
-    dummy
+    dummy,
+    none
 }
 
 public class StoryPanelController : MonoBehaviour {
@@ -64,6 +65,8 @@ public class StoryPanelController : MonoBehaviour {
 
     private StoryArrow story_arrow;
 
+    private StoryBoardName currently_active_story_board_name;
+
     void Awake() {
         story_arrow = story_text_panel_go.GetComponentInChildren<StoryArrow>();
     }
@@ -71,6 +74,7 @@ public class StoryPanelController : MonoBehaviour {
     void Start() {
         ParseStoryText(board_text_file);
         story_board_texts = ParseStoryText(board_text_file);
+        currently_active_story_board_name = StoryBoardName.none;
     }
 
     private Dictionary<StoryBoardName, string> ParseStoryText(string resource_name, string splitter="\\|") {
@@ -92,6 +96,7 @@ public class StoryPanelController : MonoBehaviour {
         story_text_panel_go.SetActive(true);
         story_text_panel_go.GetComponentInChildren<Text>().text = story_board_texts[board_name];
         story_arrow.Reset();
+        currently_active_story_board_name = board_name;
     }
 
     public void IterateStoryBoard(StoryBoardName board_name) {
@@ -100,9 +105,15 @@ public class StoryPanelController : MonoBehaviour {
 
     public void DeactivateStoryBoard() {
         story_text_panel_go.SetActive(false);
+        currently_active_story_board_name = StoryBoardName.none;
     }
 
     public void SignalFullIteration() {
         story_arrow.SignalIteratedThrough();
+    }
+
+    public StoryBoardName CurrentlyActiveStoryBoardname() {
+
+        return currently_active_story_board_name;
     }
 }

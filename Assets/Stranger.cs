@@ -25,6 +25,8 @@ public class Stranger : MonoBehaviour {
     private SpriteRenderer sprite_renderer;
     private bool facing_right;
 
+    private StoryBoard story_board;
+
     private float goal_x;
     private bool is_forward_right;
 
@@ -36,6 +38,7 @@ public class Stranger : MonoBehaviour {
         sprite_renderer = GetComponent<SpriteRenderer>();
         left_bound = GetComponentInChildren<LeftBound>().gameObject.transform.position.x;
         right_bound = GetComponentInChildren<RightBound>().gameObject.transform.position.x;
+        story_board = GetComponent<StoryBoard>();
     }
 
     void Start() {
@@ -58,7 +61,10 @@ public class Stranger : MonoBehaviour {
             current_goal_status = GoalStatus.AwaitingNewGoal;
         }
 
-        if (current_goal_status == GoalStatus.Walking) {
+        if (story_board.CurrentActive) {
+            current_goal_status = GoalStatus.AwaitingNextWalk;
+        }
+        else if (current_goal_status == GoalStatus.Walking) {
             WalkTowardsGoalPosition();
         }
         else if (current_goal_status == GoalStatus.AwaitingNewGoal) {

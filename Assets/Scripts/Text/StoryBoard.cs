@@ -16,6 +16,9 @@ public class StoryBoard : MonoBehaviour {
     private bool is_iterated_through;
     public bool IsIteratedThrough { get { return false; } }
 
+    private bool currently_active;
+    public bool CurrentActive { get { return currently_active; } }
+
     void Awake() {
         story_board_controller = FindObjectOfType<StoryPanelController>();
         sound_manager = FindObjectOfType<SoundEffectManager>();
@@ -24,6 +27,7 @@ public class StoryBoard : MonoBehaviour {
     void Start() {
         board_index = 0;
         is_iterated_through = false;
+        currently_active = false;
     }
 
     public void ActivateStoryBoard() {
@@ -31,11 +35,13 @@ public class StoryBoard : MonoBehaviour {
         StoryBoardName board_name = board_names[board_index];
         story_board_controller.ActivateStoryBoard(board_name);
         CheckIteratedThrough();
+        currently_active = true;
     }
 
     public void DeactivateStoryBoard() {
 
         story_board_controller.DeactivateStoryBoard();
+        currently_active = false;
     }
 
     public void IterateStoryBoard() {
