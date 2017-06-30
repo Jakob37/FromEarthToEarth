@@ -1025,11 +1025,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 114000011573914428, guid: bf083a09d45c23e438a9a4714a728387,
-        type: 2}
-      propertyPath: ground_radius
-      value: 0.08
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: bf083a09d45c23e438a9a4714a728387, type: 2}
   m_IsPrefabParent: 0
@@ -1821,35 +1816,15 @@ Prefab:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
-    - target: {fileID: 224000013810277862, guid: ebb519b886e37094eb77514ace1cf9de,
-        type: 2}
-      propertyPath: m_AnchoredPosition.y
-      value: 3.0349998
-      objectReference: {fileID: 0}
-    - target: {fileID: 224000012648560042, guid: ebb519b886e37094eb77514ace1cf9de,
-        type: 2}
-      propertyPath: m_AnchoredPosition.y
-      value: -3.1400003
-      objectReference: {fileID: 0}
-    - target: {fileID: 1000012676497892, guid: ebb519b886e37094eb77514ace1cf9de, type: 2}
-      propertyPath: m_Name
-      value: Lever_1
-      objectReference: {fileID: 0}
     - target: {fileID: 114000013190047818, guid: ebb519b886e37094eb77514ace1cf9de,
         type: 2}
       propertyPath: my_switch
       value: 
       objectReference: {fileID: 114245476}
-    - target: {fileID: 114000013190047818, guid: ebb519b886e37094eb77514ace1cf9de,
-        type: 2}
-      propertyPath: inverse_lever
-      value: 1
+    - target: {fileID: 1000012676497892, guid: ebb519b886e37094eb77514ace1cf9de, type: 2}
+      propertyPath: m_Name
+      value: Lever_1
       objectReference: {fileID: 0}
-    - target: {fileID: 61000013388435810, guid: ebb519b886e37094eb77514ace1cf9de,
-        type: 2}
-      propertyPath: m_Material
-      value: 
-      objectReference: {fileID: 6200000, guid: 7a20fc15405d2e343b4172c53bbc9896, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ebb519b886e37094eb77514ace1cf9de, type: 2}
   m_IsPrefabParent: 0
@@ -2458,6 +2433,11 @@ Prefab:
       propertyPath: my_switch
       value: 
       objectReference: {fileID: 2144231574}
+    - target: {fileID: 114000013190047818, guid: ebb519b886e37094eb77514ace1cf9de,
+        type: 2}
+      propertyPath: inverse_lever
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ebb519b886e37094eb77514ace1cf9de, type: 2}
   m_IsPrefabParent: 0

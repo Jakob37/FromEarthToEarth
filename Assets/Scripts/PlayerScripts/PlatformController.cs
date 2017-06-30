@@ -104,9 +104,13 @@ public class PlatformController : MonoBehaviour {
         }
 
         float h = Input.GetAxis("Horizontal");
-        if (h * rigi.velocity.x < player.max_speed) {
+        if (h == 0 && player.IsGroundedOnLever) {
+            rigi.velocity = new Vector3(0, rigi.velocity.y);
+        }
+        else if (h * rigi.velocity.x < player.max_speed) {
             rigi.AddForce(Vector2.right * h * player.move_force);
         }
+
         if (Mathf.Abs(rigi.velocity.x) > player.max_speed) {
             rigi.velocity = new Vector2(Mathf.Sign(rigi.velocity.x) * player.max_speed, rigi.velocity.y);
         }
@@ -129,6 +133,10 @@ public class PlatformController : MonoBehaviour {
 
     public bool CheckBlockCreationGrounded() {
         return Physics2D.OverlapCircle(player.ground_check.position, player.ground_radius, player.what_is_block_creation_ground);
+    }
+
+    public bool CheckGroundedOnLever() {
+        return Physics2D.OverlapCircle(player.ground_check.position, player.ground_radius, player.what_is_lever);
     }
 
     public void Flip() {

@@ -22,6 +22,9 @@ public class Player : MonoBehaviour {
     private bool is_grounded = false;
     public bool IsGrounded { get { return is_grounded; } }
 
+    private bool is_grounded_on_lever = false;
+    public bool IsGroundedOnLever { get { return is_grounded_on_lever; } }
+
     private bool is_head_hit = false;
     public bool IsHeadHit { get { return is_head_hit; } }
 
@@ -40,6 +43,7 @@ public class Player : MonoBehaviour {
     public LayerMask what_is_block_creation_ground;
     public LayerMask what_is_switch;
     public LayerMask what_is_block;
+    public LayerMask what_is_lever;
 
     private PlatformController platform_controller;
     private BlockController block_controller;
@@ -115,17 +119,19 @@ public class Player : MonoBehaviour {
         platform_controller.UpdateHorizontalMovement();
         is_grounded = platform_controller.CheckGrounded();
         is_head_hit = platform_controller.CheckHeadHit();
+        is_grounded_on_lever = platform_controller.CheckGroundedOnLever();
 
         foreach (Switch target_switch in switches) {
             bool is_on_switch = target_switch.IsObjectOnSwitch(this.ground_check.gameObject);
             if (is_on_switch) {
                 target_switch.Press();
             }
-            //platform_controller.TriggerSwitch(target_switch);
         }
     }
 
     void OnCollisionEnter2D(Collision2D coll) {
+
+        print(coll.gameObject);
 
         if (coll.gameObject.GetComponent<WinArea>() != null) {
             print("Win condition!");
@@ -135,7 +141,6 @@ public class Player : MonoBehaviour {
         if (IsGrounded) {
             remaining_jumps = air_jumps;
         }
-
     }
 
     void OnTriggerEnter2D(Collider2D coll) {

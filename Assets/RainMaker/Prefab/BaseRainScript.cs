@@ -112,8 +112,6 @@ namespace DigitalRuby.RainMaker
 
             if (lastRainIntensityValue != RainIntensity) {
 
-                print("Change triggered");
-
                 lastRainIntensityValue = RainIntensity;
                 if (RainIntensity <= 0.01f) {
                     if (audioSourceRainCurrent != null) {
