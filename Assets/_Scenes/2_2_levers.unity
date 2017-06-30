@@ -1025,6 +1025,11 @@ Prefab:
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 50000010510354072, guid: bf083a09d45c23e438a9a4714a728387,
+        type: 2}
+      propertyPath: m_CollisionDetection
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: bf083a09d45c23e438a9a4714a728387, type: 2}
   m_IsPrefabParent: 0
@@ -1476,6 +1481,11 @@ Prefab:
     - target: {fileID: 1709010013435220, guid: 0c5e4a2c15b4d37418ab4b047a9c0061, type: 2}
       propertyPath: m_Layer
       value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 60047422830096834, guid: 0c5e4a2c15b4d37418ab4b047a9c0061,
+        type: 2}
+      propertyPath: m_IsTrigger
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0c5e4a2c15b4d37418ab4b047a9c0061, type: 2}
