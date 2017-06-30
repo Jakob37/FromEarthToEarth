@@ -34,6 +34,7 @@ public class Player : MonoBehaviour {
 
     public Transform ground_check;
     public Transform head_check;
+    public Transform box_head_check;
     public Transform hands;
 
     public float ground_radius = 0.01f;

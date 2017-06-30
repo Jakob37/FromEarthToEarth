@@ -33,13 +33,13 @@ public class Block : MonoBehaviour {
     }
 
     private void DisableBlock() {
-        // rigi.isKinematic = true;
-        // coll.enabled = false;
+        rigi.isKinematic = true;
+        coll.enabled = false;
     }
 
     private void EnableBlock() {
-        // rigi.isKinematic = false;
-        // coll.enabled = true;
+        rigi.isKinematic = false;
+        coll.enabled = true;
     }
 
     void Awake() {

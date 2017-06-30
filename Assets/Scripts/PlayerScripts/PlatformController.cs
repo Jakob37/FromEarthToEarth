@@ -135,7 +135,26 @@ public class PlatformController : MonoBehaviour {
         // if (player.IsCarryingBlock) {
         //     offset = block_height;
         // }
-        return Physics2D.OverlapCircle(player.head_check.position, player.head_radius, player.what_is_head_ground);
+
+        if (!player.IsCarryingBlock) {
+            return Physics2D.OverlapCircle(player.head_check.position, player.head_radius, player.what_is_head_ground);
+        }
+        else {
+            // Collider2D[] hits = new Collider2D[0];
+            // Physics2D.OverlapCollider(player.box_head_check.GetComponent<Collider2D>(), player.what_is_head_ground, hits);
+
+            Vector3 corner_offset = new Vector3(0.2f, 0.1f);
+            bool overlapping = Physics2D.OverlapArea(player.box_head_check.position - corner_offset,
+                player.box_head_check.position + corner_offset,
+                player.what_is_head_ground);
+
+            // print(overlapping);
+
+            return overlapping;
+        
+            // return Physics2D.OverlapCircle(player.head_check.position, player.head_radius, player.what_is_head_ground);
+            // return Physics2D.OverlapCircle(player.head_check.position, player.head_radius, player.what_is_head_ground);
+        }
     }
 
     public bool CheckBlockCreationGrounded() {

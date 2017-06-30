@@ -30,6 +30,8 @@ public class BlockController : MonoBehaviour {
     private InfoText listener;
     private SoundEffectManager sound_manager;
 
+    private BoxCollider2D box_coll;
+
     public bool IsLiftingBlock() {
         return carried_block != null && !carried_block.IsFadeInDone();
     }
@@ -48,9 +50,11 @@ public class BlockController : MonoBehaviour {
 
 	void Start() {
         player = GameObject.FindObjectOfType<Player>();
+        box_coll = player.gameObject.GetComponent<BoxCollider2D>();
         current_pickup_delay = 0;
         current_throw_delay = 0;
         sound_manager = FindObjectOfType<SoundEffectManager>();
+        DeactivateBlockCarry();
 	}
 
     public void AssignListener(InfoText info_text) {
@@ -108,6 +112,8 @@ public class BlockController : MonoBehaviour {
         is_making_block = true;
         DispatchEvent(Assets.LevelLogic.LevelEventType.LiftingBlock);
 
+        ActivateBlockCarry();
+
         if (use_delays) {
             current_pickup_delay = pickup_delay;
             current_throw_delay = throw_delay;
@@ -132,6 +138,8 @@ public class BlockController : MonoBehaviour {
 
     private void ThrowBlock(bool key_down_held) {
 
+        DeactivateBlockCarry();
+
         var throw_dir = 1;
         if (!player.facing_right) {
             throw_dir = -1;
@@ -153,6 +161,7 @@ public class BlockController : MonoBehaviour {
     }
 
     private void CarryBlock() {
+        ActivateBlockCarry();
         carried_block.transform.position = new Vector3(transform.position.x, transform.position.y + lift_distance, 0);
     }
 
@@ -174,5 +183,13 @@ public class BlockController : MonoBehaviour {
         Block block_script = block.GetComponent<Block>();
         block_script.Initialize(start_perc: default_block_life);
         return block_script;
+    }
+
+    public void ActivateBlockCarry() {
+        box_coll.enabled = true;
+    }
+
+    private void DeactivateBlockCarry() {
+        box_coll.enabled = false;
     }
 }
