@@ -131,8 +131,6 @@ public class Player : MonoBehaviour {
 
     void OnCollisionEnter2D(Collision2D coll) {
 
-        print(coll.gameObject);
-
         if (coll.gameObject.GetComponent<WinArea>() != null) {
             print("Win condition!");
             level_logic.WinCondition();

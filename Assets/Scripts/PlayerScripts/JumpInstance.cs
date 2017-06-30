@@ -57,6 +57,8 @@ namespace Assets.Scripts.PlayerScripts {
 
         public void UpdateJump(bool jump_key_down) {
 
+            // Debug.Log(GetCurrentJumpHeight());
+
             if (is_done) {
                 return;
             }
@@ -71,6 +73,10 @@ namespace Assets.Scripts.PlayerScripts {
             //     is_done = true;
             // }
 
+            if (IsPastMinHeight()) {
+                Debug.Log("past min height");
+            }
+
             if (IsPastMaxHeight()) {
 
                 if (debug_jump) {
@@ -81,15 +87,19 @@ namespace Assets.Scripts.PlayerScripts {
                 is_done = true;
             }
 
-            if (!jump_key_down) {
-                if (debug_jump) Debug.Log("Jump key up");
-                is_done = true;
-            }
+            // if (!jump_key_down) {
+            //     if (debug_jump) Debug.Log("Jump key up");
+            //     is_done = true;
+            // }
 
             if (!IsPastMinHeight() || (jump_key_down && !IsPastMaxHeight())) {
                 //if (debug_jump) Debug.Log("Extend jump");
                 rigi.velocity = new Vector2(rigi.velocity.x, player.jump_force);
                 received_impulses += 1;
+            }
+            else if (!jump_key_down) {
+                if (debug_jump) Debug.Log("Jump key up");
+                is_done = true;
             }
         }
     }

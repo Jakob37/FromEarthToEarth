@@ -1025,11 +1025,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 50000010510354072, guid: bf083a09d45c23e438a9a4714a728387,
-        type: 2}
-      propertyPath: m_CollisionDetection
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: bf083a09d45c23e438a9a4714a728387, type: 2}
   m_IsPrefabParent: 0
@@ -1316,16 +1311,6 @@ Prefab:
         type: 2}
       propertyPath: is_water_resistant
       value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 61000012353617864, guid: b5d9b82df12bc1f4199436feef7d4264,
-        type: 2}
-      propertyPath: m_Size.x
-      value: 0.65
-      objectReference: {fileID: 0}
-    - target: {fileID: 61000012353617864, guid: b5d9b82df12bc1f4199436feef7d4264,
-        type: 2}
-      propertyPath: m_Size.y
-      value: 0.64
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b5d9b82df12bc1f4199436feef7d4264, type: 2}

@@ -21,6 +21,8 @@ public class PlatformController : MonoBehaviour {
     private float high_jump_press_duration;
     private float time_since_jump;
 
+    public float block_height;
+
     private bool has_been_off_ground_since_jump;
 
     private InfoText listener;
@@ -81,8 +83,8 @@ public class PlatformController : MonoBehaviour {
     }
 
     private void UpdateExtendedJump(bool jump_key_press) {
-        if (jump_key_press && time_since_jump < high_jump_delay) {
 
+        if (jump_key_press && time_since_jump < high_jump_delay) {
             high_jump_press_duration += Time.deltaTime;
         }
         else {
@@ -128,6 +130,11 @@ public class PlatformController : MonoBehaviour {
     }
 
     public bool CheckHeadHit() {
+
+        // float offset = 0f;
+        // if (player.IsCarryingBlock) {
+        //     offset = block_height;
+        // }
         return Physics2D.OverlapCircle(player.head_check.position, player.head_radius, player.what_is_head_ground);
     }
 

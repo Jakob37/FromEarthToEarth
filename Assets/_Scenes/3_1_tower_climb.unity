@@ -1578,6 +1578,16 @@ Prefab:
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114000010649180076, guid: bf083a09d45c23e438a9a4714a728387,
+        type: 2}
+      propertyPath: block_height
+      value: 0.64
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000011573914428, guid: bf083a09d45c23e438a9a4714a728387,
+        type: 2}
+      propertyPath: what_is_head_ground.m_Bits
+      value: 12544
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: bf083a09d45c23e438a9a4714a728387, type: 2}
   m_IsPrefabParent: 0
@@ -2916,6 +2926,22 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 446da28779efd7947aaa89b8b598a432, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &1799640930 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1873205835220148, guid: bf083a09d45c23e438a9a4714a728387,
+    type: 2}
+  m_PrefabInternal: {fileID: 884013227}
+--- !u!114 &1799640933
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1799640930}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00a3293d73224ca4cb314d8f464149dd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1834389757
 GameObject:
   m_ObjectHideFlags: 0

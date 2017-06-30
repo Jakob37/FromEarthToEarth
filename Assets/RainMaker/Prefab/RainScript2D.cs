@@ -181,8 +181,6 @@ namespace DigitalRuby.RainMaker {
         protected override void Start() {
             base.Start();
 
-            print(gameObject.transform.position);
-
             AdjustForLevelSize();
 
             var rain_main = FindParticleMainInChildren("rain");
