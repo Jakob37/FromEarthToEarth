@@ -369,9 +369,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   is_debugging: 0
   max_jump_height: 0.8
-  min_jump_height: 0.5
+  min_jump_height: 0.1
   max_block_jump_height: 0.4
-  min_block_jump_height: 0.25
+  min_block_jump_height: 0.1
   high_jump_delay: 0.2
   block_height: 0.64
 --- !u!114 &114000011573914428

@@ -36,19 +36,14 @@ public class SaveManager : MonoBehaviour {
 
     public static void UpdateProgress(int completed_level) {
 
-        print("Attempting to update progress with value: " + completed_level);
-
         if (completed_level > instance.progress_data.completed_levels) {
             instance.progress_data.completed_levels = completed_level;
-            print("New completed level value assigned: " + completed_level);
         }
 
         SaveData();
     }
 
     public static void SaveData() {
-
-        print("Save function called");
 
         if (!Directory.Exists("Saves")) {
             Directory.CreateDirectory("Saves");
@@ -59,13 +54,9 @@ public class SaveManager : MonoBehaviour {
         ProgressData local_copy = instance.progress_data;
         formatter.Serialize(saveFile, local_copy);
         saveFile.Close();
-
-        print("Save function completed");
     }
 
-    public void LoadData() {
-
-        print("Load function called");
+    public static void LoadData() {
 
         BinaryFormatter formatter = new BinaryFormatter();
 
@@ -76,9 +67,13 @@ public class SaveManager : MonoBehaviour {
             saveFile.Close();
         }
         catch (DirectoryNotFoundException e) {
+            print("Caught exception: " + e);
             print("Saves directory not found, probably no data saved this far");
         }
+    }
 
-        print("Load function completed");
+    public static void ResetProgress() {
+        instance.progress_data.completed_levels = 0;
+        SaveData();
     }
 }
