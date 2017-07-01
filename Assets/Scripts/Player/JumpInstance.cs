@@ -66,10 +66,6 @@ namespace Assets.Scripts.PlayerScripts {
                 is_done = true;
             }
 
-            if (IsPastMinHeight()) {
-                Debug.Log("past min height");
-            }
-
             if (IsPastMaxHeight()) {
 
                 if (debug_jump) {
