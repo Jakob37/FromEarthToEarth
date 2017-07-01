@@ -145,12 +145,19 @@ public class BlockController : MonoBehaviour {
             throw_dir = -1;
         }
 
-        if (!key_down_held) {
-            carried_block.PutDown(new Vector2(throw_dir * throw_speed_x, throw_speed_y), player.Rigi.velocity);
+        if (key_down_held) {
+
+            if (!player.IsHandsInGround) {
+                Vector3 y_offset = new Vector3(0, 0.2f, 0);
+                carried_block.PutDownGently();
+                carried_block.transform.position = player.hands.position + y_offset + new Vector3(put_down_dist * throw_dir, 0, 0);
+            }
+            else {
+                carried_block.PutDown(new Vector2(throw_dir * throw_speed_x, 0), player.Rigi.velocity);
+            }
         }
         else {
-            carried_block.PutDownGently();
-            carried_block.transform.position = player.hands.position + new Vector3(put_down_dist * throw_dir, 0, 0);
+            carried_block.PutDown(new Vector2(throw_dir * throw_speed_x, throw_speed_y), player.Rigi.velocity);
         }
 
         carried_block = null;

@@ -62,8 +62,6 @@ public class Block : MonoBehaviour {
         // remaining_percentage = start_perc;
         float perc_frac = 100 / start_perc;
         rain_deduction = default_rain_deduction / perc_frac;
-
-        print(sprite_renderer.sprite.rect.height);
     }
 
     public void TakenUp(BlockController block_controller) {

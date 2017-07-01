@@ -28,6 +28,9 @@ public class Player : MonoBehaviour {
     private bool is_head_hit = false;
     public bool IsHeadHit { get { return is_head_hit; } }
 
+    // private bool is_hands_in_ground = false;
+    public bool IsHandsInGround { get { return platform_controller.IsHandsInGround(); } }
+
     public bool IsCarryingBlock { get { return block_controller.CarriedBlock != null; } }
 
     private LevelLogic level_logic;
