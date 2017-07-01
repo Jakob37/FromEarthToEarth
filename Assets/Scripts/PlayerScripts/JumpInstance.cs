@@ -57,22 +57,14 @@ namespace Assets.Scripts.PlayerScripts {
 
         public void UpdateJump(bool jump_key_down) {
 
-            // Debug.Log(GetCurrentJumpHeight());
-
             if (is_done) {
                 return;
             }
 
             if (player.IsHeadHit) {
-                // if (player.IsHeadHit && !player.IsCarryingBlock) {
                 if (debug_jump) Debug.Log("Head hit");
                 is_done = true;
             }
-
-            // if (IsPastMinHeight() && player.IsGrounded) {
-            //     if (debug_jump) Debug.Log("Grounded");
-            //     is_done = true;
-            // }
 
             if (IsPastMinHeight()) {
                 Debug.Log("past min height");
@@ -88,13 +80,7 @@ namespace Assets.Scripts.PlayerScripts {
                 is_done = true;
             }
 
-            // if (!jump_key_down) {
-            //     if (debug_jump) Debug.Log("Jump key up");
-            //     is_done = true;
-            // }
-
             if (!IsPastMinHeight() || (jump_key_down && !IsPastMaxHeight())) {
-                //if (debug_jump) Debug.Log("Extend jump");
                 rigi.velocity = new Vector2(rigi.velocity.x, player.jump_force);
                 received_impulses += 1;
             }
