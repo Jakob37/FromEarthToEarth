@@ -47,6 +47,7 @@ public class LevelLogic : MonoBehaviour {
         var current_level = SceneManager.GetActiveScene().buildIndex;
         var new_level = current_level + 1;
         print("Loading scene: " + new_level);
+        SaveManager.UpdateProgress(current_level);
         SceneManager.LoadScene(new_level);
     }
 
