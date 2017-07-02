@@ -14,7 +14,7 @@ public class SaveManager : MonoBehaviour {
 
     void Awake() {
         if (instance == null) {
-            DontDestroyOnLoad(transform.root.gameObject);
+            DontDestroyOnLoad(gameObject);
             instance = this;
 
             LoadData();

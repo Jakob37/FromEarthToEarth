@@ -16,11 +16,15 @@ public class MenuManager : MonoBehaviour {
     public GameObject level_pick_canvas;
     public GameObject credits_canvas;
 
+    private MusicManager music_manager;
+
     void Start() {
 
         main_canvas.SetActive(true);
         level_pick_canvas.SetActive(false);
         credits_canvas.SetActive(false);
+
+        music_manager = FindObjectOfType<MusicManager>();
     }
 
     public void SwitchMenuState(string menu_state) {
@@ -49,6 +53,7 @@ public class MenuManager : MonoBehaviour {
     public void SwitchScene(int level_index) {
         print("Loading level index: " + level_index);
         SceneManager.LoadScene(level_index);
+        music_manager.TrigNewLevel();
     }
 
     public void ExitGame() {

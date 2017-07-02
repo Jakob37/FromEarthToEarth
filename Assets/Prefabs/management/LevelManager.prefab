@@ -19,7 +19,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4522806488585098}
-  - component: {fileID: 114286892192618384}
+  - component: {fileID: 114865053354413312}
   m_Layer: 0
   m_Name: LevelManager
   m_TagString: Untagged
@@ -33,14 +33,14 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1018319578541008}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.0452037, y: -0.23051935, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -1.0452037, y: -0.2305193, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &114286892192618384
+--- !u!114 &114865053354413312
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -48,6 +48,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 1018319578541008}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9327bac6df8b70746b0be40bd6e00fd7, type: 3}
+  m_Script: {fileID: 11500000, guid: 002965a396dc03843a120f165aee6b76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  main_canvas: {fileID: 0}
+  level_pick_canvas: {fileID: 0}
+  credits_canvas: {fileID: 0}

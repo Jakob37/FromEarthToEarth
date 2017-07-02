@@ -3,7 +3,6 @@ using System.Collections;
 
 public class MusicController : MonoBehaviour {
 
-//    public AudioClip[] audio_clips;
     public AudioSource first_rain_song;
 
     private static MusicController instance = null;
@@ -22,7 +21,7 @@ public class MusicController : MonoBehaviour {
         else {
             instance = this;
         }
-        DontDestroyOnLoad(transform.root.gameObject);
+        DontDestroyOnLoad(gameObject);
     }
 
 	void Start () {

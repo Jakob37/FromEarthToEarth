@@ -9,7 +9,7 @@ public enum Song {
 
 public class MusicManager : MonoBehaviour {
 
-    public static MusicManager instance;
+    private static MusicManager instance = null;
     public static MusicManager Instance {
         get { return instance; }
     }
@@ -22,14 +22,15 @@ public class MusicManager : MonoBehaviour {
     private AudioSource current_song;
 
     void Awake() {
-        // if (instance != null && instance != this) {
-        //     Destroy(this.gameObject);
-        // }
-        // else {
-        //     print("new instance");
-        //     instance = this;
-        // }
-        // DontDestroyOnLoad(transform.root.gameObject);
+
+        if (instance != null && instance != this) {
+            Destroy(this.gameObject);
+            return;
+        }
+        else {
+            instance = this;
+        }
+        DontDestroyOnLoad(gameObject);
     }
 
     void Start() {
@@ -39,10 +40,10 @@ public class MusicManager : MonoBehaviour {
 
     public void TrigNewLevel() {
 
-        if (current_song == null) {
-            current_song = vivid_skies;
-            current_song.Play();
-            played_songs.Add(Song.vivid_skies);
+        if (instance.current_song == null) {
+            instance.current_song = instance.vivid_skies;
+            instance.current_song.Play();
+            instance.played_songs.Add(Song.vivid_skies);
         }
     }
 
