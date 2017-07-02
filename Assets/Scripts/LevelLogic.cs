@@ -13,6 +13,8 @@ public class LevelLogic : MonoBehaviour {
     private float elapsed_time;
     private int last_trig_second = 0;
 
+    private MusicManager music_manager;
+
     private KeyCode[] keyCodes = {
          KeyCode.Alpha1,
          KeyCode.Alpha2,
@@ -24,6 +26,10 @@ public class LevelLogic : MonoBehaviour {
          KeyCode.Alpha8,
          KeyCode.Alpha9,
      };
+
+    void Awake() {
+        music_manager = FindObjectOfType<MusicManager>();
+    }
 
     void Start() {
         elapsed_time = 0;
@@ -48,6 +54,7 @@ public class LevelLogic : MonoBehaviour {
         var new_level = current_level + 1;
         print("Loading scene: " + new_level);
         SaveManager.UpdateProgress(current_level);
+        music_manager.TrigNewLevel();
         SceneManager.LoadScene(new_level);
     }
 

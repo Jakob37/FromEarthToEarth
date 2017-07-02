@@ -22,7 +22,7 @@ public class MusicController : MonoBehaviour {
         else {
             instance = this;
         }
-        DontDestroyOnLoad(this.gameObject);
+        DontDestroyOnLoad(transform.root.gameObject);
     }
 
 	void Start () {
