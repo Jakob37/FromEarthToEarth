@@ -1,0 +1,31 @@
+The Rain - Design document
+
+### The setting ###
+
+- The rain is a prime part of the setting
+- The mud-blobs are humanoid mud-creatures
+	- Talk
+	- Think
+	- Joke
+
+### The mechanics ###
+
+Objects:
+	- The player
+	- Other characters (which don't have neither nose nor hat)
+	- Blocks of stone (not withered down by rain)
+	- Blocks of mud (withered down by mud)
+	- Trees (provides shelter from the rain)
+	- Rivers (blocks the path, either as hard block or rapid withering of the player)
+	- Lakes (blocks areas, impossible to traverse without potential raft)
+	- Rafts?
+
+- You contain a limited amount of mud
+- You can absorb mud blocks/tiles, refilling your mud
+- You are constantly withered down by the rain
+- The rain can have different strengths (degree of downpour)
+- There is thunder
+- You can be struck by thunder, annihilating you
+- Thunder randomly strucks one of the highest points present at the map
+- Trees are higher than you, and so are blocks
+-
