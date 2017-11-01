@@ -48,14 +48,17 @@ public class BlockController : MonoBehaviour {
         return carried_block != null;
     }
 
-	void Start() {
+    void Awake() {
         player = GameObject.FindObjectOfType<Player>();
         box_coll = player.gameObject.GetComponent<BoxCollider2D>();
+    }
+
+    void Start() {
         current_pickup_delay = 0;
         current_throw_delay = 0;
         sound_manager = FindObjectOfType<SoundEffectManager>();
         DeactivateBlockCarry();
-	}
+    }
 
     public void AssignListener(InfoText info_text) {
         listener = info_text;
@@ -70,17 +73,17 @@ public class BlockController : MonoBehaviour {
     public void UpdateController(bool control_pressed, bool button_down, bool key_down_held) {
 
         is_making_block = false;
-
+        
         if (current_pickup_delay > 0) {
             current_pickup_delay -= Time.deltaTime;
         }
-
+        
         if (current_throw_delay > 0) {
             current_throw_delay -= Time.deltaTime;
         }
-
+        
         Block possible_pickup = GetPotentialPickup();
-
+        
         if (button_down) {
             if (possible_pickup != null && carried_block == null && current_pickup_delay <= 0) {
                 sound_manager.PlaySound(SoundEffect.pickup_block);
@@ -91,7 +94,7 @@ public class BlockController : MonoBehaviour {
                 MakeBlockFromGround();
             }
         }
-
+        
         if (control_pressed) {
             if (carried_block != null && current_throw_delay <= 0 && carried_block.IsFadeInDone()) {
                 sound_manager.PlaySound(SoundEffect.throw_block);
@@ -99,7 +102,7 @@ public class BlockController : MonoBehaviour {
                 DispatchEvent(Assets.LevelLogic.LevelEventType.ThrowingBlock);
             }
         }
-
+        
         if (carried_block != null) {
             CarryBlock();
         }

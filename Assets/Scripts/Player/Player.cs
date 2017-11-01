@@ -33,6 +33,9 @@ public class Player : MonoBehaviour {
 
     public bool IsCarryingBlock { get { return block_controller.CarriedBlock != null; } }
 
+    private float edge_check_delay = 1;
+    private bool EdgeCheckActivated { get { return edge_check_delay <= 0; } }
+
     private LevelLogic level_logic;
 
     public Transform ground_check;
@@ -98,21 +101,28 @@ public class Player : MonoBehaviour {
 
     void Update() {
 
+        if (edge_check_delay > 0) {
+            edge_check_delay -= Time.deltaTime;
+        }
+
         block_controller.UpdateController(Input.GetKeyDown(KeyCode.Space), 
             Input.GetKey(KeyCode.Space),
             Input.GetKey(KeyCode.DownArrow));
-
+         
         if (!block_controller.IsLiftingBlock()) {
             UpdatePlatformController();
         }
-
+        
         if (current_story_board != null && Input.GetKeyDown(KeyCode.DownArrow)) {
             current_story_board.IterateStoryBoard();
         }
     }
 
     private void UpdatePlatformController() {
-        platform_controller.EdgeCheck();
+
+        if (EdgeCheckActivated) {
+            platform_controller.EdgeCheck();
+        }
 
         // bool jump_key_down = Input.GetButtonDown("Jump");
         bool up_arrow_down = Input.GetKeyDown(KeyCode.UpArrow);
