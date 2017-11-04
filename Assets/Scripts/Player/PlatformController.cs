@@ -23,6 +23,8 @@ public class PlatformController : MonoBehaviour {
 
     public float block_height;
 
+    public bool debug_print;
+
     private bool has_been_off_ground_since_jump;
 
     private InfoText listener;
@@ -64,6 +66,10 @@ public class PlatformController : MonoBehaviour {
     }
 
     public void UpdateJump(bool jump_key_down, bool jump_key_press) {
+
+        if (debug_print) {
+            print(player.IsGrounded);
+        }
 
         if (jump_key_down && player.IsGrounded) {
 
