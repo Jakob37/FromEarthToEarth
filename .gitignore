@@ -2,6 +2,7 @@
 *.csproj
 *.meta
 *.lnk
+*.exe
 
 # Folders
 Temp/
@@ -10,5 +11,6 @@ ProjectSettings/
 Library/
 Saves/
 .vs/
+*Data/
 # Tiled2Unity/
 builds/
