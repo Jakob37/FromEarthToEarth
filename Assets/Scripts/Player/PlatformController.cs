@@ -159,7 +159,7 @@ public class PlatformController : MonoBehaviour {
     }
 
     public bool IsHandsInGround() {
-        return Physics2D.OverlapCircle(player.hands.position, player.ground_radius, player.what_is_ground);
+        return Physics2D.OverlapCircle(player.hands.position, player.hand_radius, player.what_is_ground);
     }
 
     public void Flip() {

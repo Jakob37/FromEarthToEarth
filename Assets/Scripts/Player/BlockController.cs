@@ -70,7 +70,7 @@ public class BlockController : MonoBehaviour {
         }
     }
 
-    public void UpdateController(bool control_pressed, bool button_down, bool key_down_held) {
+    public void UpdateController(bool throw_button_pressed, bool button_down, bool key_down_held) {
 
         is_making_block = false;
         
@@ -95,7 +95,7 @@ public class BlockController : MonoBehaviour {
             }
         }
         
-        if (control_pressed) {
+        if (throw_button_pressed) {
             if (carried_block != null && current_throw_delay <= 0 && carried_block.IsFadeInDone()) {
                 sound_manager.PlaySound(SoundEffect.throw_block);
                 ThrowBlock(key_down_held);
@@ -149,7 +149,7 @@ public class BlockController : MonoBehaviour {
         }
 
         if (key_down_held) {
-
+            print("Put down block");
             if (!player.IsHandsInGround) {
                 Vector3 y_offset = new Vector3(0, 0.2f, 0);
                 carried_block.PutDownGently();
@@ -160,6 +160,7 @@ public class BlockController : MonoBehaviour {
             }
         }
         else {
+            print("Throw block");
             carried_block.PutDown(new Vector2(throw_dir * throw_speed_x, throw_speed_y), player.Rigi.velocity);
         }
 

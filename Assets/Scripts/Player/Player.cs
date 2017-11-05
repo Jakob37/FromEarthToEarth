@@ -43,8 +43,10 @@ public class Player : MonoBehaviour {
     public Transform box_head_check;
     public Transform hands;
 
-    public float ground_radius = 0.01f;
-    public float head_radius = 0.01f;
+    public float ground_radius;
+    public float head_radius;
+    public float hand_radius;
+
     public LayerMask what_is_ground;
     public LayerMask what_is_head_ground;
     public LayerMask what_is_block_creation_ground;
