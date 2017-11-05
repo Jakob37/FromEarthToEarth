@@ -149,7 +149,6 @@ public class BlockController : MonoBehaviour {
         }
 
         if (key_down_held) {
-            print("Put down block");
             if (!player.IsHandsInGround) {
                 Vector3 y_offset = new Vector3(0, 0.2f, 0);
                 carried_block.PutDownGently();
@@ -160,7 +159,6 @@ public class BlockController : MonoBehaviour {
             }
         }
         else {
-            print("Throw block");
             carried_block.PutDown(new Vector2(throw_dir * throw_speed_x, throw_speed_y), player.Rigi.velocity);
         }
 
