@@ -6,4 +6,5 @@ using UnityEngine;
 [Serializable]
 public class ProgressData {
     public int completed_levels;
+    public bool[] picked_flowers = new bool[10];
 }

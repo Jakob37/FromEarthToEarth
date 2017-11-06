@@ -43,6 +43,15 @@ public class SaveManager : MonoBehaviour {
         SaveData();
     }
 
+    public static void SpecialFlowerPick(int level_index) {
+        instance.progress_data.picked_flowers[level_index] = true;
+        SaveData();
+    }
+
+    public static bool GetFlowerPicked(int level_index) {
+        return instance.progress_data.picked_flowers[level_index];
+    }
+
     public static void SaveData() {
 
         if (!Directory.Exists("Saves")) {
@@ -74,6 +83,7 @@ public class SaveManager : MonoBehaviour {
 
     public static void ResetProgress() {
         instance.progress_data.completed_levels = 0;
+        instance.progress_data.picked_flowers = new bool[10];
         SaveData();
     }
 }
