@@ -8,9 +8,12 @@ public class LevelButton : MonoBehaviour {
     public int level_number;
 
     private Button button;
+    private Text button_text;
 
     void Start() {
-        button = gameObject.GetComponent<Button>();
+        button = GetComponent<Button>();
+        button_text = GetComponentInChildren<Text>();
+        button_text.text = level_number.ToString();
     }
 
     void Update() {
