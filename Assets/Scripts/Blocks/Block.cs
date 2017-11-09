@@ -12,6 +12,7 @@ public class Block : MonoBehaviour {
     private SpriteRenderer sprite_renderer;
 
     public Sprite[] frames;
+    public Sprite waterproof_sprite;
 
     private float remaining_percentage;
 
@@ -84,9 +85,16 @@ public class Block : MonoBehaviour {
 
     void Update () {
 
-        var target_frame = (int)((100 - remaining_percentage) / 100 * (frames.Length));
-        if (target_frame > frames.Length - 1) target_frame = frames.Length - 1;
-        sprite_renderer.sprite = frames[target_frame];
+        if (!is_water_resistant) {
+            var target_frame = (int)((100 - remaining_percentage) / 100 * (frames.Length));
+            if (target_frame > frames.Length - 1) {
+                target_frame = frames.Length - 1;
+            }
+            sprite_renderer.sprite = frames[target_frame];
+        }
+        else {
+            sprite_renderer.sprite = waterproof_sprite;
+        }
 
         if (remaining_percentage <= 0) {
             Destroy(gameObject);
@@ -101,8 +109,6 @@ public class Block : MonoBehaviour {
 	}
 
     void OnParticleCollision(GameObject other) {
-
-        print("Collision");
 
         if (!is_water_resistant && other.name == "RainFallParticleSystem") {
 
