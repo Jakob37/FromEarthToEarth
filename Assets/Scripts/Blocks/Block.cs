@@ -102,6 +102,8 @@ public class Block : MonoBehaviour {
 
     void OnParticleCollision(GameObject other) {
 
+        print("Collision");
+
         if (!is_water_resistant && other.name == "RainFallParticleSystem") {
 
             bool is_pour_active = base_rain_script.intensity_modifier_active;
