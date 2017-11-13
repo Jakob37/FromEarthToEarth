@@ -6,6 +6,12 @@ using System.Text.RegularExpressions;
 using UnityEngine;
 using UnityEngine.UI;
 
+public enum StoryBoardEntity {
+
+    dummy,
+
+}
+
 public enum StoryBoardName {
     level1_jump,
     level1_block_pickup,
@@ -62,7 +68,9 @@ public class StoryPanelController : MonoBehaviour {
     public GameObject story_text_panel_go;
 
     private string board_text_file = "board_texts";
+
     private Dictionary<StoryBoardName, string> story_board_texts;
+    private Dictionary<StoryBoardEntity, List<string>> story_board_entities;
 
     private StoryArrow story_arrow;
 
@@ -75,7 +83,31 @@ public class StoryPanelController : MonoBehaviour {
     void Start() {
         ParseStoryText(board_text_file);
         story_board_texts = ParseStoryText(board_text_file);
+
+        story_board_entities = ParseStoryEntities("board_entities");
+        print(story_board_entities);
+
         currently_active_story_board_name = StoryBoardName.none;
+    }
+
+    private Dictionary<StoryBoardEntity, List<string>> ParseStoryEntities(string resource_name, string splitter="\\|") {
+
+        Dictionary<StoryBoardEntity, List<string>> board_entities_tmp = new Dictionary<StoryBoardEntity, List<string>>();
+
+        List<string[]> board_entries = Utils.ParseTextToSplitList(resource_name, splitter);
+        foreach (string[] board_entry in board_entries) {
+
+            StoryBoardEntity board_name = Utils.ParseEnum<StoryBoardEntity>(board_entry[0]);
+            string board_text = board_entry[1];
+
+            if (!board_entities_tmp.ContainsKey(board_name)) {
+                board_entities_tmp[board_name] = new List<String>();
+            }
+
+            board_entities_tmp[board_name].Add(board_text);
+        }
+
+        return board_entities_tmp;
     }
 
     private Dictionary<StoryBoardName, string> ParseStoryText(string resource_name, string splitter="\\|") {
