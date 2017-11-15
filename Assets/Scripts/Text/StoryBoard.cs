@@ -6,7 +6,8 @@ using UnityEngine.UI;
 
 public class StoryBoard : MonoBehaviour {
 
-    public StoryBoardName[] board_names;
+    // public StoryBoardName[] board_names;
+    public StoryBoardEntity board_entity;
 
     private StoryPanelController story_board_controller;
     private int board_index;
@@ -18,6 +19,13 @@ public class StoryBoard : MonoBehaviour {
 
     private bool currently_active;
     public bool CurrentActive { get { return currently_active; } }
+
+    private int BoardSize {
+        get {
+            int board_size = story_board_controller.GetBoardEntityLength(board_entity);
+            return board_size;
+        }
+    }
 
     void Awake() {
         story_board_controller = FindObjectOfType<StoryPanelController>();
@@ -32,8 +40,8 @@ public class StoryBoard : MonoBehaviour {
 
     public void ActivateStoryBoard() {
 
-        StoryBoardName board_name = board_names[board_index];
-        story_board_controller.ActivateStoryBoard(board_name);
+        // StoryBoardEntity board_name = board_names[board_index];
+        story_board_controller.ActivateStoryBoard(board_entity, board_index);
         CheckIteratedThrough();
         currently_active = true;
     }
@@ -51,16 +59,16 @@ public class StoryBoard : MonoBehaviour {
         board_index += 1;
         CheckIteratedThrough();
 
-        if (board_index > board_names.Length - 1) {
-            board_index -= board_names.Length;
+        if (board_index > BoardSize - 1) {
+            board_index -= BoardSize;
         }
 
-        StoryBoardName board_name = board_names[board_index];
-        story_board_controller.IterateStoryBoard(board_name);
+        // StoryBoardName board_name = board_names[board_index];
+        story_board_controller.IterateStoryBoard(board_entity, board_index);
     }
 
     public void CheckIteratedThrough() {
-        if (board_index >= board_names.Length - 1) {
+        if (board_index >= BoardSize) {
             is_iterated_through = true;
             story_board_controller.SignalFullIteration();
         }

@@ -9,7 +9,7 @@ using UnityEngine.UI;
 public enum StoryBoardEntity {
 
     dummy,
-
+    none,
 }
 
 public enum StoryBoardName {
@@ -70,24 +70,30 @@ public class StoryPanelController : MonoBehaviour {
     private string board_text_file = "board_texts";
 
     private Dictionary<StoryBoardName, string> story_board_texts;
+
     private Dictionary<StoryBoardEntity, List<string>> story_board_entities;
+    private int current_story_index;
 
     private StoryArrow story_arrow;
 
-    private StoryBoardName currently_active_story_board_name;
+    private StoryBoardEntity active_story_board_entity;
+
+    public int GetBoardEntityLength(StoryBoardEntity entity) {
+        return story_board_entities[entity].Count;
+    }
 
     void Awake() {
         story_arrow = story_text_panel_go.GetComponentInChildren<StoryArrow>();
     }
 
     void Start() {
-        ParseStoryText(board_text_file);
-        story_board_texts = ParseStoryText(board_text_file);
+        // ParseStoryText(board_text_file);
+        // story_board_texts = ParseStoryText(board_text_file);
 
         story_board_entities = ParseStoryEntities("board_entities");
         print(story_board_entities);
 
-        currently_active_story_board_name = StoryBoardName.none;
+        active_story_board_entity = StoryBoardEntity.none;
     }
 
     private Dictionary<StoryBoardEntity, List<string>> ParseStoryEntities(string resource_name, string splitter="\\|") {
@@ -110,43 +116,49 @@ public class StoryPanelController : MonoBehaviour {
         return board_entities_tmp;
     }
 
-    private Dictionary<StoryBoardName, string> ParseStoryText(string resource_name, string splitter="\\|") {
+    // private Dictionary<StoryBoardName, string> ParseStoryText(string resource_name, string splitter="\\|") {
+    // 
+    //     Dictionary<StoryBoardName, string> board_entries_tmp = new Dictionary<StoryBoardName, string>();
+    // 
+    //     List<string[]> board_entries = Utils.ParseTextToSplitList(resource_name, splitter);
+    //     foreach (string[] board_entry in board_entries) {
+    // 
+    //         StoryBoardName board_name = Utils.ParseEnum<StoryBoardName>(board_entry[0]);
+    //         string board_text = board_entry[1];
+    //         board_entries_tmp[board_name] = board_text;
+    //     }
+    // 
+    //     return board_entries_tmp;
+    // }
 
-        Dictionary<StoryBoardName, string> board_entries_tmp = new Dictionary<StoryBoardName, string>();
+    // public void ActivateStoryBoard(StoryBoardName board_name) {
+    public void ActivateStoryBoard(StoryBoardEntity board_entity, int board_index=0) {
 
-        List<string[]> board_entries = Utils.ParseTextToSplitList(resource_name, splitter);
-        foreach (string[] board_entry in board_entries) {
-
-            StoryBoardName board_name = Utils.ParseEnum<StoryBoardName>(board_entry[0]);
-            string board_text = board_entry[1];
-            board_entries_tmp[board_name] = board_text;
-        }
-
-        return board_entries_tmp;
-    }
-
-    public void ActivateStoryBoard(StoryBoardName board_name) {
         story_text_panel_go.SetActive(true);
-        story_text_panel_go.GetComponentInChildren<Text>().text = story_board_texts[board_name];
+        story_text_panel_go.GetComponentInChildren<Text>().text = story_board_entities[board_entity][board_index];
+        // story_text_panel_go.GetComponentInChildren<Text>().text = story_board_texts[board_name];
         story_arrow.Reset();
-        currently_active_story_board_name = board_name;
+        active_story_board_entity = board_entity;
+        // currently_active_story_board_name = board_name;
     }
 
-    public void IterateStoryBoard(StoryBoardName board_name) {
-        story_text_panel_go.GetComponentInChildren<Text>().text = story_board_texts[board_name];
+    public void IterateStoryBoard(StoryBoardEntity board_entity, int board_index=0) {
+
+        // current_story_index += 1;
+        story_text_panel_go.GetComponentInChildren<Text>().text = story_board_entities[board_entity][board_index];
     }
 
     public void DeactivateStoryBoard() {
         story_text_panel_go.SetActive(false);
-        currently_active_story_board_name = StoryBoardName.none;
+        active_story_board_entity = StoryBoardEntity.none;
     }
 
     public void SignalFullIteration() {
         story_arrow.SignalIteratedThrough();
     }
 
-    public StoryBoardName CurrentlyActiveStoryBoardname() {
+    public StoryBoardEntity CurrentlyActiveStoryBoardname() {
 
-        return currently_active_story_board_name;
+        return active_story_board_entity;
     }
 }
