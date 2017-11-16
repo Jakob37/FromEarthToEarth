@@ -1,2 +1,44 @@
 dummy|Text related to dummy entry goes here!
 dummy|More dummy text here!
+level1_jump|Controls: Jump - up arrow, pickup/throw block - space.
+level1_block_pickup|[Space] while standing next to a block to pick it up
+level1_block_throw|[Space] while holding a block to throw it
+level1_block_make|[Space] while standing on mud to make a block
+level1_block_putdown|Hold [Down arrow] and press [Space] to put down block gently
+level1_end|Reach the end of the level to travel to the next area
+level2_putdown|Put down a block in front of you by pressing [Space] while holding the [Down arrow]
+level3_help|People and blocks alike sometimes need shelter from the rain
+level5_help|Sometimes, a brief time, is just enough
+intermission12|Hello you. How are you doing? Guess we are in this together.
+intermission12|Like the weather? Like talking about the weather? No? Oh well, I'm doing my best.
+intermission23|You know what? You seem nice! Good luck out there.
+intermission23|Feet!
+intermission34|I was rude back there, wasn't I? Sorry! I get a bit carried away sometimes.
+intermission34|But you know what? We are made by the same stuff. Random stuff stuffed together for a brief time. Stuff coming, stuff going.
+intermission45|Next question. We are made by the same stuff as the mud over there. What makes us different?
+intermission45|We seem to have a strange ability to think, dream and worry unlike any mud-block I have seen. What's all that about?
+griever1|I lost my brother yesterday, right over there. He wasn't able to resist the rain any longer.
+griever1|It is sad, but it is how it is around here. Everyone has to come to terms with this.
+griever1|I'm trying to figure out how to tackle this. It feels like a thick ball in my stomache.
+griever1|Hey, thanks for hearing me out. Sometimes just talking about it and having someone listening helps a lot.
+level2_s1|You see that block over there? It is made out of the same stuff as us. A temporary mud-blob.
+level2_s1|I wonder. If we are made from the same stuff. What makes us so different? Are we different?
+level2_s1|Thoughts like this are keeping me up each night.
+level2_s2|Today is no ordinary day. Today, I will get to make my first own mud-block.
+level2_s2|Mom will be so proud!
+level2_s2|I am quite stressed out though. All those people. What happens if it isn't good enough?
+level3_s1|Me and my husband has been stuck down here for ages! Is quite cozy and dry though.
+level3_s1|It is a challenge to live so close together though. All those small things, they drive us both mad.
+level3_s1|Thankfully, we are able to talk it through. Without that, we would both have gone insane by now.
+level3_s2|Why should I be the one cleaning up all the mud in here? Just because I drag in a bit more?
+level3_s2|*Grumble grumble*
+level3_s3|...
+level3_s3|Do you feel the breeze? On days like this, I truly feel alive.
+level4_s1|Great job making it this far! I want to warn you though, this final level is quite a bit more tricky than previous.
+level4_s1|No shame in giving in here. If you make it through though, make sure to let Jakob know. He will be impressed!
+level_levers_s1|Ever seen one of these before? Press the button, and its poles will move.
+level_levers_s1|Took decennia of effort to build and polish. It is amazing what we when working together over time.
+level_levers_s1|What are you waiting for? Try it! You can either stand on it yourself, or place the block there.
+level_levers_s2|It is so high! I wonder how to get up there.
+level_levers_s2|Personally, I am terribly afraid of heights. I better stay down here. Forever.
+level1_further_controls|Restart level with 'R'. Speed up block dissolving with 'P'.

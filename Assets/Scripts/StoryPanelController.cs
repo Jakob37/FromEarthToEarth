@@ -10,6 +10,29 @@ public enum StoryBoardEntity {
 
     dummy,
     none,
+    level1_jump,
+    level1_block_pickup,
+    level1_block_throw,
+    level1_block_make,
+    level1_block_putdown,
+    level1_end,
+    level2_putdown,
+    level3_help,
+    level5_help,
+    intermission12,
+    intermission23,
+    intermission34,
+    intermission45,
+    griever1,
+    level2_s1,
+    level2_s2,
+    level3_s1,
+    level3_s2,
+    level3_s3,
+    level4_s1,
+    level_levers_s1,
+    level_levers_s2,
+    level1_further_controls
 }
 
 public enum StoryBoardName {

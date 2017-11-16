@@ -2564,6 +2564,11 @@ Prefab:
       propertyPath: m_Name
       value: Stranger_1
       objectReference: {fileID: 0}
+    - target: {fileID: 114458000260578116, guid: 01e3ab536a960014c9e2cfabb3a5640e,
+        type: 2}
+      propertyPath: board_entity
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 01e3ab536a960014c9e2cfabb3a5640e, type: 2}
   m_IsPrefabParent: 0
