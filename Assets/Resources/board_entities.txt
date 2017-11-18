@@ -39,6 +39,10 @@ ponderer1|We are earth. Yet we are thinking, laughing, living.
 ponderer2|Are you also on your way to the Elder?
 ponderer2|Me too, but the road got blocked. Can you help us out?
 
+past_blockage|Past 1
+past_blockage|Past 2
+
+
 griever1|I lost my brother yesterday, right over there. He wasn't able to resist the rain any longer.
 griever1|It is sad, but it is how it is around here. Everyone has to come to terms with this.
 griever1|I'm trying to figure out how to tackle this. It feels like a thick ball in my stomache.

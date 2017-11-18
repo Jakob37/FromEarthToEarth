@@ -190,7 +190,6 @@ public class BlockController : MonoBehaviour {
     public Block GetBlock() {
         GameObject block = GameObject.Instantiate(block_prefab);
         Block block_script = block.GetComponent<Block>();
-        // block_script.Initialize(start_perc: default_block_life);
         return block_script;
     }
 

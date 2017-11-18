@@ -73,12 +73,10 @@ public class Block : MonoBehaviour {
     }
 
     public void PutDown(Vector2 throwForce, Vector2 player_movement) {
-        EnableBlock();
-        // rigi.AddForce(throwForce);
 
+        EnableBlock();
         float x_vel = throwForce.x + player_movement.x * 0.5f;
         float y_vel = throwForce.y + player_movement.y * 0.25f;
-
         rigi.velocity = new Vector2(x_vel, y_vel);
     }
 	
@@ -122,10 +120,7 @@ public class Block : MonoBehaviour {
                 modifier = pour_modifier;
             }
 
-            // print("Deduction: " + rain_deduction);
-            // print("Modifier: " + modifier);
             remaining_percentage -= default_rain_deduction * modifier;
-            // print(remaining_percentage);
         }
     }
 }

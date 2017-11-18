@@ -27,6 +27,8 @@ public enum StoryBoardEntity {
     ponderer1,
     ponderer2,
 
+    past_blockage,
+
     intermission12,
     intermission23,
     intermission34,
