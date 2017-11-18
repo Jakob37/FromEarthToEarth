@@ -58,12 +58,15 @@ public class Block : MonoBehaviour {
         base_rain_script = FindObjectOfType<BaseRainScript>();
     }
 
-    public void Initialize(int start_perc=100) {
+    // public void Initialize(int start_perc=100) {
 
         // remaining_percentage = start_perc;
-        float perc_frac = 100 / start_perc;
-        rain_deduction = default_rain_deduction / perc_frac;
-    }
+        // float perc_frac = 100 / start_perc;
+        // rain_deduction = default_rain_deduction / perc_frac;
+        // print(default_rain_deduction);
+        // print(perc_frac);
+        // print(rain_deduction);
+    //}
 
     public void TakenUp(BlockController block_controller) {
         DisableBlock();
@@ -119,7 +122,10 @@ public class Block : MonoBehaviour {
                 modifier = pour_modifier;
             }
 
-            remaining_percentage -= rain_deduction * modifier;
+            // print("Deduction: " + rain_deduction);
+            // print("Modifier: " + modifier);
+            remaining_percentage -= default_rain_deduction * modifier;
+            // print(remaining_percentage);
         }
     }
 }

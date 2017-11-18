@@ -223,7 +223,7 @@ namespace DigitalRuby.RainMaker {
             visibleBounds.min = Camera.main.ViewportToWorldPoint(Vector3.zero);
             visibleBounds.max = Camera.main.ViewportToWorldPoint(Vector3.one);
             visibleWorldWidth = visibleBounds.size.x;
-            // yOffset = (visibleBounds.max.y - visibleBounds.min.y) * RainHeightMultiplier;
+            yOffset = (visibleBounds.max.y - visibleBounds.min.y) * RainHeightMultiplier;
             
             TransformParticleSystem(RainFallParticleSystem, initialStartSpeedRain, initialStartSizeRain, translate_rain_pos:move_rain_with_camera);
             TransformParticleSystem(RainMistParticleSystem, initialStartSpeedMist, initialStartSizeMist);
