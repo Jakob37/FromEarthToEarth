@@ -17,6 +17,9 @@ public class Stranger : MonoBehaviour {
 
     // private Rigidbody2D rigi;
 
+    private Animator anim;
+    private Rigidbody2D rigi;
+
     private float min_paus_time = 1;
     private float max_paus_time = 5;
     private float remain_paus_time;
@@ -39,6 +42,9 @@ public class Stranger : MonoBehaviour {
         left_bound = GetComponentInChildren<LeftBound>().gameObject.transform.position.x;
         right_bound = GetComponentInChildren<RightBound>().gameObject.transform.position.x;
         story_board = GetComponent<StoryBoard>();
+
+        anim = GetComponent<Animator>();
+        rigi = GetComponent<Rigidbody2D>();
     }
 
     void Start() {
@@ -79,6 +85,8 @@ public class Stranger : MonoBehaviour {
         else if (current_goal_status == GoalStatus.AwaitingNextWalk && remain_paus_time <= 0) {
             current_goal_status = GoalStatus.Walking;
         }
+
+        SetAnimParams();
 
         transform.position += velocity;
     }
@@ -138,5 +146,9 @@ public class Stranger : MonoBehaviour {
         Vector3 new_scale = transform.localScale;
         new_scale *= -1;
         transform.localScale = new Vector3(new_scale.x, transform.localScale.y);
+    }
+
+    private void SetAnimParams() {
+        anim.SetBool("is_walking", velocity != new Vector3(0, 0, 0));
     }
 }

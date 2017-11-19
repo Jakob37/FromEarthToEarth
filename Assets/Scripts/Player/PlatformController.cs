@@ -100,8 +100,9 @@ public class PlatformController : MonoBehaviour {
         }
     }
 
-    private void SetAnimParams() {
+    public void SetAnimParams() {
         player_anim.SetBool("is_jumping", player.IsJumping);
+        print("Move speed: " + Mathf.Abs(rigi.velocity.x));
         player_anim.SetFloat("move_speed", Mathf.Abs(rigi.velocity.x));
     }
 

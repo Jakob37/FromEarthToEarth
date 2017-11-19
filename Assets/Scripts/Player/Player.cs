@@ -118,6 +118,8 @@ public class Player : MonoBehaviour {
         if (current_story_board != null && Input.GetKeyDown(KeyCode.DownArrow)) {
             current_story_board.IterateStoryBoard();
         }
+
+        platform_controller.SetAnimParams();
     }
 
     private void UpdatePlatformController() {
