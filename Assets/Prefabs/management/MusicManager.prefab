@@ -36,8 +36,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1525997761015004}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.0487832, y: -2.2474332, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -4.907, y: -1.966, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -210,7 +210,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1525997761015004}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aff539fcc55931246ac56a234d492917, type: 3}
+  m_Script: {fileID: 11500000, guid: bf4409b99f9bd934ca23fbff0e00dd04, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   vivid_skies: {fileID: 82047312294108424}
