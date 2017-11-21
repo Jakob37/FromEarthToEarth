@@ -83,7 +83,7 @@ public class StoryPanelController : MonoBehaviour {
         List<string[]> board_entries = Utils.ParseTextToSplitList(resource_name, splitter);
         foreach (string[] board_entry in board_entries) {
 
-            if (board_entry[0] == "") {
+            if (board_entry[0] == "" || board_entry[0].Substring(0, 1) == "#") {
                 continue;
             }
 

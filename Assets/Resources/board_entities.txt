@@ -20,6 +20,8 @@ intermission34|But you know what? We are made by the same stuff. Random stuff st
 intermission45|Next question. We are made by the same stuff as the mud over there. What makes us different?
 intermission45|We seem to have a strange ability to think, dream and worry unlike any mud-block I have seen. What's all that about?
 
+
+# Level 1
 lost1|You look lost
 lost1|Don't worry, I am lost too
 lost1|Most of us are, although some seem better at pretending!
@@ -32,12 +34,19 @@ lost3|To find the elder, you need to travel to the far east
 lost3|You need to find your path through a cave, to climb a mountain
 lost3|Sounds like a lot of work if you ask me
 
+# Level 2
 ponderer1|I am earth. You are earth. Earth is earth.
 ponderer1|It is a funny thing.
 ponderer1|We are earth. Yet we are thinking, laughing, living.
 
 ponderer2|Are you also on your way to the Elder?
 ponderer2|Me too, but the road got blocked. Can you help us out?
+ponderer2|I don't know what to give you though, more than eternal gratitude
+
+blocked2|You removed the blockage? You're the best!
+blocked2|Or at least, top three best!
+
+ponderer3|Noone really knows where we came from 
 
 past_blockage|Past 1
 past_blockage|Past 2
