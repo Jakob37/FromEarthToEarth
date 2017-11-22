@@ -35,6 +35,9 @@ lost3|You need to find your path through a cave, to climb a mountain
 lost3|Sounds like a lot of work if you ask me
 
 # Level 2
+# Path blockage
+# Mud-life history
+
 ponderer1|I am earth. You are earth. Earth is earth.
 ponderer1|It is a funny thing.
 ponderer1|We are earth. Yet we are thinking, laughing, living.
@@ -46,16 +49,56 @@ ponderer2|I don't know what to give you though, more than eternal gratitude
 blocked2|You removed the blockage? You're the best!
 blocked2|Or at least, top three best!
 
-ponderer3|Noone really knows where we came from 
+ponderer3|Once upon a time, there were only mud and stones
+ponderer3|Then something happened. Some of the mud - us - started existing more intently
+ponderer3|This was of course confusing. What is the Purpose of being a mud blob?
+ponderer3|Noone really knows. Well, maybe except the Elder
+
 
 past_blockage|Past 1
 past_blockage|Past 2
-
 
 griever1|I lost my brother yesterday, right over there. He wasn't able to resist the rain any longer.
 griever1|It is sad, but it is how it is around here. Everyone has to come to terms with this.
 griever1|I'm trying to figure out how to tackle this. It feels like a thick ball in my stomache.
 griever1|Hey, thanks for hearing me out. Sometimes just talking about it and having someone listening helps a lot.
+
+# Level 3 - Caver
+# A religious sense
+# Turning to religion to find the Purpose, but that is up to them. Who can actually tell them they are wrong?
+
+
+# Level 4 - Ascent
+# Almost at the Elders place
+# Thoughts about technology (levers)
+# One blob got stuck on the way and started building all the levers, instead of searching for the Purpose
+# Maybe Elder isn't extremely fond of visitors? Catch on good day.
+
+# Level 5 - The Elder
+
+theelder|You found me too? I isolated myself here to avoid visitors
+theelder|It worked for a while, but the most persistant still manage to find me
+theelder|A Purpose? That's what all of us are after. I still haven't found mine.
+theelder|But I have been around for a long time through, so have some things to tell you about the question
+theelder|I think it is wrongly phrased - it sounds like there should be some actual goal of being a blob of mud
+theelder|That sounds like the most ambitous form of wishful thinking if you ask me
+theelder|...
+theelder|A better question? Yes, yes, I'll give you one.
+theelder|"What can I do which feels purposeful?" I think that is a much more useful question.
+theelder|It translates it from a black-or-white question to a graduality, more a matter of which direction to navigate than finding a certain point in the vast ocean
+theelder|Also, I am allergic to black-or-white thinking. It is too convenient, and people trust their instincts too much.
+theelder|So what feels purposeful to you you say? Aahh, how should I know?
+theelder|What about exploring that yourself? Mudblobs hardly listen to advice anyways, we like to figure out things ourselves.
+theelder|Shush now, move along. I have talked enough for a day or two now.
+theelder|Go figure out what feels purposeful for you, or don't. In the long run we are only mud anyways.
+
+theelder_activated|Move along now. You are the expert on you, not me. Figure out what feels purposeful.
+
+# Level 6 - Downcast and without Purpose
+
+# Level 9 - Satisfaction, the purpose is found
+
+
 level2_s1|You see that block over there? It is made out of the same stuff as us. A temporary mud-blob.
 level2_s1|I wonder. If we are made from the same stuff. What makes us so different? Are we different?
 level2_s1|Thoughts like this are keeping me up each night.
