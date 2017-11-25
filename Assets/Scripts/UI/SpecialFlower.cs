@@ -5,11 +5,13 @@ using UnityEngine.SceneManagement;
 
 public class SpecialFlower : MonoBehaviour {
 
+    public int flower_number;
+
     private bool is_alive;
 
     void Start() {
 
-        bool is_flower_picked = SaveManager.GetFlowerPicked(SceneManager.GetActiveScene().buildIndex);
+        bool is_flower_picked = SaveManager.GetFlowerPicked(SceneManager.GetActiveScene().buildIndex, flower_number);
         if (is_flower_picked) {
             GameObject.Destroy(gameObject);
         }
@@ -21,7 +23,7 @@ public class SpecialFlower : MonoBehaviour {
     void OnTriggerEnter2D(Collider2D coll) {
 
         if (coll.gameObject.GetComponent<Player>() != null && is_alive) {
-            SaveManager.SpecialFlowerPick(SceneManager.GetActiveScene().buildIndex);
+            SaveManager.SpecialFlowerPick(SceneManager.GetActiveScene().buildIndex, flower_number);
             is_alive = false;
             GameObject.Destroy(gameObject);
         }

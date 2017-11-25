@@ -20,6 +20,7 @@ public class SaveManager : MonoBehaviour {
             LoadData();
 
             if (progress_data == null) {
+                print("Creating progress data");
                 progress_data = new ProgressData();
             }
         }
@@ -43,13 +44,13 @@ public class SaveManager : MonoBehaviour {
         SaveData();
     }
 
-    public static void SpecialFlowerPick(int level_index) {
-        instance.progress_data.picked_flowers[level_index] = true;
+    public static void SpecialFlowerPick(int level_index, int flower_index) {
+        instance.progress_data.picked_flowers[level_index, flower_index] = true;
         SaveData();
     }
 
-    public static bool GetFlowerPicked(int level_index) {
-        return instance.progress_data.picked_flowers[level_index];
+    public static bool GetFlowerPicked(int level_index, int flower_index) {
+        return instance.progress_data.picked_flowers[level_index, flower_index];
     }
 
     public static void SaveData() {
@@ -70,6 +71,7 @@ public class SaveManager : MonoBehaviour {
         BinaryFormatter formatter = new BinaryFormatter();
 
         try {
+            print("Load data");
             FileStream saveFile = File.Open("Saves/save.binary", FileMode.Open);
             ProgressData local_copy = (ProgressData)formatter.Deserialize(saveFile);
             instance.progress_data = local_copy;
@@ -79,11 +81,15 @@ public class SaveManager : MonoBehaviour {
             print("Caught exception: " + e);
             print("Saves directory not found, probably no data saved this far");
         }
+        catch (FileNotFoundException e) {
+            print("Caught exception: " + e);
+            print("Save file not found, probably no data saved this far");
+        }
     }
 
     public static void ResetProgress() {
         instance.progress_data.completed_levels = 0;
-        instance.progress_data.picked_flowers = new bool[10];
+        instance.progress_data.picked_flowers = new bool[10, 3];
         SaveData();
     }
 }
