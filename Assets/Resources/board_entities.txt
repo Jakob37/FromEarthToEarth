@@ -1,5 +1,7 @@
 dummy|Text related to dummy entry goes here!
 dummy|More dummy text here!
+
+# Signposts
 level1_jump|Controls: Jump - up arrow, pickup/throw block - space.
 level1_block_pickup|[Space] while standing next to a block to pick it up
 level1_block_throw|[Space] while holding a block to throw it
@@ -10,63 +12,61 @@ level2_putdown|Put down a block in front of you by pressing [Space] while holdin
 level3_help|People and blocks alike sometimes need shelter from the rain
 level5_help|Sometimes, a brief time, is just enough
 
-
-intermission12|Hello you. How are you doing? Guess we are in this together.
-intermission12|Like the weather? Like talking about the weather? No? Oh well, I'm doing my best.
-intermission23|You know what? You seem nice! Good luck out there.
-intermission23|Feet!
-intermission34|I was rude back there, wasn't I? Sorry! I get a bit carried away sometimes.
-intermission34|But you know what? We are made by the same stuff. Random stuff stuffed together for a brief time. Stuff coming, stuff going.
-intermission45|Next question. We are made by the same stuff as the mud over there. What makes us different?
-intermission45|We seem to have a strange ability to think, dream and worry unlike any mud-block I have seen. What's all that about?
-
-
 # Level 1
-lost1|You look lost
-lost1|Don't worry, I am lost too
-lost1|Most of us are, although some seem better at pretending!
+level1_1|You look lost
+level1_1|Don't worry, I am lost too
+level1_1|Most of us are, although some seem better at pretending!
 
-lost2|They say if you find the Elder she will give you your purpose
-lost2|I feel generally confused
-lost2|Does that mean I need to go to the Elder? It seems so far...
+level1_2|They say if you find the Elder she will give you your purpose
+level1_2|I feel generally confused
+level1_2|Does that mean I need to go to the Elder? It seems so far...
 
-lost3|To find the elder, you need to travel to the far east
-lost3|You need to find your path through a cave, to climb a mountain
-lost3|Sounds like a lot of work if you ask me
+level1_3|I am so nervous!
+level1_3|Today, I'll try to make my first mud block
+level1_3|What if I fail in front of everyone?
+level1_3|My parents will be there too. I would be so embarassed!
+
+level1_4|To find the elder, you need to travel to the far east
+level1_4|You need to find your path through a cave, to climb a mountain
+level1_4|Everyone seems to go there, but noone really knows why
+level1_4|I am too lazy though. I'll just stick around here and say wisy stuff
 
 # Level 2
-# Path blockage
-# Mud-life history
+level2_1|I am earth. You are earth. Earth is earth.
+level2_1|It is a funny thing.
+level2_1|We are earth. Yet we are thinking, laughing, living.
 
-ponderer1|I am earth. You are earth. Earth is earth.
-ponderer1|It is a funny thing.
-ponderer1|We are earth. Yet we are thinking, laughing, living.
+level2_2|Are you also on your way to the Elder?
+level2_2|Me too, but the road got blocked. Can you help us out?
+level2_2|I don't know what to give you though, but you will be my hero forever
 
-ponderer2|Are you also on your way to the Elder?
-ponderer2|Me too, but the road got blocked. Can you help us out?
-ponderer2|I don't know what to give you though, more than eternal gratitude
+level2_3|You removed the blockage? You're the best!
+level2_3|Or at least, top three best!
 
-blocked2|You removed the blockage? You're the best!
-blocked2|Or at least, top three best!
+level2_4|Once upon a time, there were only mud and stones.
+level2_4|Then something happened. Some of the mud - us - started living.
+level2_4|This was confusing. What is the Purpose of being a mud blob?
+level2_4|Noone really knows. Well, maybe except the Elder.
 
-ponderer3|Once upon a time, there were only mud and stones
-ponderer3|Then something happened. Some of the mud - us - started existing more intently
-ponderer3|This was of course confusing. What is the Purpose of being a mud blob?
-ponderer3|Noone really knows. Well, maybe except the Elder
+level2_griever|I lost my brother yesterday, right over there.
+level2_griever|How should I tackle this? It feels like a thick clump in my stomache.
+level2_griever|Hey, thanks for hearing me out. Sometimes having someone listening helps a lot.
 
+# Level 3 - Cavern
+level3_1|We got stuck here some time ago.
+level3_1|First we panicked. Then we realized it is kind of cosy down here.
+level3_1|Maybe we are fine without getting to the Elder? Are we?
 
-past_blockage|Past 1
-past_blockage|Past 2
+level3_2|I want to stay here, but I am worried what people will say.
+level3_2|Everyone else wants to get to the peak.
+level3_2|Should I get up too? Should I want to get up?
 
-griever1|I lost my brother yesterday, right over there. He wasn't able to resist the rain any longer.
-griever1|It is sad, but it is how it is around here. Everyone has to come to terms with this.
-griever1|I'm trying to figure out how to tackle this. It feels like a thick ball in my stomache.
-griever1|Hey, thanks for hearing me out. Sometimes just talking about it and having someone listening helps a lot.
+level3_3|Some say the Big one was born here.
+level3_3|Some say this cavern was created when he ascended to the peak.
+level3_3|I say they are delusional, in need of further research!
 
-# Level 3 - Caver
-# A religious sense
-# Turning to religion to find the Purpose, but that is up to them. Who can actually tell them they are wrong?
-
+level3_4|...
+level3_4|Do you feel the breeze? On days like this I feel truly alive.
 
 # Level 4 - Ascent
 # Almost at the Elders place
@@ -74,23 +74,37 @@ griever1|Hey, thanks for hearing me out. Sometimes just talking about it and hav
 # One blob got stuck on the way and started building all the levers, instead of searching for the Purpose
 # Maybe Elder isn't extremely fond of visitors? Catch on good day.
 
+level4_1|It is so high!
+level4_1|Someone once said to me "No gain, by pain".
+level4_1|Better stay down here. Some things are simply not worth the effort.
+
+level4_2|For a long time it wasn't possible to climb this mountain.
+level4_2|Then a bunch of us came together and decided to change that.
+level4_2|After a year we had invented levers! Moving poles by the press of a button.
+level4_2|It is amazing what we can accomplish if we work together!
+
+level4_3|I am so angry. The mudblob over there destroyed my block!
+level4_3|He simply pushed it out into the rain and ran away.
+level4_3|Why would he do such a thing?
+level4_3|I was so close getting up too. He is the worst.
+
+level4_4|I wanted to borrow her block so that I could get up.
+level4_4|But I was too slow and it was dissolved.
+level4_4|Now she hates me and thinks I am the worst.
+level4_4|And maybe I am :(
+
 # Level 5 - The Elder
 
-theelder|You found me too? I isolated myself here to avoid visitors
-theelder|It worked for a while, but the most persistant still manage to find me
-theelder|A Purpose? That's what all of us are after. I still haven't found mine.
-theelder|But I have been around for a long time through, so have some things to tell you about the question
-theelder|I think it is wrongly phrased - it sounds like there should be some actual goal of being a blob of mud
-theelder|That sounds like the most ambitous form of wishful thinking if you ask me
+theelder|You found me too? You are one of those persistant ones.
+theelder|You want a Purpose?
+theelder|Searching for a Grand Quest. Wishing there should be a purpose for us.
+theelder|That sounds like the most ambitious form of wishful thinking to me!
 theelder|...
-theelder|A better question? Yes, yes, I'll give you one.
-theelder|"What can I do which feels purposeful?" I think that is a much more useful question.
-theelder|It translates it from a black-or-white question to a graduality, more a matter of which direction to navigate than finding a certain point in the vast ocean
-theelder|Also, I am allergic to black-or-white thinking. It is too convenient, and people trust their instincts too much.
-theelder|So what feels purposeful to you you say? Aahh, how should I know?
-theelder|What about exploring that yourself? Mudblobs hardly listen to advice anyways, we like to figure out things ourselves.
-theelder|Shush now, move along. I have talked enough for a day or two now.
-theelder|Go figure out what feels purposeful for you, or don't. In the long run we are only mud anyways.
+theelder|I can give you something better though. A Question.
+theelder|Ask yourself, what feels purposeful?
+theelder|When you find that, use it as guide.
+theelder|Go figure out what feels purposeful to you.
+theelder|In the long run we are all mud anyways.
 
 theelder_activated|Move along now. You are the expert on you, not me. Figure out what feels purposeful.
 

@@ -10,6 +10,7 @@ public enum StoryBoardEntity {
 
     dummy,
     none,
+
     level1_jump,
     level1_block_pickup,
     level1_block_throw,
@@ -20,14 +21,29 @@ public enum StoryBoardEntity {
     level3_help,
     level5_help,
 
-    lost1,
-    lost2,
-    lost3,
+    level1_1,
+    level1_2,
+    level1_3,
+    level1_4,
 
-    ponderer1,
-    ponderer2,
+    level2_1,
+    level2_2,
+    level2_3,
+    level2_4,
+    level2_griever,
 
-    past_blockage,
+    level3_1,
+    level3_2,
+    level3_3,
+    level3_4,
+
+    level4_1,
+    level4_2,
+    level4_3,
+    level4_4,
+
+    theelder,
+    theelder_activated,
 
     intermission12,
     intermission23,

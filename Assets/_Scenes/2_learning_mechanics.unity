@@ -1597,7 +1597,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1177716863022330, guid: 01e3ab536a960014c9e2cfabb3a5640e, type: 2}
       propertyPath: m_Name
-      value: cantgetthrough
+      value: stranger_2
       objectReference: {fileID: 0}
     - target: {fileID: 114458000260578116, guid: 01e3ab536a960014c9e2cfabb3a5640e,
         type: 2}
@@ -1613,6 +1613,11 @@ Prefab:
         type: 2}
       propertyPath: board_names.Array.data[1]
       value: 21
+      objectReference: {fileID: 0}
+    - target: {fileID: 114458000260578116, guid: 01e3ab536a960014c9e2cfabb3a5640e,
+        type: 2}
+      propertyPath: board_entity
+      value: 16
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 01e3ab536a960014c9e2cfabb3a5640e, type: 2}
@@ -1696,9 +1701,9 @@ Transform:
   m_Children:
   - {fileID: 1765518025}
   - {fileID: 721837617}
-  - {fileID: 1445656119}
   - {fileID: 1596877048}
   - {fileID: 1265005375}
+  - {fileID: 1445656119}
   m_Father: {fileID: 145839649}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2479,7 +2484,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4933241323212888, guid: 01e3ab536a960014c9e2cfabb3a5640e, type: 2}
       propertyPath: m_RootOrder
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 114458000260578116, guid: 01e3ab536a960014c9e2cfabb3a5640e,
         type: 2}
@@ -2511,7 +2516,12 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1177716863022330, guid: 01e3ab536a960014c9e2cfabb3a5640e, type: 2}
       propertyPath: m_Name
-      value: level_end
+      value: stranger_4
+      objectReference: {fileID: 0}
+    - target: {fileID: 114458000260578116, guid: 01e3ab536a960014c9e2cfabb3a5640e,
+        type: 2}
+      propertyPath: board_entity
+      value: 18
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 01e3ab536a960014c9e2cfabb3a5640e, type: 2}
@@ -3211,7 +3221,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4933241323212888, guid: 01e3ab536a960014c9e2cfabb3a5640e, type: 2}
       propertyPath: m_RootOrder
-      value: 2
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 114458000260578116, guid: 01e3ab536a960014c9e2cfabb3a5640e,
         type: 2}
@@ -3244,6 +3254,11 @@ Prefab:
     - target: {fileID: 1177716863022330, guid: 01e3ab536a960014c9e2cfabb3a5640e, type: 2}
       propertyPath: m_Name
       value: stranger_griever
+      objectReference: {fileID: 0}
+    - target: {fileID: 114458000260578116, guid: 01e3ab536a960014c9e2cfabb3a5640e,
+        type: 2}
+      propertyPath: board_entity
+      value: 19
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 01e3ab536a960014c9e2cfabb3a5640e, type: 2}
@@ -3607,11 +3622,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4933241323212888, guid: 01e3ab536a960014c9e2cfabb3a5640e, type: 2}
       propertyPath: m_RootOrder
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1177716863022330, guid: 01e3ab536a960014c9e2cfabb3a5640e, type: 2}
       propertyPath: m_Name
-      value: after_blockage
+      value: stranger_3
       objectReference: {fileID: 0}
     - target: {fileID: 114458000260578116, guid: 01e3ab536a960014c9e2cfabb3a5640e,
         type: 2}
@@ -3639,7 +3654,7 @@ Prefab:
     - target: {fileID: 114458000260578116, guid: 01e3ab536a960014c9e2cfabb3a5640e,
         type: 2}
       propertyPath: board_entity
-      value: 16
+      value: 17
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 01e3ab536a960014c9e2cfabb3a5640e, type: 2}
@@ -4024,7 +4039,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1177716863022330, guid: 01e3ab536a960014c9e2cfabb3a5640e, type: 2}
       propertyPath: m_Name
-      value: ponderer
+      value: stranger_1
       objectReference: {fileID: 0}
     - target: {fileID: 114458000260578116, guid: 01e3ab536a960014c9e2cfabb3a5640e,
         type: 2}
@@ -4044,7 +4059,7 @@ Prefab:
     - target: {fileID: 114458000260578116, guid: 01e3ab536a960014c9e2cfabb3a5640e,
         type: 2}
       propertyPath: board_entity
-      value: 14
+      value: 15
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 01e3ab536a960014c9e2cfabb3a5640e, type: 2}
