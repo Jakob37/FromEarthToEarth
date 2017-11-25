@@ -71,7 +71,6 @@ public class SaveManager : MonoBehaviour {
         BinaryFormatter formatter = new BinaryFormatter();
 
         try {
-            print("Load data");
             FileStream saveFile = File.Open("Saves/save.binary", FileMode.Open);
             ProgressData local_copy = (ProgressData)formatter.Deserialize(saveFile);
             instance.progress_data = local_copy;

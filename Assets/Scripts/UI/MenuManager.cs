@@ -17,6 +17,7 @@ public class MenuManager : MonoBehaviour {
     public GameObject credits_canvas;
 
     private MusicManager music_manager;
+    private SoundEffectManager sound_manager;
 
     void Start() {
 
@@ -25,9 +26,12 @@ public class MenuManager : MonoBehaviour {
         credits_canvas.SetActive(false);
 
         music_manager = FindObjectOfType<MusicManager>();
+        sound_manager = FindObjectOfType<SoundEffectManager>();
     }
 
     public void SwitchMenuState(string menu_state) {
+
+        sound_manager.PlaySound(SoundEffect.basic_click);
 
         switch (menu_state) {
             case "main":
