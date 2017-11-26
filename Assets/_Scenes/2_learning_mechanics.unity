@@ -1311,6 +1311,10 @@ Prefab:
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1000011337155516, guid: 9e18484a7cd441d4eaedb44bd45b242c, type: 2}
+      propertyPath: m_Name
+      value: special_flower_0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9e18484a7cd441d4eaedb44bd45b242c, type: 2}
   m_IsPrefabParent: 0
@@ -3341,7 +3345,12 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1000011337155516, guid: 9e18484a7cd441d4eaedb44bd45b242c, type: 2}
       propertyPath: m_Name
-      value: special_flower (2)
+      value: special_flower_2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114322790403045900, guid: 9e18484a7cd441d4eaedb44bd45b242c,
+        type: 2}
+      propertyPath: flower_number
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9e18484a7cd441d4eaedb44bd45b242c, type: 2}
@@ -4442,7 +4451,12 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1000011337155516, guid: 9e18484a7cd441d4eaedb44bd45b242c, type: 2}
       propertyPath: m_Name
-      value: special_flower (1)
+      value: special_flower_1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114322790403045900, guid: 9e18484a7cd441d4eaedb44bd45b242c,
+        type: 2}
+      propertyPath: flower_number
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9e18484a7cd441d4eaedb44bd45b242c, type: 2}
