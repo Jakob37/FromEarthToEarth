@@ -40,6 +40,10 @@ public class Player : MonoBehaviour {
 
     public Transform ground_check;
     public Transform head_check;
+    public Collider2D HeadCheckCollider { get {
+            return head_check.gameObject.GetComponent<Collider2D>();
+        } }
+
     public Transform box_head_check;
     public Transform hands;
 
@@ -150,7 +154,6 @@ public class Player : MonoBehaviour {
     void OnCollisionEnter2D(Collision2D coll) {
 
         if (coll.gameObject.GetComponent<WinArea>() != null) {
-            print("Win condition!");
             level_logic.WinCondition();
         }
 
@@ -176,7 +179,11 @@ public class Player : MonoBehaviour {
     void OnParticleCollision(GameObject other) {
 
         if (other.name == "RainFallParticleSystem") {
-            raindrop_hit_count += 1;
+
+            if (block_controller.IsCarryingBlock()) {
+                block_controller.DoRainHit();
+            }
+            // raindrop_hit_count += 1;
         }
     }
 }

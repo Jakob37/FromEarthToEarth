@@ -58,16 +58,6 @@ public class Block : MonoBehaviour {
         base_rain_script = FindObjectOfType<BaseRainScript>();
     }
 
-    // public void Initialize(int start_perc=100) {
-
-        // remaining_percentage = start_perc;
-        // float perc_frac = 100 / start_perc;
-        // rain_deduction = default_rain_deduction / perc_frac;
-        // print(default_rain_deduction);
-        // print(perc_frac);
-        // print(rain_deduction);
-    //}
-
     public void TakenUp(BlockController block_controller) {
         DisableBlock();
     }
@@ -78,8 +68,11 @@ public class Block : MonoBehaviour {
         float x_vel = throwForce.x + player_movement.x * 0.5f;
         float y_vel = throwForce.y + player_movement.y * 0.25f;
         rigi.velocity = new Vector2(x_vel, y_vel);
+
+        Player player = FindObjectOfType<Player>();
+        Physics2D.IgnoreCollision(player.GetComponent<Collider2D>(), coll, false);
     }
-	
+
     public void PutDownGently() {
         EnableBlock();
     }
@@ -113,14 +106,19 @@ public class Block : MonoBehaviour {
 
         if (!is_water_resistant && other.name == "RainFallParticleSystem") {
 
-            bool is_pour_active = base_rain_script.intensity_modifier_active;
-
-            float modifier = 1f;
-            if (is_pour_active) {
-                modifier = pour_modifier;
-            }
-
-            remaining_percentage -= default_rain_deduction * modifier;
+            RainReduceBlock();
         }
+    }
+
+    public void RainReduceBlock() {
+        bool is_pour_active = base_rain_script.intensity_modifier_active;
+
+        float modifier = 1f;
+        if (is_pour_active) {
+            modifier = pour_modifier;
+        }
+
+        remaining_percentage -= default_rain_deduction * modifier;
+
     }
 }

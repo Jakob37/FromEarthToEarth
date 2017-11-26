@@ -200,4 +200,10 @@ public class BlockController : MonoBehaviour {
     private void DeactivateBlockCarry() {
         box_coll.enabled = false;
     }
+
+    public void DoRainHit() {
+        if (carried_block != null) {
+            carried_block.RainReduceBlock();
+        }
+    }
 }
