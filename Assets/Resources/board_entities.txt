@@ -28,8 +28,7 @@ level1_3|My parents will be there too. I would be so embarassed!
 
 level1_4|To find the elder, you need to travel to the far east
 level1_4|You need to find your path through a cave, to climb a mountain
-level1_4|Everyone seems to go there, but noone really knows why
-level1_4|I am too lazy though. I'll just stick around here and say wisy stuff
+level1_4|Seems like a lot of trouble! I think I rather stick around here
 
 # Level 2
 level2_1|I am earth. You are earth. Earth is earth.
@@ -38,7 +37,7 @@ level2_1|We are earth. Yet we are thinking, laughing, living.
 
 level2_2|Are you also on your way to the Elder?
 level2_2|Me too, but the road got blocked. Can you help us out?
-level2_2|I don't know what to give you though, but you will be my hero forever
+level2_2|I don't know what to give you though
 
 level2_3|You removed the blockage? You're the best!
 level2_3|Or at least, top three best!
