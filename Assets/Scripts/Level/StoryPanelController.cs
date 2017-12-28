@@ -30,6 +30,7 @@ public enum StoryBoardEntity {
     level2_2,
     level2_3,
     level2_4,
+    level2_5,
     level2_griever,
 
     level3_1,
@@ -104,6 +105,11 @@ public class StoryPanelController : MonoBehaviour {
             }
 
             StoryBoardEntity board_name = Utils.ParseEnum<StoryBoardEntity>(board_entry[0]);
+
+            if (board_entry[1] == "name") {
+                continue;
+            }
+
             string board_text = board_entry[1];
 
             if (!board_entities_tmp.ContainsKey(board_name)) {
