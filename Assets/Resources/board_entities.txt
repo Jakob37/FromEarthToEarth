@@ -71,7 +71,7 @@ level2_5|name|Grieving Gregory
 level2_5|I lost my brother yesterday, right over there.
 level2_5|He wasn't able to resist the rain any longer.
 level2_5|How should I tackle this? It feels like a thick, sucking clump of sad in my stomach.
-level2_5|Hey, thanks for hearing me out. Sometimes having someone listening   helps a lot.
+level2_5|Hey, thanks for hearing me out. Sometimes having someone listening helps a lot.
 
 # The cavern
 
@@ -79,7 +79,7 @@ level2_5|Hey, thanks for hearing me out. Sometimes having someone listening   he
 level3_1|name|-
 level3_1|Some say the Big Mud Man was born here.
 level3_1|Some say this cavern was created when he ascended to the peak.
-level3_1|I thought we would be beyond such delusions by now!
+level3_1|One would think we would be beyond delusions like that by now!
 
 ## Anxious about content
 level3_2|name|Content Claire
