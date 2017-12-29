@@ -22,10 +22,10 @@ level1_1|But we will figure it out. I believe in us!!
 
 ## Sassy
 level1_2|name|-
-level1_2|Oh hi. New here? Guess you don't have a Name yet then? Thought so!
-level1_2|You will get the hang of things. Or not. Whatever. Do what you want.
-level1_2|They say if you find the Elder she will give you your Name.
-level1_2|I don't have a Name :( Only lazy Bob does. How does that even work?
+level1_2|Oh hi. New here? Guess you haven't found your Purpose yet? Thought so!
+level1_2|You will get the hang of things. Or not. Whatever.
+level1_2|They say if you find the Elder she will tell you your purpose.
+level1_2|I haven't found mine yet :(
 
 ## Nervous
 level1_3|name|-
@@ -54,20 +54,17 @@ level2_2|name|-
 level2_2|I don't know what to do! Are you also on your way to the Elder?
 level2_2|Me too, but the road got blocked. We are stuck!
 level2_2|I don't know what to do, what to do...
-level2_2|Can you please help us out? Please?
 
 ## Grateful, trying to be cool
 level2_3|name|-
 level2_3|You removed the blockage? You're my hero!
 level2_3|Or, err, it was a chill thing you did there
-level2_3|Of course I could have done it too, if I wanted!
 
 ## Confused ponderer
 level2_4|name|-
 level2_4|Once upon a time, they were only mud and stones.
 level2_4|Then something happened. Some of the mud - us - started living.
 level2_4|This was confusing. What is the Purpose of being a mud blob?
-level2_4|Noone knows. Well, maybe except the Elder.
 
 ## Griever
 level2_5|name|Grieving Gregory
@@ -142,8 +139,6 @@ theelder|Yes, yes, I know. You want me to figure out your purpose in this dreadf
 theelder|Thought so!
 theelder|...
 theelder|You really think it is that easy?
-theelder|I still haven't figured out me
-theelder|Stop worry so much
 theelder|Alright, alright, I have some words for an overthinker such as yourself
 theelder|It is good to think about things, but don't overdo it
 theelder|It is good to share what's on your mind, but don't expect someone else to do the solving for you

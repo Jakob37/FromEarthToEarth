@@ -1852,7 +1852,7 @@ Prefab:
     - target: {fileID: 114458000260578116, guid: 01e3ab536a960014c9e2cfabb3a5640e,
         type: 2}
       propertyPath: board_entity
-      value: 21
+      value: 22
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 01e3ab536a960014c9e2cfabb3a5640e, type: 2}
@@ -1922,7 +1922,7 @@ Prefab:
     - target: {fileID: 114458000260578116, guid: 01e3ab536a960014c9e2cfabb3a5640e,
         type: 2}
       propertyPath: board_entity
-      value: 22
+      value: 21
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 01e3ab536a960014c9e2cfabb3a5640e, type: 2}
@@ -2620,7 +2620,7 @@ Prefab:
     - target: {fileID: 114458000260578116, guid: 01e3ab536a960014c9e2cfabb3a5640e,
         type: 2}
       propertyPath: board_entity
-      value: 23
+      value: 24
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 01e3ab536a960014c9e2cfabb3a5640e, type: 2}
@@ -2805,7 +2805,7 @@ Prefab:
     - target: {fileID: 114458000260578116, guid: 01e3ab536a960014c9e2cfabb3a5640e,
         type: 2}
       propertyPath: board_entity
-      value: 20
+      value: 23
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 01e3ab536a960014c9e2cfabb3a5640e, type: 2}

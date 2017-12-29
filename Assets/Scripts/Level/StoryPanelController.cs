@@ -88,8 +88,6 @@ public class StoryPanelController : MonoBehaviour {
     void Start() {
 
         story_board_entities = ParseStoryEntities("board_entities");
-        print(story_board_entities);
-
         active_story_board_entity = StoryBoardEntity.none;
     }
 

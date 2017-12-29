@@ -1070,9 +1070,17 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1849532876521196, guid: 960a408ab7f141b468a9981703dc3fec, type: 2}
       propertyPath: m_Layer
-      value: 8
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 1813807339886912, guid: 960a408ab7f141b468a9981703dc3fec, type: 2}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 1792750083166810, guid: 960a408ab7f141b468a9981703dc3fec, type: 2}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1506564047805378, guid: 960a408ab7f141b468a9981703dc3fec, type: 2}
       propertyPath: m_Layer
       value: 8
       objectReference: {fileID: 0}
