@@ -8,6 +8,7 @@ public class SpecialFlower : MonoBehaviour {
     public int flower_number;
 
     private bool is_alive;
+    private SoundEffectManager sound_manager;
 
     void Start() {
 
@@ -17,15 +18,21 @@ public class SpecialFlower : MonoBehaviour {
         }
         else {
             is_alive = true;
+            sound_manager = FindObjectOfType<SoundEffectManager>();
         }
     }
 
     void OnTriggerEnter2D(Collider2D coll) {
 
         if (coll.gameObject.GetComponent<Player>() != null && is_alive) {
-            SaveManager.SpecialFlowerPick(SceneManager.GetActiveScene().buildIndex, flower_number);
-            is_alive = false;
-            GameObject.Destroy(gameObject);
+            PickFlower();
         }
+    }
+
+    private void PickFlower() {
+        sound_manager.PlaySound(SoundEffect.pickup_flower);
+        SaveManager.SpecialFlowerPick(SceneManager.GetActiveScene().buildIndex, flower_number);
+        is_alive = false;
+        GameObject.Destroy(gameObject);
     }
 }

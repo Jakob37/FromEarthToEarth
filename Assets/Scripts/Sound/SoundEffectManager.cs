@@ -9,6 +9,7 @@ public enum SoundEffect {
     make_block,
     throw_block,
     iterate_stranger,
+    pickup_flower,
 }
 
 public class SoundEffectManager : MonoBehaviour {
@@ -19,6 +20,7 @@ public class SoundEffectManager : MonoBehaviour {
     public AudioSource make_block;
     public AudioSource throw_block;
     public AudioSource iterate_stranger;
+    public AudioSource pickup_flower;
 
     void Start() {
 
@@ -40,6 +42,9 @@ public class SoundEffectManager : MonoBehaviour {
                 break;
             case SoundEffect.iterate_stranger:
                 iterate_stranger.Play();
+                break;
+            case SoundEffect.pickup_flower:
+                pickup_flower.Play();
                 break;
             default:
                 break;
