@@ -15,6 +15,7 @@ public class MenuManager : MonoBehaviour {
     public GameObject main_canvas;
     public GameObject level_pick_canvas;
     public GameObject credits_canvas;
+    public GameObject controls_canvas;
 
     private MusicManager music_manager;
     private SoundEffectManager sound_manager;
@@ -24,6 +25,7 @@ public class MenuManager : MonoBehaviour {
         main_canvas.SetActive(true);
         level_pick_canvas.SetActive(false);
         credits_canvas.SetActive(false);
+        controls_canvas.SetActive(false);
 
         music_manager = FindObjectOfType<MusicManager>();
         sound_manager = FindObjectOfType<SoundEffectManager>();
@@ -38,17 +40,27 @@ public class MenuManager : MonoBehaviour {
                 main_canvas.SetActive(true);
                 level_pick_canvas.SetActive(false);
                 credits_canvas.SetActive(false);
+                controls_canvas.SetActive(false);
                 break;
             case "level_pick":
                 main_canvas.SetActive(false);
                 level_pick_canvas.SetActive(true);
                 credits_canvas.SetActive(false);
+                controls_canvas.SetActive(false);
                 break;
             case "credits":
                 main_canvas.SetActive(false);
                 level_pick_canvas.SetActive(false);
                 credits_canvas.SetActive(true);
+                controls_canvas.SetActive(false);
                 break;
+            case "controls":
+                main_canvas.SetActive(false);
+                level_pick_canvas.SetActive(false);
+                credits_canvas.SetActive(false);
+                controls_canvas.SetActive(true);
+                break;
+
             default:
                 throw new ArgumentException("Unknown MenuState: " + menu_state);
         }

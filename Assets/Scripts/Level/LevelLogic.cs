@@ -14,6 +14,7 @@ public class LevelLogic : MonoBehaviour {
     private int last_trig_second = 0;
 
     private MusicManager music_manager;
+    private ControlText control_text;
 
     private KeyCode[] keyCodes = {
          KeyCode.Alpha1,
@@ -33,6 +34,7 @@ public class LevelLogic : MonoBehaviour {
 
     void Start() {
         elapsed_time = 0;
+        control_text = GameObject.FindObjectOfType<ControlText>();
     }
 
     public void AssignListener(InfoText info_text) {
@@ -85,6 +87,10 @@ public class LevelLogic : MonoBehaviour {
 
         if (Input.GetKeyDown(KeyCode.W)) {
             WinCondition();
+        }
+
+        if (Input.GetKeyDown(KeyCode.H)) {
+            control_text.ToggleActive();
         }
 
         if (Input.GetKeyDown(KeyCode.M)) {

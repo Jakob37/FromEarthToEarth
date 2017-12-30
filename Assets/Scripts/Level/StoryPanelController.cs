@@ -43,6 +43,8 @@ public enum StoryBoardEntity {
     level4_3,
     level4_4,
 
+    level5_1,
+    level5_2,
     theelder,
     theelder_activated,
 
