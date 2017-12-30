@@ -130,14 +130,15 @@ level4_4|Maybe I am too :(
 # The Elder
 
 ## Unsatisfied and confused
-level5_1|
-level5_1|
-level5_1|
+level5_1|The Elder is right up there, at the peak
+level5_1|I talked to her, and I am even more confused
+level5_1|Was it good advice? Was it even advice? What a waste of time!
 
 ## Content and confused
-level5_2|
-level5_2|
-level5_2|
+level5_2|...
+level5_2|I am listening to myself, observing my thinking
+level5_2|And now I am thinking about my thinking about my thinking
+level5_2|Is this even good for me, what do you think?
 
 ## The Elder itself
 theelder|name|The Elder
