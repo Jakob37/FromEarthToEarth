@@ -23,16 +23,13 @@ level1_1|But we will figure it out. I believe in us!!
 ## Sassy
 level1_2|name|-
 level1_2|Oh hi. New here? Guess you haven't found your Purpose yet? Thought so!
-level1_2|You will get the hang of things. Or not. Whatever.
 level1_2|They say if you find the Elder she will tell you your purpose.
 level1_2|I haven't found mine yet :(
 
-## Nervous
+## Flower-picker
 level1_3|name|-
-level1_3|I am so nervous! Today, I'll try to make my first mud block
-level1_3|What if I fail in front of everyone? Disaster!
-level1_3|My parents will be there too. I would be so embarrassed!
-level1_3|*shiver shiver*
+level1_3|Do you see the purple flower over there?
+level1_3|It is a special flower. Collect those and good things will happen to you
 
 ## Lazy
 level1_4|name|Lazy Bob
@@ -75,11 +72,13 @@ level2_5|Hey, thanks for hearing me out. Sometimes having someone listening help
 
 # The cavern
 
-## Cynic / atheist
+## Leap of faith
 level3_1|name|-
-level3_1|Some say the Big Mud Man was born here.
-level3_1|Some say this cavern was created when he ascended to the peak.
-level3_1|One would think we would be beyond delusions like that by now!
+level3_1|Sometimes, you need to make a leap of faith
+level3_1|Will you succeed? Will you pace-plant? Only one way to find out!
+#level3_1|Some say the Big Mud Man was born here.
+#level3_1|Some say this cavern was created when he ascended to the peak.
+#level3_1|One would think we would be beyond delusions like that by now!
 
 ## Anxious about content
 level3_2|name|Content Claire
@@ -122,9 +121,9 @@ level4_3|Why would he do such a thing? He is the worst. I will tell all my frien
 
 ## Mortified blockdestroyer
 level4_4|name|-
-level4_4|I wanted to borrow her block so that I could get up
-level4_4|But I was too slow and it was dissolved
-level4_4|Now she hates me and think I am the worst
+level4_4|I wanted to borrow her block so that I could get up.
+level4_4|But I was too slow and it was dissolved.
+level4_4|Now she hates me and think I am the worst.
 level4_4|Maybe I am too :(
 
 # The Elder
@@ -138,12 +137,13 @@ level5_1|Was it good advice? Was it even advice? What a waste of time!
 level5_2|...
 level5_2|I am listening to myself, observing my thinking
 level5_2|And now I am thinking about my thinking about my thinking
-level5_2|Is this even good for me, what do you think?
+level5_2|Is this even good for me?
 
 ## The Elder itself
 theelder|name|The Elder
 theelder|...
 theelder|...
+theelder|Yes, I am the Elder
 theelder|So, what is it you want from me?
 theelder|...
 theelder|Yes, yes, I know. You want me to figure out your purpose in this dreadful existence, don't you?
@@ -190,3 +190,9 @@ level_levers_s1|What are you waiting for? Try it! You can either stand on it you
 level_levers_s2|It is so high! I wonder how to get up there.
 level_levers_s2|Personally, I am terribly afraid of heights. I better stay down here. Forever.
 level1_further_controls|Restart level with 'R'. Speed up block dissolving with 'P'.
+
+#level1_3|name|-
+#level1_3|I am so nervous! Today, I'll try to make my first mud block
+#level1_3|What if I fail in front of everyone? Disaster!
+#level1_3|My parents will be there too. I would be so embarrassed!
+#level1_3|*shiver shiver*

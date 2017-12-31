@@ -1407,7 +1407,7 @@ Prefab:
     - target: {fileID: 114458000260578116, guid: 0251e928ab2df0c468ae2eb1d065d366,
         type: 2}
       propertyPath: board_entity
-      value: 29
+      value: 31
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0251e928ab2df0c468ae2eb1d065d366, type: 2}
