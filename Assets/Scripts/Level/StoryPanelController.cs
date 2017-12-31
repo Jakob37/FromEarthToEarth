@@ -69,13 +69,10 @@ public class StoryPanelController : MonoBehaviour {
     public GameObject story_text_panel_go;
 
     private string board_text_file = "board_texts";
-
-    // private Dictionary<StoryBoardName, string> story_board_texts;
-
     private Dictionary<StoryBoardEntity, List<string>> story_board_entities;
     private int current_story_index;
-
     private StoryArrow story_arrow;
+    private TextScrollIndicator text_scroll_indicator;
 
     private StoryBoardEntity active_story_board_entity;
 
@@ -85,12 +82,14 @@ public class StoryPanelController : MonoBehaviour {
 
     void Awake() {
         story_arrow = story_text_panel_go.GetComponentInChildren<StoryArrow>();
+        text_scroll_indicator = story_text_panel_go.GetComponentInChildren<TextScrollIndicator>();
     }
 
     void Start() {
 
         story_board_entities = ParseStoryEntities("board_entities");
         active_story_board_entity = StoryBoardEntity.none;
+        story_text_panel_go.SetActive(false);
     }
 
     private Dictionary<StoryBoardEntity, List<string>> ParseStoryEntities(string resource_name, string splitter="\\|") {
@@ -128,6 +127,9 @@ public class StoryPanelController : MonoBehaviour {
         story_text_panel_go.GetComponentInChildren<Text>().text = story_board_entities[board_entity][board_index];
         story_arrow.Reset();
         active_story_board_entity = board_entity;
+
+        int board_length = GetBoardEntityLength(active_story_board_entity);
+        text_scroll_indicator.ActivateIndicator(board_length);
     }
 
     public void IterateStoryBoard(StoryBoardEntity board_entity, int board_index=0) {
@@ -142,10 +144,12 @@ public class StoryPanelController : MonoBehaviour {
 
     public void SignalFullIteration() {
         story_arrow.SignalIteratedThrough();
+
+        int board_length = GetBoardEntityLength(active_story_board_entity);
+        text_scroll_indicator.SignalIteratedThrough(board_length);
     }
 
     public StoryBoardEntity CurrentlyActiveStoryBoardname() {
-
         return active_story_board_entity;
     }
 }
