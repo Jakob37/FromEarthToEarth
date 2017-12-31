@@ -5,12 +5,18 @@ using UnityEngine.UI;
 
 public class TextScrollIndicator : MonoBehaviour {
 
+    private bool is_initialized;
     private Text text_object;
     private bool full_iteration_performed;
 
-    void Start() {
+    public bool disabled;
+
+    void Awake() {
         text_object = GetComponent<Text>();
         full_iteration_performed = false;
+        if (disabled) {
+            full_iteration_performed = true;
+        }
     }
 
     public void SignalIteratedThrough(int board_length) {

@@ -15,17 +15,13 @@ public class Stranger : MonoBehaviour {
     private float left_bound;
     private float right_bound;
 
-    // private Rigidbody2D rigi;
-
     private Animator anim;
-    // private Rigidbody2D rigi;
 
     private float min_paus_time = 1;
     private float max_paus_time = 5;
     private float remain_paus_time;
 
     private Vector3 velocity;
-    // private SpriteRenderer sprite_renderer;
     private bool facing_right;
 
     private StoryBoard story_board;
@@ -37,14 +33,10 @@ public class Stranger : MonoBehaviour {
     private float XPos { get { return transform.position.x; } }
 
     void Awake() {
-        // rigi = GetComponent<Rigidbody2D>();
-        // sprite_renderer = GetComponent<SpriteRenderer>();
         left_bound = GetComponentInChildren<LeftBound>().gameObject.transform.position.x;
         right_bound = GetComponentInChildren<RightBound>().gameObject.transform.position.x;
         story_board = GetComponent<StoryBoard>();
-
         anim = GetComponent<Animator>();
-        // rigi = GetComponent<Rigidbody2D>();
     }
 
     void Start() {

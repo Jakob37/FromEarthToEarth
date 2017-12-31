@@ -123,10 +123,17 @@ public class StoryPanelController : MonoBehaviour {
 
         story_text_panel_go.SetActive(true);
         story_text_panel_go.GetComponentInChildren<Text>().text = story_board_entities[board_entity][board_index];
-        story_arrow.Reset();
-        active_story_board_entity = board_entity;
 
-        int board_length = GetBoardEntityLength(active_story_board_entity);
+        active_story_board_entity = board_entity;
+        int board_length = GetBoardEntityLength(board_entity);
+
+        bool hidden_arrow = false;
+        if (board_length == 1) {
+            hidden_arrow = true;
+        }
+        story_arrow.Reset(hidden_arrow);
+
+
         text_scroll_indicator.ActivateIndicator(board_length);
     }
 
@@ -141,8 +148,9 @@ public class StoryPanelController : MonoBehaviour {
     }
 
     public void SignalFullIteration() {
-        story_arrow.SignalIteratedThrough();
+
         int board_length = GetBoardEntityLength(active_story_board_entity);
+        story_arrow.SignalIteratedThrough();
         text_scroll_indicator.SignalIteratedThrough(board_length);
     }
 

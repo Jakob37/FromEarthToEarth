@@ -22,10 +22,6 @@ public class SoundEffectManager : MonoBehaviour {
     public AudioSource iterate_stranger;
     public AudioSource pickup_flower;
 
-    void Start() {
-
-    }
-
     public void PlaySound(SoundEffect sound_effect) {
         switch (sound_effect) {
             case SoundEffect.basic_click:

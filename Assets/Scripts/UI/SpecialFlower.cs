@@ -10,6 +10,11 @@ public class SpecialFlower : MonoBehaviour {
     private bool is_alive;
     private SoundEffectManager sound_manager;
 
+    void Awake() {
+
+        sound_manager = FindObjectOfType<SoundEffectManager>();
+    }
+
     void Start() {
 
         bool is_flower_picked = SaveManager.GetFlowerPicked(SceneManager.GetActiveScene().buildIndex, flower_number);
@@ -18,7 +23,6 @@ public class SpecialFlower : MonoBehaviour {
         }
         else {
             is_alive = true;
-            sound_manager = FindObjectOfType<SoundEffectManager>();
         }
     }
 

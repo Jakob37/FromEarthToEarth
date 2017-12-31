@@ -51,7 +51,6 @@ public class ControlText : MonoBehaviour {
                 FadeOut();
             }
             else {
-                print("Inactivated");
                 SetActiveState(ControlTextState.inactive);
             }
         }

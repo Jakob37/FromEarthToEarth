@@ -54,9 +54,16 @@ public class StoryBoard : MonoBehaviour {
 
     public void IterateStoryBoard() {
 
+        if (!currently_active) {
+            ActivateStoryBoard();
+            board_index = 0;
+        }
+        else {
+            board_index += 1;
+        }
+
         sound_manager.PlaySound(SoundEffect.iterate_stranger);
 
-        board_index += 1;
         CheckIteratedThrough();
 
         if (board_index > BoardSize - 1) {
@@ -71,7 +78,10 @@ public class StoryBoard : MonoBehaviour {
         if (board_index >= BoardSize) {
             is_iterated_through = true;
             story_board_controller.SignalFullIteration();
-            DeactivateStoryBoard();
+
+            if (BoardSize > 1) {
+                DeactivateStoryBoard();
+            }
         }
     }
 }
