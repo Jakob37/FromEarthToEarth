@@ -104,13 +104,11 @@ public class StoryPanelController : MonoBehaviour {
             }
 
             StoryBoardEntity board_name = Utils.ParseEnum<StoryBoardEntity>(board_entry[0]);
-
             if (board_entry[1] == "name") {
                 continue;
             }
 
             string board_text = board_entry[1];
-
             if (!board_entities_tmp.ContainsKey(board_name)) {
                 board_entities_tmp[board_name] = new List<String>();
             }
@@ -144,7 +142,6 @@ public class StoryPanelController : MonoBehaviour {
 
     public void SignalFullIteration() {
         story_arrow.SignalIteratedThrough();
-
         int board_length = GetBoardEntityLength(active_story_board_entity);
         text_scroll_indicator.SignalIteratedThrough(board_length);
     }

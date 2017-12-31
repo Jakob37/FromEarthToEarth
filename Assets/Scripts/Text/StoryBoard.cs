@@ -71,6 +71,7 @@ public class StoryBoard : MonoBehaviour {
         if (board_index >= BoardSize) {
             is_iterated_through = true;
             story_board_controller.SignalFullIteration();
+            DeactivateStoryBoard();
         }
     }
 }

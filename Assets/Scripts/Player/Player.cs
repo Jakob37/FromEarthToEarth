@@ -60,7 +60,7 @@ public class Player : MonoBehaviour {
 
     private PlatformController platform_controller;
     private BlockController block_controller;
-    private int raindrop_hit_count;
+    // private int raindrop_hit_count;
 
     // private InfoText listener;
 
@@ -98,7 +98,7 @@ public class Player : MonoBehaviour {
         switches = FindObjectsOfType<Switch>();
 
         rigi = GetComponent<Rigidbody2D>();
-        raindrop_hit_count = 0;
+        // raindrop_hit_count = 0;
     }
 
     void Start () {
