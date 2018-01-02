@@ -6,7 +6,7 @@ level1_jump|Controls: Jump - up arrow, pickup/throw block - space.
 level1_block_pickup|[Space] while standing next to a block to pick it up
 level1_block_throw|[Space] to pickup and throw blocks
 level1_block_make|[Space] while standing on mud to make a block
-level1_block_putdown|[Down arrow] while pressing [Space] to put down block in front of you
+level1_block_putdown|[Space] while pressing [Down arrow] to put down block in front of you
 level1_end|Reach the end of the level to travel to the next area
 level2_putdown|Put down a block in front of you by pressing [Space] while holding the [Down arrow]
 level3_help|People and blocks alike sometimes need shelter from the rain
@@ -88,10 +88,10 @@ level3_2|Others are talking though, they think we are weird staying here
 level3_2|It hurts. Why can't they mind their own business?
 
 ## Anxious about peoples thinking
-level3_3|I didn't take it very well in the beginning, getting stuck here
+level3_3|I didn't take it so well, getting stuck here
 level3_3|All our work towards ascending the mountain - for nothing
-level3_3|It felt like a dark void within me, but then I realized that I was being unreasonable to myself
-level3_3|Now I hope to enjoy a cozy life down here with my wife. Do you think that is strange?
+level3_3|It felt like a dark void within me sucking out the colors of the world
+level3_3|But after a while something within me shifted. I actually started enjoying the stillness.
 
 level3_4|name|Mindful Mathias
 level3_4|...
@@ -171,6 +171,15 @@ theelder|Sheesh now, move along, pick some purple flowers, enjoy being
 theelder|And most importantly, let me ponder in peace
 
 theelder_activated|Move along now. You are the expert on you, not me. Figure out what feels purposeful.
+
+win_1|You are awesome!
+win_1|I hope you enjoyed the game!
+win_1|But you are awesome anyway!!
+
+win_2|I'll tell you a secret...
+win_2|The purple flowers are only there to promote satisfaction and exploration right now
+win_2|Hopefully the developer can fix this for the final version of this game
+win_2|But really, what do you need more than exploration and satisfaction in life?
 
 # Level 6 - Downcast and without Purpose
 

@@ -49,6 +49,9 @@ public enum StoryBoardEntity {
     theelder,
     theelder_activated,
 
+    win_1,
+    win_2,
+
     intermission12,
     intermission23,
     intermission34,
