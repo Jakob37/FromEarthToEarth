@@ -14,6 +14,7 @@ public class ControlText : MonoBehaviour {
     public GameObject text_object_full;
     public GameObject text_object_short;
     public bool start_active;
+    public bool fades_out;
 
     private Text full_text;
     private Text short_text;
@@ -42,7 +43,7 @@ public class ControlText : MonoBehaviour {
 
     void Update() {
 
-        if (start_fade_delay_s > 0) {
+        if (start_fade_delay_s > 0 && fades_out) {
             start_fade_delay_s -= Time.deltaTime;
         }
 

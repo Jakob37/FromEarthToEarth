@@ -4,7 +4,7 @@ dummy|More dummy text here!
 # Signposts
 level1_jump|Controls: Jump - up arrow, pickup/throw block - space.
 level1_block_pickup|[Space] while standing next to a block to pick it up
-level1_block_throw|[Space] while holding a block to throw it
+level1_block_throw|[Space] to pickup and throw blocks
 level1_block_make|[Space] while standing on mud to make a block
 level1_block_putdown|[Down arrow] while pressing [Space] to put down block in front of you
 level1_end|Reach the end of the level to travel to the next area
@@ -24,7 +24,8 @@ level1_1|But we will figure it out. I believe in us!!
 level1_2|name|-
 level1_2|Oh hi. New here? Guess you haven't found your Purpose yet? Thought so!
 level1_2|They say if you find the Elder she will tell you your purpose.
-level1_2|I haven't found mine yet :(
+#level1_2|I haven't found mine yet :(
+#level1_2|But we will figure it out. I believe in us!!
 
 ## Flower-picker
 level1_3|name|-
@@ -75,7 +76,8 @@ level2_5|Hey, thanks for hearing me out. Sometimes having someone listening help
 ## Leap of faith
 level3_1|name|-
 level3_1|Sometimes, you need to make a leap of faith
-level3_1|Will you succeed? Will you pace-plant? Only one way to find out!
+level3_1|Will you succeed? Will you do a mortifying face-plant? Only one way to find out!
+
 #level3_1|Some say the Big Mud Man was born here.
 #level3_1|Some say this cavern was created when he ascended to the peak.
 #level3_1|One would think we would be beyond delusions like that by now!
@@ -150,13 +152,12 @@ theelder|So, what is it you want from me?
 theelder|...
 theelder|Yes, yes, I know. You want some Purpose to ease your dreadful existence, don't you?
 theelder|Thought so!
-theelder|*Sigh* You know, there is no silver bullet here
+theelder|*Sigh* You know, it is not that easy
 theelder|Alright, alright, I have some words for an overthinker such as yourself
 theelder|Think about things, but keep it from going out of control
-theelder|Share what's on your mind with others, to make things clearer and to get some ideas
-theelder|But you know, they can't do your solving for you
-theelder|Find ways to express yourself, and then express yourself
-theelder|Starting a path is easy, make sure to walk some paths to the end
+theelder|Share what's on your mind with others, and listen to what's on theirs
+theelder|But you know, your problems are still yours to solve
+theelder|Find ways to express yourself, express yourself
 theelder|Explore yourself, explore others
 theelder|And really, really learn to listen
 theelder|...

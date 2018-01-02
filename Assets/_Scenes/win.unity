@@ -941,7 +941,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 911583831}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -147.00002, y: -202.00002, z: 0}
+  m_LocalPosition: {x: -147.00002, y: -192.4, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1560984424}
@@ -949,7 +949,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -147, y: -202}
+  m_AnchoredPosition: {x: -147, y: -192.4}
   m_SizeDelta: {x: 431.4, y: 110.4}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &911583833
@@ -1560,16 +1560,16 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1810482673}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -186, y: -311.6, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -181.94, y: -321.88, z: 0}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 1}
   m_Children: []
   m_Father: {fileID: 1560984424}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -186, y: -311.6}
-  m_SizeDelta: {x: 347.2, y: 209.2}
+  m_AnchoredPosition: {x: -181.94, y: -321.88}
+  m_SizeDelta: {x: 708.24, y: 537.77}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1810482675
 MonoBehaviour:
@@ -1592,10 +1592,10 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 12800000, guid: 9e4f0299e1f274345bedb389905da8a2, type: 3}
-    m_FontSize: 14
+    m_FontSize: 36
     m_FontStyle: 0
     m_BestFit: 0
-    m_MinSize: 10
+    m_MinSize: 1
     m_MaxSize: 40
     m_Alignment: 0
     m_AlignByGeometry: 0
@@ -1623,7 +1623,7 @@ MonoBehaviour:
 
     And to you for testing this game!
 
-    It means a lot :)'
+    I appreciate it :)'
 --- !u!222 &1810482676
 CanvasRenderer:
   m_ObjectHideFlags: 0
