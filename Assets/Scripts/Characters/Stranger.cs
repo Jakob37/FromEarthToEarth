@@ -20,6 +20,7 @@ public class Stranger : MonoBehaviour {
     private float min_paus_time = 1;
     private float max_paus_time = 5;
     private float remain_paus_time;
+    private float walk_speed = 0.01f;
 
     private Vector3 velocity;
     private bool facing_right;
@@ -49,10 +50,6 @@ public class Stranger : MonoBehaviour {
 
     void Update() {
 
-        if (Input.GetKeyDown(KeyCode.S)) {
-            GenerateNewGoalPosition();
-        }
-
         bool goal_reached = IsGoalReached();
 
         if (current_goal_status == GoalStatus.Walking && goal_reached) {
@@ -61,6 +58,7 @@ public class Stranger : MonoBehaviour {
 
         if (story_board.CurrentActive) {
             current_goal_status = GoalStatus.AwaitingNextWalk;
+            StopMovement();
         }
         else if (current_goal_status == GoalStatus.Walking) {
             WalkTowardsGoalPosition();
@@ -79,7 +77,6 @@ public class Stranger : MonoBehaviour {
         }
 
         SetAnimParams();
-
         transform.position += velocity;
     }
 
@@ -92,10 +89,10 @@ public class Stranger : MonoBehaviour {
     private void WalkTowardsGoalPosition() {
         
         if (is_forward_right) {
-            velocity = new Vector2(0.01f, 0);
+            velocity = new Vector2(walk_speed, 0);
         }
         else {
-            velocity = new Vector2(-0.01f, 0);
+            velocity = new Vector2(-walk_speed, 0);
         }
     }
 

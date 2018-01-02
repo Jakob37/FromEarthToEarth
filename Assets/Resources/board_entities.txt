@@ -101,16 +101,17 @@ level3_4|Do you feel the breeze? On days like this I feel truly alive.
 
 ## Unmotivated
 level4_1|name|-
-level4_1|It is so high! It stretches to the skies!
-level4_1|Someone once said to me "No gain, by pain"
+level4_1|The mountain, it is so high! It stretches to the skies!
+level4_1|My mom always said "No gain, by pain"
 level4_1|I don't want to climb it anymore, it can't possibly be worth the effort
 
 ## Curious about science
 level4_2|name|Building Bob
-level4_2|For a long time it wasn't possible to climb this mountain
-level4_2|Then a bunch of us came together and decided to change that
-level4_2|After a year we had invented moving poles!
-level4_2|It is amazing what we can accomplish when we work together!
+level4_2|...
+level4_2|M-hmm, that is interesting!
+level4_2|...
+level4_2|I understand, what's your thought about that?
+level4_2|Keep talking! I gave up trying to climb the mountain, and started practicing active listening instead :)
 
 ## Angry at blockdestroyer
 level4_3|name|-
@@ -131,36 +132,37 @@ level4_4|Maybe I am too :(
 ## Unsatisfied and confused
 level5_1|The Elder is right up there, at the peak
 level5_1|I talked to her, and I am even more confused
-level5_1|Was it good advice? Was it even advice? What a waste of time!
+level5_1|Was it good advice? Was it even advice?
 
 ## Content and confused
 level5_2|...
 level5_2|I am listening to myself, observing my thinking
 level5_2|And now I am thinking about my thinking about my thinking
-level5_2|Is this even good for me?
+level5_2|Tomorrow, I will transcend to the fourth degree of meta-thinking
 
 ## The Elder itself
 theelder|name|The Elder
 theelder|...
-theelder|...
 theelder|Yes, I am the Elder
+theelder|...
+theelder|...
 theelder|So, what is it you want from me?
 theelder|...
-theelder|Yes, yes, I know. You want me to figure out your purpose in this dreadful existence, don't you?
+theelder|Yes, yes, I know. You want some Purpose to ease your dreadful existence, don't you?
 theelder|Thought so!
-theelder|...
-theelder|You really think it is that easy?
+theelder|*Sigh* You know, there is no silver bullet here
 theelder|Alright, alright, I have some words for an overthinker such as yourself
-theelder|It is good to think about things, but don't overdo it
-theelder|It is good to share what's on your mind, but don't expect someone else to do the solving for you
-theelder|Find ways to express yourself
+theelder|Think about things, but keep it from going out of control
+theelder|Share what's on your mind with others, to make things clearer and to get some ideas
+theelder|But you know, they can't do your solving for you
+theelder|Find ways to express yourself, and then express yourself
+theelder|Starting a path is easy, make sure to walk some paths to the end
 theelder|Explore yourself, explore others
 theelder|And really, really learn to listen
 theelder|...
-theelder|That's all. You will figure something out. I am sure of it.
-theelder|Better make the best of it!
-theelder|Sheesh now, move along
-theelder|Let me overthink in peace
+theelder|That's all. It isn't easy, but I think you will manage. Most seem to do.
+theelder|Sheesh now, move along, pick some purple flowers, enjoy being
+theelder|And most importantly, let me ponder in peace
 
 theelder_activated|Move along now. You are the expert on you, not me. Figure out what feels purposeful.
 
