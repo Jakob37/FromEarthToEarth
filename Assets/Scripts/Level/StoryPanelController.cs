@@ -37,6 +37,7 @@ public enum StoryBoardEntity {
     level3_2,
     level3_3,
     level3_4,
+    level3_5,
 
     level4_1,
     level4_2,

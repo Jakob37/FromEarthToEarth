@@ -24,8 +24,7 @@ level1_1|But we will figure it out. I believe in us!!
 level1_2|name|-
 level1_2|Oh hi. New here? Guess you haven't found your Purpose yet? Thought so!
 level1_2|They say if you find the Elder she will tell you your purpose.
-#level1_2|I haven't found mine yet :(
-#level1_2|But we will figure it out. I believe in us!!
+level1_2|I haven't found mine yet :( But we will figure it out. I believe in us!!
 
 ## Flower-picker
 level1_3|name|-
@@ -83,29 +82,32 @@ level3_1|Will you succeed? Will you do a mortifying face-plant? Only one way to 
 #level3_1|One would think we would be beyond delusions like that by now!
 
 ## Anxious about content
-level3_2|name|Content Claire
-level3_2|We got stuck here some time ago
-level3_2|First we panicked. Nobody could stay down here, could they?
-level3_2|Then we realized it is kind of cozy here
-level3_2|Maybe we are fine without getting to the Elder? What do you think?
+level3_2|We have been stuck here for ages. Ages!
+level3_2|My husband took it quite badly, but after settling in he seems to be doing better
+level3_2|Others are talking though, they think we are weird staying here
+level3_2|It hurts. Why can't they mind their own business?
 
 ## Anxious about peoples thinking
-level3_3|name|Considerate Conrad
-level3_3|I want to stay here, but I am so worried what people will think
-level3_3|Everyone else says they want to climb the peak
-level3_3|I don't want to be different, so I say it too
+level3_3|I didn't take it very well in the beginning, getting stuck here
+level3_3|All our work towards ascending the mountain - for nothing
+level3_3|It felt like a dark void within me, but then I realized that I was being unreasonable to myself
+level3_3|Now I hope to enjoy a cozy life down here with my wife. Do you think that is strange?
 
 level3_4|name|Mindful Mathias
 level3_4|...
 level3_4|Do you feel the breeze? On days like this I feel truly alive.
+
+level3_5|I wouldn't go into that cavern if I was you
+level3_5|There are strange people living in there. Strrrraaaangeeee...
+level3_5|They even claim not wanting to meet the Elder any longer. Don't they have any ambition?
 
 # The ascent
 
 ## Unmotivated
 level4_1|name|-
 level4_1|The mountain, it is so high! It stretches to the skies!
-level4_1|My mom always said "No gain, by pain"
-level4_1|I don't want to climb it anymore, it can't possibly be worth the effort
+level4_1|The Elder is at the peak, guess I have to start climbing
+level4_1|"No gain, by pain"... Or how was it?
 
 ## Curious about science
 level4_2|name|Building Bob
@@ -153,15 +155,18 @@ theelder|...
 theelder|Yes, yes, I know. You want some Purpose to ease your dreadful existence, don't you?
 theelder|Thought so!
 theelder|*Sigh* You know, it is not that easy
+theelder|I think we are just mud, coming together briefly before dissolving again
+theelder|And yet... We are here talking about it. That's quite nice, isn't it?
+theelder|...
 theelder|Alright, alright, I have some words for an overthinker such as yourself
 theelder|Think about things, but keep it from going out of control
 theelder|Share what's on your mind with others, and listen to what's on theirs
 theelder|But you know, your problems are still yours to solve
-theelder|Find ways to express yourself, express yourself
+theelder|Find ways to express yourself, and express yourself
 theelder|Explore yourself, explore others
 theelder|And really, really learn to listen
 theelder|...
-theelder|That's all. It isn't easy, but I think you will manage. Most seem to do.
+theelder|That's all. I think you will manage!
 theelder|Sheesh now, move along, pick some purple flowers, enjoy being
 theelder|And most importantly, let me ponder in peace
 

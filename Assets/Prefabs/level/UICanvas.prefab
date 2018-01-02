@@ -253,7 +253,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: (Down arrow to scroll text)
+  m_Text: (Down arrow for more text)
 --- !u!114 &114194858320663540
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -503,7 +503,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a74a0c81fd20d34bad9c5dc66a74544, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  disabled: 0
+  disabled: 1
 --- !u!114 &114872278281608128
 MonoBehaviour:
   m_ObjectHideFlags: 1

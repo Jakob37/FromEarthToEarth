@@ -2043,7 +2043,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1327629162697692, guid: 85d3ad6a59b372644a337c208557d0ef, type: 2}
       propertyPath: m_Layer
-      value: 8
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 1628404710615886, guid: 85d3ad6a59b372644a337c208557d0ef, type: 2}
       propertyPath: m_Layer
@@ -2054,6 +2054,18 @@ Prefab:
       value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 1697020359493374, guid: 85d3ad6a59b372644a337c208557d0ef, type: 2}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 1582413602576302, guid: 85d3ad6a59b372644a337c208557d0ef, type: 2}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1167769661564790, guid: 85d3ad6a59b372644a337c208557d0ef, type: 2}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1423973468349770, guid: 85d3ad6a59b372644a337c208557d0ef, type: 2}
       propertyPath: m_Layer
       value: 9
       objectReference: {fileID: 0}
@@ -3413,7 +3425,7 @@ Prefab:
     - target: {fileID: 114000013897745496, guid: fff7d0b503d7b7b4893c07ee12ecc7bd,
         type: 2}
       propertyPath: RainIntensity
-      value: 1
+      value: 0.6
       objectReference: {fileID: 0}
     - target: {fileID: 114000013897745496, guid: fff7d0b503d7b7b4893c07ee12ecc7bd,
         type: 2}
