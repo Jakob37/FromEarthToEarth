@@ -7,10 +7,9 @@ using UnityEngine;
 public class SaveManager : MonoBehaviour {
 
     public static SaveManager instance;
-
     public int test_value;
-
     public ProgressData progress_data;
+    public static bool debug_always_load_flowers = true;
 
     void Awake() {
         if (instance == null) {
@@ -50,6 +49,11 @@ public class SaveManager : MonoBehaviour {
     }
 
     public static bool GetFlowerPicked(int level_index, int flower_index) {
+
+        if (debug_always_load_flowers) {
+            return false;
+        }
+
         return instance.progress_data.picked_flowers[level_index, flower_index];
     }
 
