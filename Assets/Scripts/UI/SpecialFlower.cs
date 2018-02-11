@@ -9,10 +9,12 @@ public class SpecialFlower : MonoBehaviour {
 
     private bool is_alive;
     private SoundEffectManager sound_manager;
+    private FlowerPickupDisplay flower_pickup_display;
 
     void Awake() {
 
         sound_manager = FindObjectOfType<SoundEffectManager>();
+        flower_pickup_display = FindObjectOfType<FlowerPickupDisplay>();
     }
 
     void Start() {
@@ -34,9 +36,16 @@ public class SpecialFlower : MonoBehaviour {
     }
 
     private void PickFlower() {
+
+        int level_index = SceneManager.GetActiveScene().buildIndex;
+
         sound_manager.PlaySound(SoundEffect.pickup_flower);
-        SaveManager.SpecialFlowerPick(SceneManager.GetActiveScene().buildIndex, flower_number);
+        SaveManager.SpecialFlowerPick(level_index, flower_number);
         is_alive = false;
         GameObject.Destroy(gameObject);
+
+        int picked_flowers = SaveManager.GetFlowersPickedOnLevel(level_index);
+
+        flower_pickup_display.ShowFlowerCount(picked_flowers);
     }
 }

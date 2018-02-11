@@ -9,7 +9,7 @@ public class SaveManager : MonoBehaviour {
     public static SaveManager instance;
     public int test_value;
     public ProgressData progress_data;
-    public static bool debug_always_load_flowers = true;
+    public static bool debug_always_load_flowers = false;
 
     void Awake() {
         if (instance == null) {
@@ -55,6 +55,18 @@ public class SaveManager : MonoBehaviour {
         }
 
         return instance.progress_data.picked_flowers[level_index, flower_index];
+    }
+
+    public static int GetFlowersPickedOnLevel(int level_index) {
+
+        int pick_count = 0;
+        for (int i = 0; i <= 2; i++) {
+            if (instance.progress_data.picked_flowers[level_index, i]) {
+                pick_count++;
+            }
+        }
+
+        return pick_count;
     }
 
     public static void SaveData() {
