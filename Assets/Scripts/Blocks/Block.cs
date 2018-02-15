@@ -90,7 +90,7 @@ public class Block : MonoBehaviour {
             sprite_renderer.sprite = waterproof_sprite;
         }
 
-        if (remaining_percentage <= 0) {
+        if (remaining_percentage <= 0 && !is_water_resistant) {
             Destroy(gameObject);
         }
 
@@ -104,13 +104,17 @@ public class Block : MonoBehaviour {
 
     void OnParticleCollision(GameObject other) {
 
-        if (!is_water_resistant && other.name == "RainFallParticleSystem") {
-
+        if (other.name == "RainFallParticleSystem") {
             RainReduceBlock();
         }
     }
 
     public void RainReduceBlock() {
+
+        if (is_water_resistant) {
+            return;
+        }
+
         bool is_pour_active = base_rain_script.intensity_modifier_active;
 
         float modifier = 1f;
