@@ -13,6 +13,8 @@ public class PlatformController : MonoBehaviour {
     public float max_block_jump_height;
     public float min_block_jump_height;
 
+    public bool abrupt_stop;
+
     private Player player;
     private Rigidbody2D rigi;
     private Animator player_anim;
@@ -112,8 +114,10 @@ public class PlatformController : MonoBehaviour {
         }
 
         float h = Input.GetAxis("Horizontal");
-        if (h == 0 && player.IsGroundedOnLever) {
-            rigi.velocity = new Vector3(0, rigi.velocity.y);
+        if (h == 0) {
+            if (abrupt_stop || player.IsGroundedOnLever) {
+                rigi.velocity = new Vector3(0, rigi.velocity.y);
+            }
         }
         else if (h * rigi.velocity.x < player.max_speed) {
             rigi.AddForce(Vector2.right * h * player.move_force);
